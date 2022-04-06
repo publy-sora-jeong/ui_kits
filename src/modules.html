@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="static/images/icon/favicon.png" />
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Design Styleguide</title>
+</head>
+
+<body class="">
+    <div class="guide-hader">
+        <h2>Design System - modules</h2>
+
+        <div class="guide-hader-links">
+            <a href="index.html">convention</a>
+            <a href="base.html">base</a>
+            <a href="elements.html">elements</a>
+            <a href="modules.html" class="is-current">modules</a>
+            <a href="interactions.html">interactions</a>
+        </div>
+    </div>
+
+    <section class="guide-wrapper">
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">Single navigation -dropdown</dt>
+                <dd class="code-nocopy">
+                    <nav class="gnb gnb-dropdown">
+                        <ul class="node1-list">
+                            <li class="node1-item">
+                                <a href="#" class="node1-link" aria-expanded="false">Nav Menu1</a>
+                                <div class="node2-menu">
+                                    <ul class="node2-list">
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu11</a>
+                                        </li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu12</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu13</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu14</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu15</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="node1-item">
+                                <a href="#" class="node1-link" aria-expanded="false">Nav Menu2</a>
+                                <div class="node2-menu">
+                                    <ul class="node2-list">
+                                        <li class="node2-item"><a href="#" class="node2-link">22</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">33</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="node1-item">
+                                <a href="#" class="node1-link" aria-expanded="false">Nav Menu3</a>
+                                <div class="node2-menu">
+                                    <ul class="node2-list">
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu31</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu32</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu33</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu34</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu35</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="node1-item">
+                                <a href="#" class="node1-link" aria-expanded="false">Nav Menu4</a>
+                                <div class="node2-menu">
+                                    <ul class="node2-list">
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu41</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu42</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu43</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu44</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu45</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </dd>
+                <dd class="code-copy" style="display: none">
+                    <nav class="gnb gnb-dropdown">
+                        <ul class="node1-list">
+                            <li class="node1-item">
+                                <a href="#" class="node1-link" aria-expanded="false">Menu Item</a>
+                                <div class="node2-menu">
+                                    <ul class="node2-list">
+                                        <li class="node2-item"><a href="#" class="node2-link">Sub Nav Item</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </dd>
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">Fulldown navigation</dt>
+                <dd class="code-nocopy">
+                    <nav class="gnb gnb-fulldown">
+                        <ul class="node1-list">
+                            <li class="node1-item node1-item1">
+                                <a href="#" class="node1-link" aria-expanded="false">Nav Menu1</a>
+                                <div class="node2-menu">
+                                    <ul class="node2-list">
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu11</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu12</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu13</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu14</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu15</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="node1-item">
+                                <a href="#" class="node1-link" aria-expanded="false">Nav Menu2</a>
+                                <div class="node2-menu">
+                                    <ul class="node2-list">
+                                        <li class="node2-item"><a href="#" class="node2-link">22</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">33</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="node1-item">
+                                <a href="#" class="node1-link" aria-expanded="false">Nav Menu3</a>
+                                <div class="node2-menu">
+                                    <ul class="node2-list">
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu41</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu42</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu43</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu44</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu45</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="node1-item">
+                                <a href="#" class="node1-link" aria-expanded="false">Nav Menu4</a>
+                                <div class="node2-menu">
+                                    <ul class="node2-list">
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu41</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu42</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu43</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu44</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu45</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu45</a></li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu45</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="fulldown-bg"></div>
+                    </nav>
+                </dd>
+                <dd class="code-copy" style="display: none">
+                    <nav class="gnb gnb-fulldown">
+                        <ul class="node1-list">
+                            <li class="node1-item">
+                                <a href="#" class="node1-link" aria-expanded="false">Nav Menu1</a>
+                                <div class="node2-menu">
+                                    <ul class="node2-list">
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu11</a>
+                                        </li>
+                                        <li class="node2-item"><a href="#" class="node2-link">Nav Menu12</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </dd>
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">text tooltip</dt>
+                <dd class="code-nocopy">
+                    <div class="tooltip-sample">
+                        <p aria-describedby="tooltip--top-left" tabindex="0">tooltip - top left</p>
+                        <div class="tooltip tooltip--top-left" aria-hidden="true" role="tooltip" id="tooltip--top-left">
+                            <p class="arrow"></p>
+                            Your Text in Tooltip (Top Left)
+                        </div>
+                    </div>
+
+                    <div class="tooltip-sample">
+                        <p aria-describedby="tooltip--top-right" tabindex="0">tooltip - top right</p>
+                        <div class="tooltip tooltip--top-right" aria-hidden="true" role="tooltip"
+                            id="tooltip--top-right">
+                            <p class="arrow"></p>
+                            Your Text in Tooltip (Top Right)
+                        </div>
+                    </div>
+
+                    <div class="tooltip-sample">
+                        <p aria-describedby="tooltip--bottom-right" tabindex="0">tooltip - bottom right</p>
+                        <div class="tooltip tooltip--bottom-right" aria-hidden="true" role="tooltip"
+                            id="tooltip--bottom-right">
+                            <p class="arrow"></p>
+                            Your Text in Tooltip (bottom Right)
+                        </div>
+                    </div>
+
+                    <div class="tooltip-sample">
+                        <p aria-describedby="tooltip--left" tabindex="0">tooltip - left</p>
+                        <div class="tooltip tooltip--left" aria-hidden="true" role="tooltip" id="tooltip--left">
+                            <p class="arrow"></p>
+                            Your Text in Tooltip (Top Right)
+                        </div>
+                    </div>
+
+                    <div class="tooltip-sample">
+                        <p aria-describedby="tooltip--right" tabindex="0">tooltip - right</p>
+                        <div class="tooltip tooltip--right" aria-hidden="true" role="tooltip" id="tooltip--right">
+                            <p class="arrow"></p>
+                            Your Text in Tooltip (Top Right)
+                        </div>
+                    </div>
+
+                    <div class="tooltip-sample">
+                        <input type="text" placeholder="your text" aria-describedby="tooltip--nohypen">
+                        <div class="tooltip tooltip--top-left" aria-hidden="true" role="tooltip" id="tooltip--nohypen">
+                            <p class="arrow"></p>
+                            하이픈(-) 없이 숫자만 입력해주세요.
+                        </div>
+                    </div>
+                </dd>
+
+                <dd class="code-copy" style="display: none;">
+                    <input type="text" placeholder="your text" aria-describedby="tooltip--nohypen">
+                    <div class="tooltip tooltip--top-left" aria-hidden="true" role="tooltip" id="tooltip--nohypen">
+                        <p class="arrow"></p>
+                        하이픈(-) 없이 숫자만 입력해주세요.
+                    </div>
+                </dd>
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">TAB UI</dt>
+                <dd>
+                    <ul class="desc-list mt-20">
+                        <li>role="tab" 버튼이 탭버튼임을 명시합니다 </li>
+                        <li>aria-selected 값으로 해당 버튼이 선택 된 상태인지 판별합니다 </li>
+                        <li>탭리스트의 aria-controls="아이디" 탭패널의 아이디값은 동일하게 지정하여 서로 연계되어있다는 것을 명시합니다 </li>
+                        <li>선택 되지 않은 버튼의 tabindex 값은 -1로 설정하여 키보드 탭으로 접근이 되지 않게 합니다.</li>
+                        <li>role="tabpanel" 로 해당 div 가 연결된 tab button이 있는 tab panel이라는 것을 명시합니다.</li>
+                        <li>현재 tab panel과 연결된 tab button의 id 를 aria-labelledby="tab button id" 로 연결합니다.</li>
+                        <li>활성화 되지 않은 tab panel은 스크린 리더기가 읽을 수 없게 hidden="false" 속성을 넣어 숨겨줍니다.</li>
+                        <li class="note">role="tabpanel" 속성은 ul 요소에 사용할 없습니다. </li>
+                    </ul>
+                </dd>
+                <dd class="code-copy">
+                    <div class="tab-ui">
+                        <div class="tab-ui__tab">
+                            <ul role="tablist">
+                                <li role="none"><button role="tab" aria-selected="true" aria-controls="tab_first">웰컴
+                                        뉴스</button></li>
+                                <li role="none"><button role="tab" aria-selected="false" aria-controls="tab_second">웰컴
+                                        홍보동영상</button></li>
+                            </ul>
+                        </div>
+                        <div id="tab_first" class="ex_tab_ct" role="tabpanel" aria-labelledby="tab_first" tabindex="0">
+                            웰컴 뉴스 콘텐츠영역입니다.</div>
+                        <div id="tab_second" class="ex_tab_ct" role="tabpanel" aria-labelledby="tab_second" tabindex="0"
+                            hidden="false"> 웰컴 홍보동영상 콘텐츠영역입니다.</div>
+                    </div>
+                </dd>
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div>
+
+
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">jQuery UI - DatePicker</dt>
+
+                <dd class="code-copy">
+                    <div class="datepicker">
+                        <label for="datepickerSample1">Date : </label>
+                        <input type="text" id="datepickerSample1" class="datepicker-ui" placeholder="YYYY-MM-DD">
+                    </div>
+                </dd>
+            </dl>
+        </div>
+
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">Swiper</dt>
+                <dd>
+                    <ul class="desc-list">
+                        <li>키보드사용자를위한 제어버튼은 carousel 시작전에 배치</li>
+                    </ul>
+                </dd>
+                <dd class="code-copy">
+                 
+                </dd>
+            </dl>
+        </div>
+
+  
+
+        
+        <!-- <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">title</dt>
+                <dd>
+                    <ul class="desc-list">
+                        <li>text</li>
+                    </ul>
+                </dd>
+                <dd class="code-nocopy">
+                </dd>
+                <dd class="code-copy">
+                </dd>
+            </dl>
+        </div> -->
+
+    </section>
+    
+
+
+    <!-- Library / Plugins -->
+    <link rel="stylesheet" href="static/css/vendor/swiper-bundle.css">
+    <link rel="stylesheet" href="static/css/guide/shCoreDefault.css">
+    <script src="static/js/vendor/jquery/jquery-1.12.1.min.js"></script>
+    <script src="static/js/vendor/jquery/jquery-migrate-1.4.1.min.js"></script>
+    <script src="static/js/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!--jQuery UI -->
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+    <!-- Code SyntaxHighlighter -->
+    <script type="text/javascript" src="static/js/guide/shCore.js"></script>
+    <script type="text/javascript" src="static/js/guide/shBrushXml.js"></script>
+    <script type="text/javascript" src="static/js/guide/shBrushJScript.js"></script>
+    <script type="text/javascript" src="static/js/guide/shBrushCss.js"></script>
+
+    <script src="static/js//ui/ui.front.js"></script>
+
+    <script>
+        // 코드 복사
+        $('.code-copy').each(function () {
+            htmlCopy($(this));
+        });
+        SyntaxHighlighter.all();
+        SyntaxHighlighter.defaults['toolbar'] = false;
+
+        function htmlCopy(sel) {
+            function htmlEscape(s) {
+                return s
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+            }
+            var quineHtml = htmlEscape(
+                sel.html()
+            );
+            quineHtml = quineHtml.replace(
+                /&lt;script src[\s\S]*?&gt;&lt;\/script&gt;|&lt;!--\?[\s\S]*?--&gt;|&lt;pre\b[\s\S]*?&lt;\/pre&gt;/g,
+                '<span class="operative">$&<\/span>');
+            sel.parent().find('.code-paste > pre').html(quineHtml);
+        }
+    </script>
+
+</body>
+
+</html>

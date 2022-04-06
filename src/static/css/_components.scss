@@ -1,0 +1,664 @@
+//DARKMODE (MEDIAQUERY)
+@media screen and (prefers-color-scheme: dark) {}
+
+/* 
+  STYLE NAME  2022.date 
+  JS();
+*/
+
+
+/* 
+  Single Dropdown GNB 2022.04.05
+  singleNavigation.initilize(); 
+*/
+.gnb-dropdown {
+    .node1-list {
+        position: relative;
+        white-space: nowrap;
+        margin: 0 -10px;
+    }
+
+    .node1-item {
+        display: inline-table;
+        position: relative;
+        padding: 0 10px;
+
+        &.is-active {
+
+            >.node1-link {
+                color: #000;
+            }
+
+            >.node2-menu {
+                opacity: 1;
+                height: auto;
+            }
+        }
+    }
+
+    .node1-link {
+        display: block;
+        position: relative;
+        padding: 0 15px;
+        line-height: 30px;
+        color: #555;
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            height: 2px;
+            background-color: $color-primary-red;
+        }
+    }
+
+    .node2-menu {
+        overflow: hidden;
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        z-index: 10;
+        padding-top: 5px;
+        width: 120px;
+        margin-left: -60px;
+        background-color: #fff;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        will-change: transform, opacity;
+        height: 0;
+    }
+
+    .node2-list {
+        padding: 10px 5px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+
+    .node2-link {
+        display: block;
+        padding: 0 15px;
+        line-height: 24px;
+        font-size: 12px;
+        color: #333;
+    }
+}
+
+/* 
+  Fulldown GNB 2022.04.06
+  fulldownNavigation.initilize(); 
+*/
+.gnb-fulldown {
+    background: #333;
+    position: relative;
+
+    .node1-list {
+        position: relative;
+        white-space: nowrap;
+        border-bottom: 2px solid $color-primary-red;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .node1-item {
+        position: relative;
+        padding: 0 10px;
+
+        &.is-active {
+
+            >.node1-link {
+                color: #fff;
+            }
+
+            >.node2-menu {
+                opacity: 1;
+                height: auto;
+            }
+        }
+    }
+
+    .node1-link {
+        display: block;
+        position: relative;
+        padding: 0 15px;
+        line-height: 30px;
+        color: #fff;
+    }
+
+    .node2-menu {
+        overflow: hidden;
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        z-index: 10;
+        width: 120px;
+        margin-left: -60px;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        will-change: transform, opacity;
+        //height: 0;
+    }
+
+    .node2-list {
+        padding: 10px 5px;
+        border-radius: 3px;
+    }
+
+    .node2-link {
+        display: block;
+        padding: 0 15px;
+        line-height: 24px;
+        font-size: 12px;
+        color: #fff;
+    }
+
+    .fulldown-bg {
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        top: 100%;
+        left: 0;
+        background: #333;
+        height: 0;
+        transition: height 0.3s
+    }
+}
+
+/* 
+  파일첨부 cusotm  2022.04.04 
+  fileAttach.initialize();
+*/
+.attach-files {
+    position: relative;
+    border: 1px solid #333;
+    border-radius: 2px;
+    max-width: 360px;
+    height: 36px;
+    line-height: 36px;
+    margin: 2px 0;
+    overflow: hidden;
+
+    input[type="file"] {
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+
+    input[type="text"] {
+        height: 36px;
+        line-height: 36px;
+        width: 100%;
+        outline: none;
+        padding-left: 10px;
+    }
+
+    .btn-attachfile {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 80px;
+        height: 36px;
+        line-height: 36px;
+        background: #333;
+        color: #fff;
+    }
+}
+
+/* 
+  툴팁 Tooltip  2022.04.05
+  tooltip.initialize();
+*/
+
+.tooltip-sample {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.tooltip {
+    position: absolute;
+    box-shadow: 0px 4px 16px rgba($color: #000000, $alpha: 0.08);
+    padding: 10px 16px;
+    font-size: 12px;
+    border-radius: 8px;
+    margin-top: 1rem;
+    background: #2C2E30;
+    z-index: 1;
+    border: 1px solid #999;
+    border: 0;
+    color: #fff;
+
+    .arrow {
+        position: absolute;
+        z-index: 2;
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        transform: rotate(45deg);
+        background: #2C2E30;
+    }
+
+    &--top-left {
+        .arrow {
+            top: -5px;
+            left: 20px;
+            transform: rotate(45deg);
+        }
+    }
+
+    &--top-right {
+        .arrow {
+            top: -5px;
+            right: 20px;
+            transform: rotate(45deg);
+        }
+    }
+
+    &--bottom-right {
+        .arrow {
+            bottom: -5px;
+            right: 20px;
+            transform: rotate(45deg);
+        }
+    }
+
+    &--bottom-left {
+        .arrow {
+            bottom: -5px;
+            left: 20px;
+            transform: rotate(45deg);
+        }
+    }
+
+    &--left {
+        .arrow {
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            left: -5px;
+        }
+    }
+
+    &--right {
+        .arrow {
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+            right: -5px;
+        }
+    }
+}
+
+
+[role="tooltip"][aria-hidden="true"] {
+    display: none;
+}
+
+[role="tooltip"][aria-hidden="false"] {
+    display: block;
+}
+
+
+
+
+/* 
+  Breadcrumb Aria  2022.04.05
+*/
+.breadcrumb {
+    ol {
+        display: flex;
+        align-items: center;
+    }
+
+    li {
+        position: relative;
+
+        &::after {
+            width: 7px;
+            height: 7px;
+            transform: rotate(135deg);
+            border-left: 1px solid #333;
+            border-top: 1px solid #333;
+            position: absolute;
+            top: 6px;
+            right: -10px;
+            opacity: 0.5;
+        }
+
+        &:not(:first-child) {
+            padding-left: 20px;
+        }
+
+        &:not(:last-child)::after {
+            content: '';
+        }
+    }
+
+    a {
+        font-size: 1.3rem;
+        color: #000;
+    }
+
+    [aria-current="page"] {
+        color: $color-primary-red;
+        text-decoration: underline;
+    }
+}
+
+
+
+
+
+/* TAB UI  */
+.tab-ui {
+    &__tab {
+        border-bottom: 1px solid #ddd;
+    }
+
+    [role="tablist"] {
+        display: flex;
+
+        li {
+            padding: 5px 20px;
+        }
+    }
+
+    button {
+        color: #333;
+    }
+
+    button[aria-selected="true"] {
+        color: $color-primary-red;
+    }
+
+    [role="tabpanel"] {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+
+/* jQuery UI Datepicker */
+.datepicker-ui {
+    border: 1px solid #ddd;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 16px;
+    border-radius: 4px;
+
+    &::placeholder {
+        color: #999
+    }
+}
+
+.ui-datepicker {
+    border: 1px solid #A2A8AE;
+    font-size: 1.4rem;
+    text-align: center;
+    color: #414547;
+    width: 285px;
+    margin-top: 5px;
+    background-color: #fff;
+    box-shadow: 4px 4px 4px rgba($color: #000000, $alpha: 0.15);
+    padding: 8px 16px 16px 16px;
+    border-radius: 8px;
+    z-index: 10;
+    display: none;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: -9px;
+        z-index: 1;
+        width: 16px;
+        height: 12px;
+        margin-left: -8px;
+        background: url('../images/icon/ico_arrowtop_datepicker.svg') no-repeat center;
+    }
+
+    .ui-datepicker-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ui-datepicker-title {
+        font-size: 20px;
+        line-height: 140%;
+        text-align: center;
+        height: 36px;
+        padding-top: 10px;
+
+    }
+
+    .ui-datepicker-next,
+    .ui-datepicker-prev {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        top: 8px;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        >.ui-icon {
+            position: absolute;
+            clip: rect(0 0 0 0);
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+        }
+    }
+
+    .ui-datepicker-next {
+        background-image: url('../images/icon/ico_next_datepicker.svg');
+        right: 0;
+    }
+
+    .ui-datepicker-prev {
+        background-image: url('../images/icon/ico_prev_datepicker.svg');
+        left: 0;
+    }
+
+    .ui-datepicker-calendar {
+        width: 100%;
+        table-layout: fixed;
+        margin-top: 12px;
+        font-size: 14px;
+        text-align: center;
+
+        th {
+            font-weight: bold;
+
+        }
+
+        td,
+        th {
+            padding: 3px 3px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #414547;
+            vertical-align: middle;
+
+
+            a {
+                display: block;
+                color: #414547;
+                width: 28px;
+                height: 28px;
+                border-radius: 100%;
+                line-height: 28px;
+                border: 1px solid transparent;
+                transition: 0.3s;
+
+            }
+        }
+
+        td {
+            border: 1px solid #ddd;
+
+            a:hover {
+                border: 1px solid $color-primary-red;
+            }
+        }
+    }
+
+    .ui-state-disabled,
+    .unavailable {
+        background: #FAFAFA;
+        color: #B2B9BF !important;
+    }
+
+    .ui-datepicker-other-month {
+        border: 0 !important;
+        background: #fff;
+    }
+
+    .ui-datepicker-today {
+        a {
+            color: #fff !important;
+            background: $color-primary-red;
+        }
+    }
+
+}
+
+
+
+
+/* 
+  Sub Navigation  2022.04.
+*/
+.lnb {
+    &__list {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    &__item {}
+}
+
+
+/* 
+  Testimonial quote text 2022.04.06
+*/
+.quote-box {
+    position: relative;
+    padding-bottom: 26px;
+    border-bottom: 1px solid #B2B9BF;
+    font-size: 2rem;
+    color: #414547;
+    line-height: 1.6;
+
+    &--default {
+        padding-top: 40px;
+
+        &::before {
+            content: '';
+            width: calc(100% - 28px);
+            height: 1px;
+            background: #B2B9BF;
+            position: absolute;
+            top: 12px;
+            right: 0;
+        }
+
+        &::after {
+            content: '';
+            width: 24px;
+            height: 24px;
+            background: url('../images/icon/ico_quote_left.svg') no-repeat left center;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+    }
+
+    //&--noDiv { }
+    //quotebox user name, sub text
+    .user-info {
+        margin-top: 16px;
+
+        &--avatar {
+            display: flex;
+            align-items: center;
+
+            >dl {
+                padding-left: 16px;
+                width: calc(100% - 48px);
+            }
+
+            .avatar {
+                width: 48px;
+                height: 48px;
+                overflow: hidden;
+                position: relative;
+
+                >img {
+                    @include push--center;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        dt {
+            color: #414547;
+            font-weight: 700;
+            font-size: 1.6rem;
+        }
+
+        dd {
+            color: #414547;
+            font-size: 1.4rem;
+        }
+    }
+}
+
+/* 
+  blockquote text 2022.04.06
+*/
+.blockquote-box {
+    position: relative;
+    font-size: 2rem;
+    color: #414547;
+    line-height: 1.6;
+    padding-left:4rem; 
+
+    &::before {
+        content: '';
+        width: 2px; 
+        height: 100%;
+        background: #B2B9BF;
+        position: absolute;
+        left: 0; 
+        top: 0;
+    }
+
+    .blockquote__text{
+        padding: 1.6rem 0;
+    }
+
+    .user-info {
+        margin-top: 16px;
+
+        dt {
+            color: #414547;
+            font-weight: 700;
+            font-size: 1.6rem;
+        }
+
+        dd {
+            color: #414547;
+            font-size: 1.4rem;
+        }
+    }
+}
+
+
+/* Modal Popup 2022.04.06 */

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="static/images/icon/favicon.png" />
+
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Design Styleguide</title>
+</head>
+
+<body class="">
+    <div class="guide-hader">
+        <h2>Design System - elements</h2>
+
+        <div class="guide-hader-links">
+            <a href="index.html">convention</a>
+            <a href="base.html">base</a>
+            <a class="is-current" href="elements.html">elements</a>
+            <a href="modules.html">modules</a>
+            <a href="interactions.html">interactions</a>
+        </div>
+    </div>
+
+    <section class="guide-wrapper">
+
+        <!--breadcrumb-->
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">breadcrumb label, aria-current</dt>
+                <dd>
+                    <ul class="desc-list">
+                        <li>breadcrumb aria-label="breadcrumb" </li>
+                        <li>현재페이지 aria-current="page"</li>
+                    </ul>
+                </dd>
+                <dd class="code-copy">
+                    <nav aria-label="breadcrumb" class="breadcrumb">
+                        <ol>
+                            <li><a href="#">WAI-ARIA Authoring Practices</a></li>
+                            <li><a href="#">Design Patterns</a></li>
+                            <li><a href="#">Breadcrumb Pattern</a></li>
+                            <li><a href="#" aria-current="page">Breadcrumb Example</a></li>
+                        </ol>
+                    </nav>
+                </dd>
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div>
+
+        <!--Testimonial quote text-->
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">Testimonial quote text</dt>
+                <dd>
+                    <ul class="desc-list">
+                        <li>text</li>
+                    </ul>
+                </dd>
+                <dd class="code-nocopy">
+                    <div class="quote-box quote-box--default">
+                        <p>“Connecting Canadians and our communities. At TELUS, we’re building a better future for all
+                            Canadians by using our technology for good and giving back to our communities. Our social
+                            purpose is at the heart of everything we do as a world-leading technology company and
+                            continues to set us apart. Let's make the future friendly, together.”</p>
+                        <div class="user-info user-info--avatar">
+                            <p class="avatar">
+                                <img src="static/images/sample/img_avatar.png" alt="User Image">
+                            </p>
+                            <dl>
+                                <dt>Dave Smith, Foreman</dt>
+                                <dd>Pinnacle Reforestation</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <div class="quote-box quote-box--noDiv">
+                        <p> “Connecting Canadians and our communities. At TELUS, we’re building a better future for all
+                            Canadians by using our technology for good and giving back to our communities. Our social
+                            purpose is at the heart of everything we do as a world-leading technology company and
+                            continues to set us apart. Let's make the future friendly, together.”
+                            “Connecting Canadians and our communities. At TELUS, we’re building a better future for all
+                            Canadians by using our technology for good and giving back to our communities. Our social
+                            purpose is at the heart of everything we do as a world-leading technology company and
+                            continues to set us apart. Let's make the future friendly, together.”
+                        </p>
+                        <div class="user-info user-info--txtonly">
+                            <dl>
+                                <dt>Dave Smith, Foreman</dt>
+                                <dd>Pinnacle Reforestation</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </dd>
+                <dd class="code-copy">
+                </dd>
+            </dl>
+        </div>
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">blockquote text</dt>
+                <dd class="code-nocopy">
+                    <div class="blockquote-box">
+                        <div class="blockquote__text">
+                            <p>“Connecting Canadians and our communities. At TELUS, we’re building a better future for
+                                all Canadians by using our technology for good and giving back to our communities. Our
+                                social purpose is at the heart of everything we do as a world-leading technology company
+                                and continues to set us apart. Let's make the future friendly, together.”</p>
+
+                            <div class="user-info">
+                                <dl>
+                                    <dt>Dave Smith, Foreman</dt>
+                                    <dd>Pinnacle Reforestation</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>&nbsp;</p>
+                    <div class="blockquote-box">
+                        <div class="blockquote__text">
+                            <p>“A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.”</p>
+                            <div class="user-info">
+                                <dl>
+                                    <dt>Dave Smith, Foreman</dt>
+                                    <!-- <dd>Pinnacle Reforestation</dd> -->
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+                <dd class="code-copy">
+                </dd>
+            </dl>
+        </div>
+
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">attach files</dt>
+                <dd class="code-copy">
+                    <div class="attach-files">
+                        <input type="file" name="file1" id="file1" value="fidn file" tabindex="-1" aria-hidden="true" />
+                        <input type="text" class="input" title="attached file" />
+                        <button type="button" class="btn btn-attachfile"><span>files..</span></button>
+                    </div>
+
+                    <div class="attach-files">
+                        <input type="file" name="file1" id="file1" value="fidn file" tabindex="-1" aria-hidden="true" />
+                        <input type="text" class="input" title="attached file" />
+                        <button type="button" class="btn btn-attachfile"><span>files..</span></button>
+                    </div>
+                </dd>
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">form</dt>
+                <dd class="code-copy">
+
+                </dd>
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div>
+
+
+
+        <!-- 
+        <h3 class="guide-title">특수기호</h3>
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt  class="code-box-title">특수기호</dt>
+                <dd>
+                    <ul class="desc-list">
+                        <li></li>
+                    </ul>
+                </dd>
+                <dd class="code-copy">
+                   
+                </dd>
+
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div> 
+-->
+
+    </section>
+
+    
+
+    <link rel="stylesheet" href="static/css/vendor/swiper-bundle.css">
+    <link rel="stylesheet" href="static/css/guide/shCoreDefault.css">
+    <script src="static/js/vendor/jquery/jquery-1.12.1.min.js"></script>
+    <script src="static/js/vendor/jquery/jquery-migrate-1.4.1.min.js"></script>
+    <script src="static/js/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- code -->
+    <script type="text/javascript" src="static/js/guide/shCore.js"></script>
+    <script type="text/javascript" src="static/js/guide/shBrushXml.js"></script>
+    <script type="text/javascript" src="static/js/guide/shBrushJScript.js"></script>
+    <script type="text/javascript" src="static/js/guide/shBrushCss.js"></script>
+
+    <script src="static/js//ui/ui.front.js"></script>
+    <!-- <script src="static/js/wai-aria.ui.js"></script> -->
+
+    <script>
+        // 코드 복사
+        $('.code-copy').each(function () {
+            htmlCopy($(this));
+        });
+        SyntaxHighlighter.all();
+        SyntaxHighlighter.defaults['toolbar'] = false;
+
+        function htmlCopy(sel) {
+            function htmlEscape(s) {
+                return s
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+            }
+            var quineHtml = htmlEscape(
+                sel.html()
+            );
+            quineHtml = quineHtml.replace(
+                /&lt;script src[\s\S]*?&gt;&lt;\/script&gt;|&lt;!--\?[\s\S]*?--&gt;|&lt;pre\b[\s\S]*?&lt;\/pre&gt;/g,
+                '<span class="operative">$&<\/span>');
+            sel.parent().find('.code-paste > pre').html(quineHtml);
+        }
+    </script>
+
+</body>
+
+</html>

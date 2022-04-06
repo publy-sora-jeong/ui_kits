@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="static/images/icon/favicon.png" />
+    <link rel="stylesheet" href="static/css/style.css">
+    <title>Design Styleguide</title>
+</head>
+
+<body class="">
+    <div class="guide-hader">
+        <h2>Design System - convention</h2>
+
+        <div class="guide-hader-links">
+            <a href="index.html" class="is-current">convention</a>
+            <a href="base.html">base</a>
+            <a href="elements.html">elements</a>
+            <a href="modules.html">modules</a>
+            <a href="interactions.html">interactions</a>
+        </div>
+    </div>
+
+    <section class="guide-wrapper">
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">프로젝트 기본정보</dt>
+                <dd class="code-copy">
+                    <div class="code-guide-table">
+                        <table>
+                            <colgroup>
+                                <col width="25%">
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>문서 및 버전</th>
+                                    <td>HTML5, CSS3</td>
+                                </tr>
+                                <tr>
+                                    <th>인코딩</th>
+                                    <td>UTF-8</td>
+                                </tr>
+                                <tr>
+                                    <th>PC 웹 호환성</th>
+                                    <td>
+                                        <div class="guide-browser">
+                                            <img src="static/images/_browser/chrome.svg" alt="chrome"> 100+
+                                            <img src="static/images/_browser/edge.svg" alt="edge"> 100+
+                                            <img src="static/images/_browser/firefox.svg" alt="firefox"> 98+
+                                            <img src="static/images/_browser/opera.svg" alt="opera"> 85+
+                                            <img src="static/images/_browser/safari.svg" alt="safari"> 2022+
+                                            <img src="static/images/_browser/ie.svg" alt="ie"> 11+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Mobile 웹 호환성</th>
+                                    <td>안드로이드 6.x 이상, IOS 12.x 이상</td>
+                                </tr>
+                                <tr>
+                                    <th>해상도</th>
+                                    <td>
+                                        <ul class="list">
+                                            <li>PC UI : 1024 ~</li>
+                                            <li>Mobile UI : ~ 1023</li>
+                                            <li>각 디바이스별 구간에서 반응형 처리  <br><br>✅ Desctop First  &nbsp;&nbsp;&nbsp;&nbsp; ⬛ Mobile First <!--✅--></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">프로젝트 파일/폴더 규칙</dt>
+                <dd class="code-copy">
+                    <div class="code-guide-table">
+                        <table>
+                            <colgroup>
+                                <col width="15%">
+                                <col width="15%">
+                                <col width="20%">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>분류 폴더</th>
+                                    <th>서브 폴더</th>
+                                    <th>파일 이름</th>
+                                    <th>파일 설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>fonts</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        웹폰트
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>css</td>
+                                    <td></td>
+                                    <td>
+                                        style.css
+                                    </td>
+                                    <td>
+                                        <pre>
+│
+├─  base (reset, var, mixin, fonts..)
+│
+│      _reset.scss
+│      _mixins.scss
+│
+├─  vendor (plugin, library)
+│
+│      _swiper.scss
+│
+├─  layout (main, sub)
+│
+├─  components (form, checkbox, modal.. )
+│
+│      _table.scss
+│      _form.scss
+│      _modal.scss
+│
+├─  common (header, footer, menu)
+│
+│      _header.scss
+│
+└ style.css</pre>
+
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>js</td>
+                                    <td>libs</td>
+                                    <td>
+                                        jQuery, libraries
+                                    </td>
+                                    <td>
+                                        라이브러리, 플러그인
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>ui</td>
+                                    <td>
+                                        ui.front.js
+                                    </td>
+                                    <td>
+                                        스크립트 - UI / 퍼블리싱 작업용
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>img</td>
+                                    <td>
+                                        common<br>
+                                        icon<br>
+                                        content<br>
+                                        main<br>
+                                        @
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        이미지 - 공통이미지 <br>
+                                        이미지 - 아이콘, SVG<br>
+                                        이미지 - 서브콘텐츠<br>
+                                        이미지 - 메인전용, 히어로이미지등<br>
+                                        @임시이미지<br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>html</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        HTML
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">HTML 기본문서 </dt>
+                <dd>
+                    <ul class="desc-list">
+                        <li>user-scalable=no 의 속성은 사용을 사용하지않고, <br />
+                            -webkit-text-size-adjust:100%를 주어 화면의 크기에 따라 크기를 조정하지 않음을 명시해줍니다. </li>
+                    </ul>
+                </dd>
+                <dd class="code-copy">
+                    <meta charset="utf-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="initial-scale=1, width=device-width" />
+                    <meta name="title" content="title">
+                    <meta name="keywords" content="keywords">
+                    <meta name="description" content="description">
+                    <title>webpage title</title>
+                </dd>
+
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div>
+
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">메타태그 OpenGraph</dt>
+                <dd class="code-copy">
+                    <!--기본설정-->
+                    <meta property="og:type" content="website">
+                    <meta property="og:url" content="https://example.com/page.html">
+                    <meta property="og:title" content="Content Title">
+                    <meta property="og:image" content="https://example.com/image.jpg">
+                    <meta property="og:description" content="Description Here">
+                    <meta property="og:site_name" content="Site Name">
+                    <meta property="og:locale" content="en_US">
+                    <!-- 다음의 태그는 필수는 아니지만, 포함하는 것을 추천함 -->
+                    <meta property="og:image:width" content="1200">
+                    <meta property="og:image:height" content="630">
+
+                    <!--네이버블로그, 카카오톡 미리보기 설정-->
+                    <meta property="og:title" content="콘텐츠 제목" />
+                    <meta property="og:url" content="웹페이지 URL" />
+                    <meta property="og:type" content="웹페이지 타입(blog, website 등)" />
+                    <meta property="og:image" content="표시되는 이미지" />
+                    <meta property="og:title" content="웹사이트 이름" />
+                    <meta property="og:description" content="웹페이지 설명" />
+
+                    <!--트위터 미리보기 설정 -->
+                    <meta name="twitter:card" content="트위터 카드 타입(요약정보, 사진, 비디오)" />
+                    <meta name="twitter:title" content="콘텐츠 제목" />
+                    <meta name="twitter:description" content="웹페이지 설명" />
+                    <meta name="twitter:image" content="표시되는 이미지 " />
+
+                    <!-- 모바일 앱 미리보기 설정  : 모바일 앱이 존재하는 경우 앱으로 연결 시 노출-->
+                    <!-- IOS -->
+                    <meta property="al:ios:url" content=" ios 앱 URL" />
+                    <meta property="al:ios:app_store_id" content="ios 앱스토어 ID" />
+                    <meta property="al:ios:app_name" content="ios 앱 이름" />
+                    <!-- Android -->
+                    <meta property="al:android:url" content="안드로이드 앱 URL" />
+                    <meta property="al:android:app_name" content="안드로이드 앱 이름" />
+                    <meta property="al:android:package" content="안드로이드 패키지 이름" />
+                    <meta property="al:web:url" content="안드로이드 앱 URL" />
+                </dd>
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div>
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">특수기호</dt>
+                <dd>
+                    <ul class="desc-list">
+                        <li>특수기호는 Entity name을 사용하여 entity 코드로 변환합니다. </li>
+                        <li>Entity 코드는 ISO-8859-1을 기준으로합니다.</li>
+                    </ul>
+                </dd>
+                <dd class="code-copy">
+                    <div class="code-guide-table">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Character</th>
+                                    <td>&copy;</td>
+                                    <td>"</td>
+                                    <td>&amp;</td>
+                                    <td>&lt;</td>
+                                    <td>&gt;</td>
+                                    <td>&nbsp;</td>
+                                    <td>·</td>
+                                    <td>&apos;</td>
+                                </tr>
+                                <tr>
+                                    <th>Entity</th>
+                                    <td>&amp;copy;</td>
+                                    <td>&amp;quot;</td>
+                                    <td>&amp;amp;</td>
+                                    <td>&amp;lt;</td>
+                                    <td>&amp;gt;</td>
+                                    <td>&amp;nbsp;</td>
+                                    <td>&amp;middot;</td>
+                                    <td>&amp;apos;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">Naming</dt>
+                <dd class="code-copy">
+                    <div class="code-guide-table">
+                        <table>
+                            <colgroup>
+                                <col style="width:20%">
+                                <col style="width:25%">
+                                <col style="width:25%">
+                                <col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>종류</th>
+                                    <th>구분</th>
+                                    <th>번호</th>
+                                    <th>예시</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ID Selector</td>
+                                    <td>카멜표기법 (camelCase)</td>
+                                    <td>한 자리수 (생략가능, 2, 3)</td>
+                                    <td>errorMesage, controlCenter, controlCenter2</td>
+                                </tr>
+                                <tr>
+                                    <td>Class Selector</td>
+                                    <td>스네이크 표기법 (hyphen-nate)</td>
+                                    <td>한 자리수 (생략가능, 2, 3)</td>
+                                    <td>tab-page, tbl-type1, tbl-type2</td>
+                                </tr>
+                                <tr>
+                                    <td>Image</td>
+                                    <td>스네이크 표기법 (underbar_nate)</td>
+                                    <td>두 자리수 (01, 02, 03)</td>
+                                    <td>btn_cancle01_off.gif</td>
+                                </tr>
+                                <tr>
+                                    <td>파일 및 폴더</td>
+                                    <td>스네이크 표기법 (underbar_nate)</td>
+                                    <td>두 자리수 (01, 02, 03)</td>
+                                    <td>cyber_center</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">이미지 예약어</dt>
+                <dd class="code-copy">
+                    <div class="code-guide-table">
+                        <table>
+                            <colgroup>
+                                <col span="2" style="width:25%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>분류</th>
+                                    <th>파일명</th>
+                                    <th>설명</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>아이콘</td>
+                                    <td>ico_</td>
+                                    <td>아이콘</td>
+                                </tr>
+                                <tr>
+                                    <td>버튼</td>
+                                    <td>btn_</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>배경</td>
+                                    <td>bg_</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>비주얼</td>
+                                    <td>hero_</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>일반</td>
+                                    <td>img_</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>임시이미지</td>
+                                    <td>@</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+
+        <!-- 
+        <h3 class="guide-title">특수기호</h3>
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">특수기호</dt>
+                <dd>
+                    <ul class="desc-list">
+                        <li></li>
+                    </ul>
+                </dd>
+                <dd class="code-copy">
+                   
+                </dd>
+
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div> 
+    -->
+
+    </section>
+    <link rel="stylesheet" href="static/css/vendor/swiper-bundle.css">
+    <link rel="stylesheet" href="static/css/guide/shCoreDefault.css">
+    <script src="static/js/vendor/jquery/jquery-1.12.1.min.js"></script>
+    <script src="static/js/vendor/jquery/jquery-migrate-1.4.1.min.js"></script>
+    <script src="static/js/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- code -->
+    <script type="text/javascript" src="static/js/guide/shCore.js"></script>
+    <script type="text/javascript" src="static/js/guide/shBrushXml.js"></script>
+    <script type="text/javascript" src="static/js/guide/shBrushJScript.js"></script>
+    <script type="text/javascript" src="static/js/guide/shBrushCss.js"></script>
+
+    <script src="static/js//ui/ui.front.js"></script>
+    <!-- <script src="static/js/wai-aria.ui.js"></script> -->
+
+    <script>
+        // 코드 복사
+        $('.code-copy').each(function () {
+            htmlCopy($(this));
+        });
+        SyntaxHighlighter.all();
+        SyntaxHighlighter.defaults['toolbar'] = false;
+
+        function htmlCopy(sel) {
+            function htmlEscape(s) {
+                return s
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+            }
+            var quineHtml = htmlEscape(
+                sel.html()
+            );
+            quineHtml = quineHtml.replace(
+                /&lt;script src[\s\S]*?&gt;&lt;\/script&gt;|&lt;!--\?[\s\S]*?--&gt;|&lt;pre\b[\s\S]*?&lt;\/pre&gt;/g,
+                '<span class="operative">$&<\/span>');
+            sel.parent().find('.code-paste > pre').html(quineHtml);
+        }
+    </script>
+
+</body>
+
+</html>

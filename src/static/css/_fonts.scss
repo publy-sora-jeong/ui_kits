@@ -1,0 +1,19 @@
+/*
+    @ Filename       : _font.scss
+    @ Author         
+    @ Dependency     : 
+    @ Description    : font style
+    @ Date           : 2021.12.09
+*/
+// @include font-face("Lato", "../fonts/lato-v17-latin-regular", $style:normal, $weight:normal);
+// @include font-face("Noto Sans KR", "../fonts/NotoSansKR-Regular", $style:normal, $weight:normal);
+
+// @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap');
+
+// FOUT  / Flash of Unstyled Text / display: swap; 
+// FOIT / Flash of Invisible Text 
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+
+
