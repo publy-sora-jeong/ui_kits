@@ -651,7 +651,7 @@ function browserCheck() {
                         //     }
                         // }, 
                         ...this.data.swiperOption
-                    })
+                    });
                 }else {
                     //기본옵션적용
                     slide = new Swiper(slide, {
@@ -674,10 +674,11 @@ function browserCheck() {
                     
                     let swiperClass = `.${btn.getAttribute('data-swiperCotrol')}`; 
                     //document.querySelector(`.${btn.getAttribute('data-swiperCotrol')}`)
-                    console.log(document.querySelector(`.${btn.getAttribute('data-swiperCotrol')}`));
+                    //console.log(document.querySelector(`.${btn.getAttribute('data-swiperCotrol')}`));
                     
                     if(btn.getAttribute('aria-pressed') == 'false'){ 
-                        
+                        el[0].swiper.autoplay.stop()
+                        el[1].swiper.autoplay.stop()
                     }
                 })
             })
