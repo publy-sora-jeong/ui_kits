@@ -8,11 +8,12 @@ documentReady(function () {
     showTooltip.initialize(); //툴팁 
     tabUI.initialize(); //탭메뉴 
     jQueryDatepickerUI.initialize(); //jQuery Datepicker 
-    
+    sideNavigation.initialize(); //Siden avigation
+    swiperSlides.initialize(); //Siden avigation
+
     //Checkbox event
     //Input Validation
     //Modal
-    //SideMenu
     //Accordion
     //Dropdown Selectbox
     //HeaderSticky
@@ -31,7 +32,6 @@ function documentReady(fn) {
 
 function isInPage(node) {
     return document.querySelectorAll(node).length > 0;
-
 }
 
 //BrowserCheck
@@ -97,6 +97,13 @@ function browserCheck() {
                 //console.log('resize 1vh = ', vh);
             });
         }
+        /*
+        let vh = window.innerHeight * 0.01; document.documentElement.style.setProperty('--vh', `${vh}px`); 
+        window.addEventListener('resize', () => { let vh = window.innerHeight * 0.01; 
+            document.documentElement.style.setProperty('--vh', `${vh}px`); }); 
+            window.addEventListener('touchend', () => { let vh = window.innerHeight * 0.01; document.documentElement.style.setProperty('--vh', `${vh}px`); });
+
+        */
     };
     window.setViewHeight = setViewHeight;
 })();
@@ -274,20 +281,32 @@ function browserCheck() {
         selectors: {
             depth1: document.querySelectorAll('.gnb-fulldown .node1-item'),
             depth2: document.querySelectorAll('.gnb-fulldown .node2-item'),
+            depth2Wrap: document.querySelectorAll('.gnb-fulldown .node2-menu'),
             fulldownBg: document.querySelector('.fulldown-bg')
         },
         initialize() {
             this._focusout();
-            this._focus();
-            //this._mouseEnter();
+            this._focusin();
+            this._mouseLeave();
+            this._mouseenter();
         },
-
-
-        _focus() {
+        _focusin() {
+            this._inFn('focusin');
+        },
+        _mouseenter() {
+            this._inFn('mouseenter');
+        },
+        _focusout() {
+            this._outFn('focusout');
+        },
+        _mouseLeave() {
+            this._outFn('mouseleave');
+        },
+        _inFn(event) {
             let items = this.selectors.depth1;
             const bg = this.selectors.fulldownBg;
+            const node2Wrap = this.selectors.depth2Wrap;
             let temp = [];
-
 
             //GNB BG Height Set
             for (let i = 0; i < $('.gnb-fulldown .node2-menu').length; i++) {
@@ -295,28 +314,26 @@ function browserCheck() {
             }
             let gnbHeight = `${Math.max(...temp)}px`;
 
+            //add class
             items.forEach(el => {
-
-                el.addEventListener('focusin', function (e) {
-                    for (let i = 0; i < items.length; i++) {
-                        console.log(el);
-                    }
-
-                })
+                el.addEventListener(event, function (e) {
+                    items.forEach(el => {
+                        el.classList.add('is-active')
+                        bg.style.height = gnbHeight;
+                    });
+                    node2Wrap.forEach(item2 => item2.style.height = gnbHeight);
+                });
             });
         },
-
-        _focusout() {
-            let setTime = null;
+        _outFn(event) {
             const bg = this.selectors.fulldownBg;
-
-            $('.node1-item').on('focusout blur mouseleave', function (e) {
+            const node2Wrap = this.selectors.depth2Wrap;
+            $('.node1-item ').on(event, function (e) {
                 e.preventDefault();
-                $('.node1-item').removeClass('is-active is-entered')
+                $('.node1-item').removeClass('is-active is-entered');
                 bg.style.height = 0;
-            })
+            });
         },
-        _mouseLeave() {},
     };
     window.fulldownNavigation = fulldownNavigation;
 })();
@@ -333,7 +350,7 @@ function browserCheck() {
         bindjQuery: 'showTooltip',
         /** 기본 옵션값 선언부 */
         selectors: {
-            tooltipCall: document.querySelectorAll('[aria-describedby]'),
+            tooltipCall: document.querySelectorAll('.tooltip-sample [aria-describedby]'),
         },
         initialize() {
             this._focus();
@@ -385,109 +402,90 @@ function browserCheck() {
     "use strict";
     /**
      * @description     TAB UI
-     * @modify          2022.04.06
+     * @modify          2022.04.07
      */
     const tabUI = {
         /** 플러그인명 */
         bindjQuery: 'tabUI',
         /** 기본 옵션값 선언부 */
         selectors: {
-            tabs : document.querySelectorAll('[role="tab"]'),
-            tabLists : document.querySelectorAll('[role="tablist"]'),
+            tabs: document.querySelectorAll('[role="tab"]'),
+            tabLists: document.querySelectorAll('[role="tablist"]'),
         },
         initialize() {
-            console.log('init');
-            this._click();   
-            this._keydown();   
+            this._click();
+            this._keydown();
         },
-        _click(){
-            const tabs = this.selectors.tabs; 
+        _click() {
+            const tabs = this.selectors.tabs;
 
-            tabs.forEach( tab => { 
-                if(tab.getAttribute('aria-selected') == true) {
-
-                }else{
-
+            tabs.forEach(tab => {
+                if (tab.getAttribute('aria-selected') == true) {
+                    tab.tabIndfghex = 0;
+                } else {
+                    tab.tabIndfghex = -1;
                 }
+
+                tab.addEventListener('click', e => {
+                    const parent = tab.parentNode.tagName === "LI" ? tab.parentNode.parentNode : tab.parentNode;
+                    const panelWrap = document.querySelector(`#${tab.getAttribute("aria-controls")}`).parentNode;
+
+                    parent.querySelectorAll('[aria-selected="true"]').forEach(t => {
+                        t.setAttribute("aria-selected", false)
+                        t.tabIndex = -1;
+                    });
+
+                    tab.setAttribute("aria-selected", true);
+                    tab.tabIndex = 0;
+
+                    panelWrap.querySelectorAll(':scope > [role="tabpanel"]').forEach(p => p.style.display = "none");
+
+                    panelWrap.querySelector(`#${tab.getAttribute("aria-controls")}`).style.display = "revert"
+
+                    e.preventDefault();
+                })
             })
         },
-        _keydown(){
-
+        _keydown() {
+            const tabLists = this.selectors.tabLists;
+            tabLists.forEach(tabList => {
+                tabList.addEventListener("keydown", e => {
+                    const parent = tabList.parentNode.tagName === "LI" ? tabList.parentNode.parentNode : tabList.parentNode;
+                    const innerTabs = parent.querySelectorAll('[role="tab"]');
+                    let tabFocus = 0;
+                    for (let i = 0; i < innerTabs.length; i++) {
+                        if (innerTabs[i].getAttribute("aria-selected") == "true") {
+                            tabFocus = i;
+                        }
+                    }
+                    if (e.keyCode === 39 || e.keyCode === 37 || e.keyCode === 36 || e.keyCode === 35) {
+                        innerTabs[tabFocus].tabIndex = -1;
+                        if (e.keyCode === 39) { // right
+                            tabFocus++;
+                            if (tabFocus >= innerTabs.length) {
+                                tabFocus = 0;
+                            }
+                        } else if (e.keyCode === 37) { // left
+                            tabFocus--;
+                            if (tabFocus < 0) {
+                                tabFocus = innerTabs.length - 1;
+                            }
+                        } else if (e.keyCode === 36) { // home
+                            tabFocus = 0;
+                        } else if (e.keyCode === 35) { // end
+                            tabFocus = innerTabs.length - 1;
+                        }
+                        innerTabs[tabFocus].tabIndex = 0;
+                        innerTabs[tabFocus].click();
+                        innerTabs[tabFocus].focus();
+                        e.preventDefault();
+                    }
+                });
+            });
         },
     };
     window.tabUI = tabUI;
 })();
-
-
-// var waiAriaTab = function(){
-// 	const tabs = document.querySelectorAll('[role="tab"]');
-// 	const tabLists = document.querySelectorAll('[role="tablist"]');
-
-// 	tabs.forEach(tab => {
-// 		if(tab.getAttribute("aria-selected") == "true") {
-// 			tab.tabIndex = 0;
-// 		}else{
-// 			tab.tabIndex = -1;
-// 		}
-// 		tab.addEventListener("click", e => {
-// 			const parent = tab.parentNode.tagName === "LI" ? tab.parentNode.parentNode : tab.parentNode;
-// 			const panelWrap = document.querySelector(`#${tab.getAttribute("aria-controls")}`).parentNode;
-
-// 			parent.querySelectorAll('[aria-selected="true"]').forEach(t => {
-// 				t.setAttribute("aria-selected", false)
-// 				t.tabIndex = -1;
-// 			});
-
-// 			tab.setAttribute("aria-selected", true);
-// 			tab.tabIndex = 0;
-
-// 			panelWrap.querySelectorAll(':scope > [role="tabpanel"]').forEach(p => p.style.display = "none");
-
-// 			panelWrap.querySelector(`#${tab.getAttribute("aria-controls")}`).style.display = "revert"
-
-// 			e.preventDefault();
-// 		});
-// 	});
-
-
-
-// 	tabLists.forEach(tabList => {
-// 		tabList.addEventListener("keydown", e => {
-// 			const parent = tabList.parentNode.tagName === "LI" ? tabList.parentNode.parentNode : tabList.parentNode;
-// 			const innerTabs = parent.querySelectorAll('[role="tab"]');
-// 			let tabFocus = 0;
-// 			for(let i=0; i < innerTabs.length; i++){
-// 				if(innerTabs[i].getAttribute("aria-selected") == "true") {
-// 					tabFocus = i;
-// 				}
-// 			}
-// 			if (e.keyCode === 39 || e.keyCode === 37 || e.keyCode === 36 || e.keyCode === 35) {
-// 				innerTabs[tabFocus].tabIndex = -1;
-// 				if (e.keyCode === 39) { // right
-// 					tabFocus++;
-// 					if (tabFocus >= innerTabs.length) {
-// 						tabFocus = 0;
-// 					}
-// 				} else if (e.keyCode === 37) { // left
-// 					tabFocus--;
-// 					if (tabFocus < 0) {
-// 						tabFocus = innerTabs.length - 1;
-// 					}
-// 				} else if (e.keyCode === 36) { // home
-// 					tabFocus = 0;
-// 				} else if (e.keyCode === 35) { // end
-// 					tabFocus = innerTabs.length - 1;
-// 				}
-// 				innerTabs[tabFocus].tabIndex = 0;
-// 				innerTabs[tabFocus].click();
-// 				innerTabs[tabFocus].focus();
-// 				e.preventDefault();
-// 			}
-// 		});
-// 	});
-// };
-
-
 
 //jQuery UI Datepicker 
 (function () {
@@ -503,29 +501,29 @@ function browserCheck() {
         selectors: {
             datepickerEl: document.querySelectorAll('.datepicker-ui'),
         },
-        data : {
+        data: {
             //unavailableDay : ["2022-4-7"]
-            unavailableDay : [], 
+            unavailableDay: [],
         },
         initialize() {
             this._focus();
         },
         _focus() {
             const me = this.selectors.datepickerEl;
-            const unavailableDay = this.data.unavailableDay; 
+            const unavailableDay = this.data.unavailableDay;
             const datepickerID = `#${$(me).attr('id')}`
             $(datepickerID).datepicker({
                 // showOtherMonths: true,
                 // selectOtherMonths: true
                 dateFormat: "yy-mm-dd",
-                monthNames: [ "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월" ], 
+                monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
                 nextText: "다음달",
                 prevText: "이전달",
 
                 beforeShowDay: function (date) {
                     const days = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
                     let el;
-                    if (days == unavailableDay ) {
+                    if (days == unavailableDay) {
                         return [false, 'unavailable']
                     } else {
                         return [true];
@@ -537,3 +535,268 @@ function browserCheck() {
     window.jQueryDatepickerUI = jQueryDatepickerUI;
 })();
 
+// Side Navigation
+(function () {
+    "use strict";
+    /**
+     * @description     Sidenavigation toggle
+     * @modify          2022.04.07
+     */
+    const sideNavigation = {
+        /** 플러그인명 */
+        bindjQuery: 'sideNavigation',
+        /** 기본 옵션값 선언부 */
+        selectors: {
+            navItem: document.querySelectorAll('.side-nav > ul > .side-nav__item')
+        },
+
+        initialize() {
+            const navItem = this.selectors.navItem;
+            this._click();
+
+            navItem.forEach(el => {
+                const child = el.childNodes;
+                const childClass = 'side-nav__child';
+                const hasChildClass = 'side-nav--hassub';
+
+
+                for (const key in child) {
+                    if (Object.hasOwnProperty.call(child, key)) {
+                        const element = child[key];
+                        if (element.classList == childClass) {
+                            element.parentNode.classList.add(hasChildClass)
+                        }
+                    }
+                }
+            });
+        },
+        _click() {
+            const navItem = this.selectors.navItem;
+            const activeClass = 'side-nav__item--active';
+
+            navItem.forEach(el => {
+                el.addEventListener('click', function (e) {
+                    //e.preventDefault();
+                    if (el.classList.contains(activeClass)) {
+                        el.classList.remove(activeClass);
+                    } else {
+                        el.classList.add(activeClass);
+                    }
+                });
+            });
+        }
+    };
+    window.sideNavigation = sideNavigation;
+})();
+
+
+
+// Swiper Slider 
+(function () {
+    "use strict";
+    /**
+     * @description     swiperSlides
+     * @modify          2022.04.07
+     */
+    const swiperSlides = {
+        /** 플러그인명 */
+        bindjQuery: 'swiperSlides',
+        /** 기본 옵션값 선언부 */
+        selectors: {
+            swiperEl: document.querySelectorAll('.swiper'),
+            swiperStopEl : document.querySelectorAll('.swiper-autoplay-control > button') , 
+        },
+        data: {
+            swiperOption: {
+                loop: true, 
+                pauseOnMouseEnter: true,
+                disableOnInteraction: false,                 
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                //웹접근성 문구 추가 a11y 
+                a11y: {
+                    prevSlideMessage: '이전슬라이드',
+                    nextSlideMessage: '다음슬라이드',
+                    paginationBulletMessage : '{{index}} 번째 슬라이드로 이동합니다. ', 
+                    slideLabelMessage: '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.',
+                },
+                //웹접근성 자동재생일 경우 정지버튼 
+            },
+        },
+
+        initialize() {
+            const el = this.selectors.swiperEl;
+
+            this._autoplayStop(); 
+
+            el.forEach(slide => {
+                //특정슬라이드 옵션 적용 
+                if(slide == document.querySelector('.mySwiper2')) { 
+                    slide = new Swiper(slide, {
+                        centeredSlides: true,
+                        autoplay: {
+                            delay: 2500,
+                        },
+                        // on: {
+                        //     beforeInit() {
+                        //     }, 
+                        //     init() {
+                        //         console.log('init');
+                        //     }
+                        // }, 
+                        ...this.data.swiperOption
+                    })
+                }else {
+                    //기본옵션적용
+                    slide = new Swiper(slide, {
+                        centeredSlides: true,
+                        autoplay: {
+                            delay: 1500,
+                        },
+                        ...this.data.swiperOption
+                    })
+                }
+            });
+        },
+
+        _autoplayStop() {
+            const stopBtn = this.selectors.swiperStopEl; 
+            const el = this.selectors.swiperEl;
+
+            stopBtn.forEach(btn => {
+                btn.addEventListener('click', e => {
+                    
+                    let swiperClass = `.${btn.getAttribute('data-swiperCotrol')}`; 
+                    //document.querySelector(`.${btn.getAttribute('data-swiperCotrol')}`)
+                    console.log(document.querySelector(`.${btn.getAttribute('data-swiperCotrol')}`));
+                    
+                    if(btn.getAttribute('aria-pressed') == 'false'){ 
+                        
+                    }
+                })
+            })
+        }
+    };
+    window.swiperSlides = swiperSlides;
+})();
+
+
+
+//MODAL 
+let btns_modal = document.querySelectorAll('.open-modal');
+btns_modal.forEach(function (target) {
+
+    target.addEventListener('click', (e) => {
+        let btnOpenModal = e.target;
+
+        let modalID = btnOpenModal.getAttribute('aria-controls');
+        let modalIDChar = document.getElementById(modalID);
+        let modalClose = modalIDChar.getElementsByClassName('modal-close')[0];
+        let tabAble = modalIDChar.querySelectorAll('button:not([tabindex="-1"], input:not([tabindex="-1"], textarea:not([tabindex="-1"]');
+        let tabAbleFirst = tabAble && tabAble[0];
+        let tabAbleLast = tabAble && tabAble[tabAble.length - 1];
+        let tabDisable;
+        let modalWidth = 0;
+        let modalHeight = 0;
+        let modalInner = modalIDChar.querySelector('.modal-layer-inner');
+
+
+        //IOS 스크롤현상 수정 
+        // var iosScrollFixPosition = window.pageYOffset;
+        // console.log(iosScrollFixPosition);
+        // document.body.offsetTop(iosScrollFixPosition); 
+
+
+        //OPEN
+        modalIDChar.setAttribute('aria-hidden', 'false');
+        modalIDChar.classList.add('on');
+        modalWidth = modalInner.getBoundingClientRect().width;
+        modalHeight = modalInner.getBoundingClientRect().height;
+        modalSizeSet(modalInner, modalWidth, modalHeight);
+
+        if (tabAble) {
+            tabAbleFirst.focus();
+
+            tabAble.forEach((idx) => {
+                idx.addEventListener('keydown', (event) => {
+                    if (event.shiftKey && (event.keyCode || event.which) == 9) {
+                        event.preventDefault();
+                        tabAbleLast.focus();
+                    }
+
+                    //ESCAPE 닫기
+                    if ((event.keyCode || event.which) == 27) {
+                        event.preventDefault();
+                        console.log('esc');
+                        closeModal(modalIDChar, btnOpenModal);
+                    }
+
+                    //마지막요소에서 - 첫번째 요소로 포커스 이동 
+                    if (idx == tabAbleLast) {
+                        event.preventDefault();
+                        tabAbleFirst.focus();
+                    }
+                })
+            });
+
+            //CLOSE ( SPACE & ENTER)
+            modalClose.addEventListener('keydown', (event) => {
+                event.preventDefault();
+                if ((event.keyCode || event.which) === 13 || (event.keyCode || event.which) == 32) {
+                    closeModal(modalIDChar, btnOpenModal);
+                }
+            });
+            //닫기버튼 클릭
+            modalClose.addEventListener('click', (event) => {
+                event.preventDefault();
+                closeModal(modalIDChar, btnOpenModal);
+            });
+        }
+
+        //모달 외부 배경(dimm) 클릭시 닫기
+        modalIDChar.addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeModal(modalIDChar, btnOpenModal);
+            }
+        })
+    });
+
+    //window.addEventListener('resize', modalResize);
+    function closeModal(modalID, focusOrigin) {
+        modalID.setAttribute('tab-index', -1);
+        modalID.setAttribute('aria-hidden', 'true');
+        modalID.classList.remove('on');
+        focusOrigin.focus();
+    }
+
+    function modalSizeSet(modal, w, h) {
+        let w1 = Math.ceil(w);
+        let h1 = Math.ceil(h);
+
+        if (Math.ceil(w) % 2) {
+            if (Math.abs(w1) > 0) {
+                modal.style.width = (w1 + 1) + 'px';
+            } else {
+                modal.style.width = w1 + 'px';
+            }
+        } else {
+            modal.style.width = w1 + 'px';
+        }
+
+        if (Math.ceil(h) % 2) {
+            if (Math.abs(h1) > 0) {
+                modal.style.height = (h1 + 1) + 'px';
+            } else {
+                modal.style.height = h1 + 'px';
+            }
+        } else {
+            modal.style.height = h1 + 'px';
+        }
+    }
+});

@@ -21,6 +21,7 @@
             <a href="elements.html">elements</a>
             <a href="modules.html" class="is-current">modules</a>
             <a href="interactions.html">interactions</a>
+            <a href="note.html">note</a>
         </div>
     </div>
 
@@ -179,73 +180,56 @@
             </dl>
         </div>
 
+
         <div class="code-box">
             <dl class="code-box-description">
-                <dt class="code-box-title">text tooltip</dt>
-                <dd class="code-nocopy">
-                    <div class="tooltip-sample">
-                        <p aria-describedby="tooltip--top-left" tabindex="0">tooltip - top left</p>
-                        <div class="tooltip tooltip--top-left" aria-hidden="true" role="tooltip" id="tooltip--top-left">
-                            <p class="arrow"></p>
-                            Your Text in Tooltip (Top Left)
-                        </div>
-                    </div>
+                <dt class="code-box-title">SideNav</dt>
+                <dd class="code-nocopy" style="background:#e8e8e8; padding: 20px">
+                    <div role="navigation" class="side-nav">
+                        <ul>
+                            <li class="side-nav__item"><a href="naver.com">Parent</a></li>
+                            <li class="side-nav__item"><a href="#">Parent closed</a></li>
+                            <li class="side-nav__item"><a href="#">Parent closed active</a></li>
+                            <li class="side-nav__item"><a href="#">Parent closed</a></li>
+                            <li class="side-nav__item"><a href="#">Parent open hover</a></li>
+                            <li class="side-nav__item"><a href="#">Parent hover</a></li>
 
-                    <div class="tooltip-sample">
-                        <p aria-describedby="tooltip--top-right" tabindex="0">tooltip - top right</p>
-                        <div class="tooltip tooltip--top-right" aria-hidden="true" role="tooltip"
-                            id="tooltip--top-right">
-                            <p class="arrow"></p>
-                            Your Text in Tooltip (Top Right)
-                        </div>
-                    </div>
-
-                    <div class="tooltip-sample">
-                        <p aria-describedby="tooltip--bottom-right" tabindex="0">tooltip - bottom right</p>
-                        <div class="tooltip tooltip--bottom-right" aria-hidden="true" role="tooltip"
-                            id="tooltip--bottom-right">
-                            <p class="arrow"></p>
-                            Your Text in Tooltip (bottom Right)
-                        </div>
-                    </div>
-
-                    <div class="tooltip-sample">
-                        <p aria-describedby="tooltip--left" tabindex="0">tooltip - left</p>
-                        <div class="tooltip tooltip--left" aria-hidden="true" role="tooltip" id="tooltip--left">
-                            <p class="arrow"></p>
-                            Your Text in Tooltip (Top Right)
-                        </div>
-                    </div>
-
-                    <div class="tooltip-sample">
-                        <p aria-describedby="tooltip--right" tabindex="0">tooltip - right</p>
-                        <div class="tooltip tooltip--right" aria-hidden="true" role="tooltip" id="tooltip--right">
-                            <p class="arrow"></p>
-                            Your Text in Tooltip (Top Right)
-                        </div>
-                    </div>
-
-                    <div class="tooltip-sample">
-                        <input type="text" placeholder="your text" aria-describedby="tooltip--nohypen">
-                        <div class="tooltip tooltip--top-left" aria-hidden="true" role="tooltip" id="tooltip--nohypen">
-                            <p class="arrow"></p>
-                            하이픈(-) 없이 숫자만 입력해주세요.
-                        </div>
+                            <li class="side-nav__item"><span>Parent active</span>
+                                <div class="side-nav__child">
+                                    <ul>
+                                        <li class="side-nav__childitem"><a href="www.naver.com">Child</a></li>
+                                        <li class="side-nav__childitem"><a href="#">Child default</a></li>
+                                        <li class="side-nav__childitem"><a href="#">Child hover</a></li>
+                                        <li class="side-nav__childitem"><a href="#">Child active</a></li>
+                                        <li class="side-nav__childitem"><a href="#">Child</a></li>
+                                        <li class="side-nav__childitem side-nav__childitem--active"><a
+                                                href="#">Child</a></li>
+                                        <li class="side-nav__childitem"><a href="#">Child</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="side-nav__item"><a href="naver.com">Parent closed</a></li>
+                        </ul>
                     </div>
                 </dd>
-
                 <dd class="code-copy" style="display: none;">
-                    <input type="text" placeholder="your text" aria-describedby="tooltip--nohypen">
-                    <div class="tooltip tooltip--top-left" aria-hidden="true" role="tooltip" id="tooltip--nohypen">
-                        <p class="arrow"></p>
-                        하이픈(-) 없이 숫자만 입력해주세요.
+                    <div role="navigation" class="side-nav">
+                        <ul>
+                            <li class="side-nav__item"><a href="#">Parent</a></li>
+                            <li class="side-nav__item"><a href="#">Parent</a>
+                                <div class="side-nav__child">
+                                    <ul>
+                                        <li class="side-nav__childitem"><a href="#">Child</a></li>
+                                        <li class="side-nav__childitem"><a href="#">Child default</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </dd>
-                <dd class="code-paste">
-                    <pre class="brush:html"></pre>
                 </dd>
             </dl>
         </div>
+       
 
         <div class="code-box">
             <dl class="code-box-description">
@@ -278,13 +262,11 @@
                             hidden="false"> 웰컴 홍보동영상 콘텐츠영역입니다.</div>
                     </div>
                 </dd>
-                <dd class="code-paste">
+                <dd class="code-paste none">
                     <pre class="brush:html"></pre>
                 </dd>
             </dl>
         </div>
-
-
 
         <div class="code-box">
             <dl class="code-box-description">
@@ -299,24 +281,80 @@
             </dl>
         </div>
 
+    
 
         <div class="code-box">
             <dl class="code-box-description">
                 <dt class="code-box-title">Swiper</dt>
                 <dd>
                     <ul class="desc-list">
-                        <li>키보드사용자를위한 제어버튼은 carousel 시작전에 배치</li>
+                        <li><strong class="color-blue">autoplay인경우</strong> 초점이 있으면 슬라이드 멈춤 , 키보드사용자를위한 <u>제어버튼(재생, 정지)은
+                                슬라이드 시작전에 배치</u></li>
+                        <li>aria-current 속성으로 현재 표시중인 배너의 인디케이터임을 시각효과와 함꼐 명시</li>
+                        <li>이전, 다음 아이템 버튼을 눌렀을 때 aria-live를 사용하여 화면의 변화(내용)를 알려야 한다.</li>
+                        <li>aria-hidden="true'와 tabindex="-1"를 통해 현재 눈에 보이는 이미지 아이템 외의 모든 아이템을 숨겨야 한다.</li>
+                        <li>사용자 요청에 의한 캐러셀 전환이 아니라면 aria-live로 스크린리더에 알림을 주어서는 안 된다.</li>
                     </ul>
                 </dd>
                 <dd class="code-copy">
-                 
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">Slide 1</div>
+                            <div class="swiper-slide">Slide 2</div>
+                            <div class="swiper-slide">Slide 3</div>
+                        </div>
+                        <div class="swiper-autoplay-control">
+                            <button aria-pressed="false" aria-label="자동재생 멈춤" data-swiperCotrol="mySwiper">자동재생 멈춤</button>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                    <div class="swiper mySwiper2">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">Slide 1</div>
+                            <div class="swiper-slide">Slide 2</div>
+                            <div class="swiper-slide">Slide 3</div>
+                        </div>
+                        <div class="swiper-autoplay-control">
+                            <button aria-pressed="false" aria-label="자동재생 멈춤" data-swiperCotrol="mySwiper2">자동재생 멈춤</button>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
+                    </div>
                 </dd>
             </dl>
         </div>
 
-  
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">title</dt>
+                <dd class="code-copy">
+                    <button type="button" class="open-modal common-btnType-2" aria-controls="modal01">열기</button>
+                    <div id="modal01" class="modal-layer" role="dialog" aria-modal="true" aria-labelledby="팝업에 대한"
+                        aria-describedby="dialog4_desc" aria-hidden="true">
+                        <div class="modal-layer-inner">
+                            <h3 class="modal-title">title</h3>
+                            <div class="modal-content">
+                                <p>Modal Contents</p>
+                                <p><b class="col-red">INFO </b> ESC버튼을 누르면 팝업이 닫힙니다. </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" role="button" tabindex="0" style="border: 1px solid #333;">동의합니다 (FOCUS)</button>
+                            </div>
+                            <button type="button" role="button" class="modal-close common-btnType-2" tabindex="0" aria-label="모달팝업닫기1">닫기</button>
+                        </div>
+                    </div>
+                </dd>
+                <dd class="code-paste" style="display: none;">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div>
 
-        
+
         <!-- <div class="code-box">
             <dl class="code-box-description">
                 <dt class="code-box-title">title</dt>
@@ -333,7 +371,7 @@
         </div> -->
 
     </section>
-    
+
 
 
     <!-- Library / Plugins -->

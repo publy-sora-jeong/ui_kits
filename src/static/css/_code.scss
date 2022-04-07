@@ -53,6 +53,7 @@
 
 .code-paste {
     background: #777;
+    max-height: 200px;
 
     &.none {
         display: none;
@@ -87,11 +88,6 @@
 
             a {
                 color: #222;
-            }
-
-            .essential {
-                color: $color-primary-red;
-                font-weight: 700;
             }
 
             >li {
