@@ -20,9 +20,9 @@
         display: inline-block;
         font-size: 12px;
         padding: 4px 10px;
-        border: 1px solid #e22f26;
+        border: 1px solid $color-primary-red; 
         border-radius: 2px;
-        background: #e22f26;
+        background: $color-primary-red;
 
         &.is-current {
             background-color: darkorange;
@@ -53,7 +53,8 @@
 
 .code-paste {
     background: #777;
-    max-height: 200px;
+    //max-height: 200px;
+
 
     &.none {
         display: none;
@@ -225,7 +226,7 @@
     }
 
     .code-copy .code-guide-table a {
-        color: #e22f26
+        color: $color-primary-red
     }
 
     .code-paste {
@@ -250,63 +251,6 @@
     }
 }
 
-.color-box-container {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-
-    .color-box {
-        width: 100px;
-        height: 100px;
-        border-radius: 4px;
-        margin-right: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        font-size: 12px;
-
-        .label {
-            display: block;
-            color: #fff;
-            text-align: center;
-            width: 100%;
-
-            span {
-                display: block;
-                margin-top: 4px;
-            }
-        }
-
-        &--welcomered {
-            background: $color-welcome-red
-        }
-
-        &--red {
-            background: $color-ci-red
-        }
-
-        &--orange {
-            background: $color-ci-orange
-        }
-
-        &--txt {
-            background: #444;
-        }
-
-        &--emp {
-            background: #000;
-        }
-
-        &--subtxt {
-            background: #767676
-        }
-
-        &--subtxt2 {
-            background: #949494
-        }
-    }
-}
 
 //LAYOUT 
 .layout-line-outer {

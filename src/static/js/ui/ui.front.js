@@ -7,15 +7,15 @@ documentReady(function () {
     fulldownNavigation.initialize(); //상단 네비게이션 (전체메뉴)
     showTooltip.initialize(); //툴팁 
     tabUI.initialize(); //탭메뉴 
-    jQueryDatepickerUI.initialize(); //jQuery Datepicker 
+    //jQueryDatepickerUI.initialize(); //jQuery Datepicker 
     sideNavigation.initialize(); //Siden avigation
-    swiperSlides.initialize(); //Siden avigation
+    swiperSlides.initialize(); //Siden avigation 
+    ariaModal.initialize(); //Modal 팝업 
+    selectListbox.initialize(); //selectListbox 셀렉트박스 UI
 
     //Checkbox event
     //Input Validation
-    //Modal
     //Accordion
-    //Dropdown Selectbox
     //HeaderSticky
     //goTop
     //Treeview
@@ -256,13 +256,15 @@ function browserCheck() {
             })
         },
         _focusout() {
-            let setTime = null;
             $('.node1-item').on('focusout blur mouseleave', function (e) {
                 e.preventDefault();
                 $('.node1-item').removeClass('is-active is-entered')
             })
         },
         _mouseLeave() {},
+        _blur() {
+
+        },
     };
     window.singleNavigation = singleNavigation;
 })();
@@ -305,11 +307,11 @@ function browserCheck() {
         _inFn(event) {
             let items = this.selectors.depth1;
             const bg = this.selectors.fulldownBg;
-            const node2Wrap = this.selectors.depth2Wrap;
+            const depth2Wrap = this.selectors.depth2Wrap;
             let temp = [];
 
             //GNB BG Height Set
-            for (let i = 0; i < $('.gnb-fulldown .node2-menu').length; i++) {
+            for (let i = 0; i < depth2Wrap.length; i++) {
                 temp.push($('.gnb-fulldown .node2-menu').eq(i).height())
             }
             let gnbHeight = `${Math.max(...temp)}px`;
@@ -321,13 +323,13 @@ function browserCheck() {
                         el.classList.add('is-active')
                         bg.style.height = gnbHeight;
                     });
-                    node2Wrap.forEach(item2 => item2.style.height = gnbHeight);
+                    depth2Wrap.forEach(item2 => item2.style.height = gnbHeight);
                 });
             });
         },
         _outFn(event) {
             const bg = this.selectors.fulldownBg;
-            const node2Wrap = this.selectors.depth2Wrap;
+            const depth2Wrap = this.selectors.depth2Wrap;
             $('.node1-item ').on(event, function (e) {
                 e.preventDefault();
                 $('.node1-item').removeClass('is-active is-entered');
@@ -604,13 +606,13 @@ function browserCheck() {
         /** 기본 옵션값 선언부 */
         selectors: {
             swiperEl: document.querySelectorAll('.swiper'),
-            swiperStopEl : document.querySelectorAll('.swiper-autoplay-control > button') , 
+            swiperStopEl: document.querySelectorAll('.swiper-autoplay-control > button'),
         },
         data: {
             swiperOption: {
-                loop: true, 
+                loop: true,
                 pauseOnMouseEnter: true,
-                disableOnInteraction: false,                 
+                disableOnInteraction: false,
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
@@ -623,7 +625,7 @@ function browserCheck() {
                 a11y: {
                     prevSlideMessage: '이전슬라이드',
                     nextSlideMessage: '다음슬라이드',
-                    paginationBulletMessage : '{{index}} 번째 슬라이드로 이동합니다. ', 
+                    paginationBulletMessage: '{{index}} 번째 슬라이드로 이동합니다. ',
                     slideLabelMessage: '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.',
                 },
                 //웹접근성 자동재생일 경우 정지버튼 
@@ -631,34 +633,28 @@ function browserCheck() {
         },
 
         initialize() {
-            const el = this.selectors.swiperEl;
+            this._autoplayStop();
 
-            this._autoplayStop(); 
+            const el = this.selectors.swiperEl;
 
             el.forEach(slide => {
                 //특정슬라이드 옵션 적용 
-                if(slide == document.querySelector('.mySwiper2')) { 
+
+                if (slide == document.querySelector('.mySwiper2')) {
                     slide = new Swiper(slide, {
                         centeredSlides: true,
-                        autoplay: {
-                            delay: 2500,
-                        },
-                        // on: {
-                        //     beforeInit() {
-                        //     }, 
-                        //     init() {
-                        //         console.log('init');
-                        //     }
-                        // }, 
+                        // autoplay: {
+                        //     delay: 2500,
+                        // },
                         ...this.data.swiperOption
                     });
-                }else {
+                } else {
                     //기본옵션적용
                     slide = new Swiper(slide, {
                         centeredSlides: true,
-                        autoplay: {
-                            delay: 1500,
-                        },
+                        // autoplay: {
+                        //     delay: 1500,
+                        // },
                         ...this.data.swiperOption
                     })
                 }
@@ -666,19 +662,18 @@ function browserCheck() {
         },
 
         _autoplayStop() {
-            const stopBtn = this.selectors.swiperStopEl; 
+            const stopBtn = this.selectors.swiperStopEl;
             const el = this.selectors.swiperEl;
-
             stopBtn.forEach(btn => {
-                btn.addEventListener('click', e => {
-                    
-                    let swiperClass = `.${btn.getAttribute('data-swiperCotrol')}`; 
-                    //document.querySelector(`.${btn.getAttribute('data-swiperCotrol')}`)
-                    //console.log(document.querySelector(`.${btn.getAttribute('data-swiperCotrol')}`));
-                    
-                    if(btn.getAttribute('aria-pressed') == 'false'){ 
-                        el[0].swiper.autoplay.stop()
-                        el[1].swiper.autoplay.stop()
+                btn.addEventListener('click', (e) => {
+                    let swiperClass = `${btn.getAttribute('data-swiperCotrol')}`;
+
+                    if (btn.getAttribute('aria-pressed') == 'false') {
+                        for (let i = 0; i < el.length; i++) {
+                            if (el[i].swiper.$el[0].classList.contains(swiperClass)) {
+                                el[i].swiper.autoplay.stop();
+                            }
+                        }
                     }
                 })
             })
@@ -688,116 +683,385 @@ function browserCheck() {
 })();
 
 
+// ariaModal
+(function () {
+    "use strict";
+    /**
+     * @description     ariaModal
+     * @modify          2022.04.07
+     */
+    const ariaModal = {
+        /** 플러그인명 */
+        bindjQuery: 'ariaModal',
+        /** 기본 옵션값 선언부 */
+        selectors: {
+            modalBtns: document.querySelectorAll('.open-modal'),
+        },
+        initialize() {
+            this._click(); //Modal Click
+        },
+        _click() {
+            const modalBtns = this.selectors.modalBtns;
+            modalBtns.forEach(function (target) {
+                target.addEventListener('click', (e) => {
+                    let btnOpenModal = e.target;
+                    let modalID = btnOpenModal.getAttribute('aria-controls');
+                    let modalIDChar = document.getElementById(modalID);
+                    let modalClose = modalIDChar.querySelectorAll('.modal-close');
+                    let tabAble = modalIDChar.querySelectorAll('button:not([tabindex="-1"], input:not([tabindex="-1"], textarea:not([tabindex="-1"]');
+                    let tabAbleFirst = tabAble && tabAble[0];
+                    let tabAbleLast = tabAble && tabAble[tabAble.length - 1];
+                    let tabDisable;
+                    let modalWidth = 0;
+                    let modalHeight = 0;
+                    let modalInner = modalIDChar.querySelector('.modal__inner');
 
-//MODAL 
-let btns_modal = document.querySelectorAll('.open-modal');
-btns_modal.forEach(function (target) {
-
-    target.addEventListener('click', (e) => {
-        let btnOpenModal = e.target;
-
-        let modalID = btnOpenModal.getAttribute('aria-controls');
-        let modalIDChar = document.getElementById(modalID);
-        let modalClose = modalIDChar.getElementsByClassName('modal-close')[0];
-        let tabAble = modalIDChar.querySelectorAll('button:not([tabindex="-1"], input:not([tabindex="-1"], textarea:not([tabindex="-1"]');
-        let tabAbleFirst = tabAble && tabAble[0];
-        let tabAbleLast = tabAble && tabAble[tabAble.length - 1];
-        let tabDisable;
-        let modalWidth = 0;
-        let modalHeight = 0;
-        let modalInner = modalIDChar.querySelector('.modal-layer-inner');
+                    //OPEN
+                    modalIDChar.setAttribute('aria-hidden', 'false');
+                    modalIDChar.classList.add('on');
+                    modalWidth = modalInner.getBoundingClientRect().width;
+                    modalHeight = modalInner.getBoundingClientRect().height;
+                    modalSizeSet(modalInner, modalWidth, modalHeight);
 
 
-        //IOS 스크롤현상 수정 
-        // var iosScrollFixPosition = window.pageYOffset;
-        // console.log(iosScrollFixPosition);
-        // document.body.offsetTop(iosScrollFixPosition); 
-
-
-        //OPEN
-        modalIDChar.setAttribute('aria-hidden', 'false');
-        modalIDChar.classList.add('on');
-        modalWidth = modalInner.getBoundingClientRect().width;
-        modalHeight = modalInner.getBoundingClientRect().height;
-        modalSizeSet(modalInner, modalWidth, modalHeight);
-
-        if (tabAble) {
-            tabAbleFirst.focus();
-
-            tabAble.forEach((idx) => {
-                idx.addEventListener('keydown', (event) => {
-                    if (event.shiftKey && (event.keyCode || event.which) == 9) {
-                        event.preventDefault();
-                        tabAbleLast.focus();
-                    }
-
-                    //ESCAPE 닫기
-                    if ((event.keyCode || event.which) == 27) {
-                        event.preventDefault();
-                        console.log('esc');
-                        closeModal(modalIDChar, btnOpenModal);
-                    }
-
-                    //마지막요소에서 - 첫번째 요소로 포커스 이동 
-                    if (idx == tabAbleLast) {
-                        event.preventDefault();
+                    if (tabAble) {
                         tabAbleFirst.focus();
-                    }
-                })
-            });
+                        tabAble.forEach((idx) => {
+                            idx.addEventListener('keydown', (event) => {
+                                //Shift + tab 
+                                if (event.shiftKey && (event.keyCode || event.which) == 9) {
+                                    event.preventDefault();
+                                    tabAbleLast.focus();
+                                }
+                                //ESCAPE 닫기
+                                if ((event.keyCode || event.which) == 27) {
+                                    event.preventDefault();
+                                    closeModal(modalIDChar, btnOpenModal);
+                                }
+                                //마지막요소에서 - 첫번째 요소로 포커스 이동 
+                                if (idx == tabAbleLast) {
+                                    event.preventDefault();
+                                    tabAbleFirst.focus();
+                                }
+                            })
+                        });
 
-            //CLOSE ( SPACE & ENTER)
-            modalClose.addEventListener('keydown', (event) => {
-                event.preventDefault();
-                if ((event.keyCode || event.which) === 13 || (event.keyCode || event.which) == 32) {
-                    closeModal(modalIDChar, btnOpenModal);
+
+                        modalClose.forEach(closeBtns => {
+                            //닫기(키보드 Enter, spacebar )
+                            closeBtns.addEventListener('keydown', (event) => {
+                                if ((event.keyCode || event.which) === 13 || (event.keyCode || event.which) == 32) {
+                                    event.preventDefault();
+                                    closeModal(modalIDChar, btnOpenModal);
+                                }
+                            });
+                            //닫기버튼 클릭
+                            closeBtns.addEventListener('click', (event) => {
+                                event.preventDefault();
+                                closeModal(modalIDChar, btnOpenModal);
+                            });
+                        })
+                    }
+
+                    //모달 외부 배경(dimm) 클릭시 닫기
+                    modalIDChar.addEventListener('click', (e) => {
+                        if (e.target === e.currentTarget) {
+                            closeModal(modalIDChar, btnOpenModal);
+                        }
+                    })
+                });
+
+                function closeModal(modalID, focusOrigin) {
+                    modalID.setAttribute('tab-index', -1);
+                    modalID.setAttribute('aria-hidden', 'true');
+                    modalID.classList.remove('on');
+                    focusOrigin.focus();
+                }
+
+                function modalSizeSet(modal, w, h) {
+                    let w1 = Math.ceil(w);
+                    let h1 = Math.ceil(h);
+
+                    if (Math.ceil(w) % 2) {
+                        if (Math.abs(w1) > 0) {
+                            modal.style.width = (w1 + 1) + 'px';
+                        } else {
+                            modal.style.width = w1 + 'px';
+                        }
+                    } else {
+                        modal.style.width = w1 + 'px';
+                    }
+
+                    if (Math.ceil(h) % 2) {
+                        if (Math.abs(h1) > 0) {
+                            modal.style.height = (h1 + 1) + 'px';
+                        } else {
+                            modal.style.height = h1 + 'px';
+                        }
+                    } else {
+                        modal.style.height = h1 + 'px';
+                    }
                 }
             });
-            //닫기버튼 클릭
-            modalClose.addEventListener('click', (event) => {
-                event.preventDefault();
-                closeModal(modalIDChar, btnOpenModal);
+        },
+    };
+    window.ariaModal = ariaModal;
+})();
+
+
+
+
+
+
+
+// selectListbox
+(function () {
+    "use strict";
+    /**
+     * @description     selectListbox
+     * @modify          2022.04.07
+     */
+    const selectListbox = {
+        /** 플러그인명 */
+        bindjQuery: 'selectListbox',
+        /** 기본 옵션값 선언부 */
+        selectors: {
+            listboxBtns: document.querySelectorAll('[aria-haspopup="listbox"]'),
+        },
+        initialize() {
+            this._click(); //Modal Click
+            this._focusout(); //Modal Click
+            this._listKeydown(); //Modal Click
+        },
+        _expand(){
+
+        }, 
+        _click() {
+            const boxBtns = this.selectors.listboxBtns;
+            boxBtns.forEach(boxBtn => {
+                const listBox = document.querySelector(`#${boxBtn.getAttribute('aria-controls')}`);
+                const listOptions = listBox.querySelectorAll('[role="option"]');
+                
+                //click
+                boxBtn.addEventListener('click', e => {
+                    const listSelected = listBox.querySelector('[role="option"][aria-selected="true"]');
+                    boxBtn.setAttribute('aria-expanded', true);
+                    listBox.removeAttribute('hidden')
+
+
+                    if (listSelected) {
+                        //선택된게 있으면 
+                        listSelected.focus();
+                    } else {
+                        //없으면 첫번째 요소선택
+                        listOptions[0].focus();
+                    }
+                });
+
+
+                //keydown 
+                // boxBtn.addEventListener("keydown", e => {
+                // 	if(e.keyCode === 38) { // up
+                // 		boxBtn.click();
+                // 		const listSelected = listBox.querySelector('[role="option"][aria-selected="true"]');
+                // 		if(listSelected){
+                // 			listSelected.focus();
+                // 		}else{
+                // 			listOptions[listOptions.length-1].focus();
+                // 		}
+                // 		e.preventDefault();
+                // 	}
+                // 	if(e.keyCode === 40) { // down
+                // 		boxBtn.click();
+                // 		e.preventDefault();
+                // 	}
+                // });
+                
+
+
+                for (let i = 0; i < listOptions.length; i++) {
+                    listOptions[i].addEventListener('click', e => {
+                        if (listOptions[i].getAttribute('aria-selected') == false) {
+                            listOptions[i].setAttribute('aria-selected', true)
+                            listOptions[i].focus();
+                        } else {}
+                        this._listSelectEvent(boxBtn, listBox, listOptions[i])
+                    })
+                }
+            }); 
+        },
+
+        _listKeydown() {
+            const boxBtns = this.selectors.listboxBtns;
+            boxBtns.forEach(boxBtn => {
+                const listBox = document.querySelector(`#${boxBtn.getAttribute('aria-controls')}`);
+                const listOptions = listBox.querySelectorAll('[role="option"]');
+                
+                listBox.addEventListener('keydown', e => {
+                    
+                    if(e.keyCode === 38) {
+                        //UP
+                        console.log('UP'); 
+                    }
+                    if(e.keyCode === 40) {
+                        //DOWN
+                        console.log('DOWN')
+                    }
+                    if(e.keyCode === 27) {
+                        //ESC 
+                        console.log('ESC')
+                    }
+                }); 
+            });
+        }, 
+        _focusout() {
+            const boxBtns = this.selectors.listboxBtns;
+            // boxBtns.forEach(boxBtn => { 
+            //     const listBox = document.querySelector(`#${boxBtn.getAttribute('aria-controls')}`); 
+
+            //     listBox.forEach( listbox => {
+            //          listbox.addEventListener('mouseleave', function() {
+            //             console.log(this);
+            //          });
+            //     })
+
+            // });
+        },
+        //list select event
+        _listSelectEvent(boxBtn, listBox, selectedOption) {
+            const selectItemText = selectedOption.innerText;
+            boxBtn.innerHTML = selectItemText;
+            // selectedOption.focus();
+            console.log(listBox);
+
+            selectedOption.setAttribute('aria-selected', true)
+            boxBtn.setAttribute('aria-expanded', false)
+            listBox.setAttribute('hidden', false)
+        }
+    };
+    window.selectListbox = selectListbox;
+})();
+
+
+
+//wai-aria listbox
+var waiAriaListBox = function () {
+    const boxBtns = document.querySelectorAll('[aria-haspopup="listbox"]');
+    boxBtns.forEach(boxBtn => {
+        expandedEvent(boxBtn);
+        const listBox = document.querySelector(`#${boxBtn.getAttribute("aria-controls")}`);
+        const listOptions = listBox.querySelectorAll('[role="option"]');
+
+        boxBtn.addEventListener("click", e => {
+            const listSelected = listBox.querySelector('[role="option"][aria-selected="true"]');
+            if (listSelected) {
+                listSelected.focus();
+            } else {
+                listOptions[0].focus();
+            }
+        });
+
+        boxBtn.addEventListener("keydown", e => {
+            if (e.keyCode === 38) { // up
+                boxBtn.click();
+                const listSelected = listBox.querySelector('[role="option"][aria-selected="true"]');
+                if (listSelected) {
+                    listSelected.focus();
+                } else {
+                    listOptions[listOptions.length - 1].focus();
+                }
+                e.preventDefault();
+            }
+            if (e.keyCode === 40) { // down
+                boxBtn.click();
+                e.preventDefault();
+            }
+        });
+
+        for (let i = 0; i < listOptions.length; i++) {
+            listOptions[i].tabIndex = -1;
+            listOptions[i].addEventListener("click", e => {
+                listSelectEvent(listBox, boxBtn, listOptions[i]);
+                boxBtn.click();
+                boxBtn.focus();
+                e.preventDefault();
+            });
+
+            listOptions[i].addEventListener("keydown", e => {
+                if (e.keyCode === 13) { // enter
+                    listOptions[i].click();
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                if (e.keyCode === 38) { // up
+                    if (i == 0) {
+                        listOptions[listOptions.length - 1].focus();
+                        listSelectEvent(listBox, boxBtn, listOptions[listOptions.length - 1]);
+                    } else {
+                        listOptions[i - 1].focus();
+                        listSelectEvent(listBox, boxBtn, listOptions[i - 1]);
+                    }
+                    e.preventDefault();
+                }
+                if (e.keyCode === 40) { // down
+                    if (i == listOptions.length - 1) {
+                        listOptions[0].focus();
+                        listSelectEvent(listBox, boxBtn, listOptions[0]);
+                    } else {
+                        listOptions[i + 1].focus();
+                        listSelectEvent(listBox, boxBtn, listOptions[i + 1]);
+                    }
+                    e.preventDefault();
+                }
+                if (e.keyCode === 9 || e.keyCode === 27) { // tab, esc
+                    boxBtn.click();
+                    boxBtn.focus();
+                    e.preventDefault();
+                }
             });
         }
-
-        //모달 외부 배경(dimm) 클릭시 닫기
-        modalIDChar.addEventListener('click', (e) => {
-            if (e.target === e.currentTarget) {
-                closeModal(modalIDChar, btnOpenModal);
-            }
-        })
     });
 
-    //window.addEventListener('resize', modalResize);
-    function closeModal(modalID, focusOrigin) {
-        modalID.setAttribute('tab-index', -1);
-        modalID.setAttribute('aria-hidden', 'true');
-        modalID.classList.remove('on');
-        focusOrigin.focus();
-    }
-
-    function modalSizeSet(modal, w, h) {
-        let w1 = Math.ceil(w);
-        let h1 = Math.ceil(h);
-
-        if (Math.ceil(w) % 2) {
-            if (Math.abs(w1) > 0) {
-                modal.style.width = (w1 + 1) + 'px';
-            } else {
-                modal.style.width = w1 + 'px';
-            }
-        } else {
-            modal.style.width = w1 + 'px';
+    function listSelectEvent(listBox, boxBtn, listOption) {
+        const selected = listBox.querySelector('[role="option"][aria-selected="true"]');
+        const currentTxt = boxBtn.innerText;
+        const newTxt = listOption.innerText;
+        if (!selected) {
+            listOption.setAttribute("aria-selected", true);
+            boxBtn.innerHTML = boxBtn.innerHTML.replace(currentTxt, newTxt);
         }
-
-        if (Math.ceil(h) % 2) {
-            if (Math.abs(h1) > 0) {
-                modal.style.height = (h1 + 1) + 'px';
-            } else {
-                modal.style.height = h1 + 'px';
-            }
-        } else {
-            modal.style.height = h1 + 'px';
+        if (selected !== listOption) {
+            selected.setAttribute("aria-selected", false);
+            listOption.setAttribute("aria-selected", true);
+            boxBtn.innerHTML = boxBtn.innerHTML.replace(currentTxt, newTxt);
         }
     }
-});
+}
+
+
+
+
+//🥨
+// // autocompleteUI
+// (function () {
+//     "use strict";
+//     /**
+//      * @description     autocompleteUI
+//      * @modify          2022.04.07
+//      */
+//     const autocompleteUI = {
+//         /** 플러그인명 */
+//         bindjQuery: 'autocompleteUI',
+//         /** 기본 옵션값 선언부 */
+//         selectors: {
+
+//         },
+//         initialize() {
+//             this._click(); //Modal Click
+//         },
+//         _click() {
+
+//         }
+//     };
+//     window.autocompleteUI = autocompleteUI;
+// })();

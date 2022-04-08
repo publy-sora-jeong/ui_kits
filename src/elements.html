@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="static/images/icon/favicon.png" />
 
+    <link rel="stylesheet" href="static/css/vendor/swiper-bundle.css">
+    <link rel="stylesheet" href="static/css/vendor/shCoreDefault.css">
     <link rel="stylesheet" href="static/css/style.css">
     <title>Design Styleguide</title>
 </head>
@@ -93,7 +95,7 @@
                         </div>
                     </div>
                 </dd>
-                <dd class="code-copy" style="display:none">
+                <dd class="code-copy">
                     <div class="quote-box quote-box--default">
                         <p>
                             <!-- your text -->
@@ -149,7 +151,7 @@
                         </div>
                     </div>
                 </dd>
-                <dd class="code-copy" style="display:none">
+                <dd class="code-copy">
                     <div class="blockquote-box">
                         <div class="blockquote__text">
                             <p>
@@ -171,7 +173,7 @@
         </div>
 
 
-     
+
 
         <div class="code-box">
             <dl class="code-box-description">
@@ -219,7 +221,7 @@
                         </table>
                     </div>
                 </div>
-                <dd class="code-paste none">
+                <dd class="code-paste">
                     <pre class="brush:html"></pre>
                 </dd>
             </dl>
@@ -271,7 +273,7 @@
                         </table>
                     </div>
                 </div>
-                <dd class="code-paste none">
+                <dd class="code-paste">
                     <pre class="brush:html"></pre>
                 </dd>
             </dl>
@@ -333,7 +335,7 @@
             <dl class="code-box-description">
                 <dt class="code-box-title">Pagination </dt>
                 <dd class="code-copy">
-                   <div class="pagination pagination--arr">
+                    <div class="pagination pagination--arr">
                         <a href="#" class="page-prev"><span class="blind">이전페이지</span></a>
                         <div class="pagination__num">
                             <a href="#" class="page-num">1</a>
@@ -342,9 +344,9 @@
                             <a href="#" class="page-num">4</a>
                         </div>
                         <a href="#" class="page-next"><span class="blind">다음페이지</span></a>
-                   </div>
+                    </div>
                 </dd>
-                
+
                 <dd class="code-paste">
                     <pre class="brush:html"></pre>
                 </dd>
@@ -374,11 +376,11 @@
                 </dd>
             </dl>
         </div>
-   
+
         <div class="code-box">
             <dl class="code-box-description">
                 <dt class="code-box-title">text tooltip</dt>
-                <dd class="code-nocopy">
+                <dd class="code-copy">
                     <div class="tooltip-sample">
                         <p aria-describedby="tooltipTopLeft" tabindex="0">tooltip - top left</p>
                         <div class="tooltip tooltip--top-left" aria-hidden="true" role="tooltip" id="tooltipTopLeft">
@@ -406,7 +408,7 @@
 
                     <div class="tooltip-sample">
                         <p aria-describedby="tooltipLeft" tabindex="0">tooltip - left</p>
-                        <div class="tooltip tooltip--left" aria-hidden="true" role="tooltip" id="tooltipLeft">
+                        <div class="tooltip tooltip--left" aria-hidden="false" role="tooltip" id="tooltipLeft">
                             <p class="arrow"></p>
                             Your Text in Tooltip (Top Right)
                         </div>
@@ -422,26 +424,321 @@
 
                     <div class="tooltip-sample">
                         <input type="text" placeholder="your text" aria-describedby="tooltipNohypenTemp">
-                        <div class="tooltip tooltip--top-left" aria-hidden="true" role="tooltip"
+                        <div class="tooltip tooltip--top-left" aria-hidden="false" role="tooltip"
                             id="tooltipNohypenTemp">
                             <p class="arrow"></p>
                             하이픈(-) 없이 숫자만 입력해주세요.
                         </div>
                     </div>
                 </dd>
-
-                <!-- <dd class="code-copy" style="display: none;">
-                    <input type="text" placeholder="your text" aria-describedby="tooltipNohypen">
-                    <div class="tooltip tooltip--top-left" aria-hidden="true" role="tooltip" id="tooltipNohypen">
-                        <p class="arrow"></p>
-                        하이픈(-) 없이 숫자만 입력해주세요.
-                    </div>
-                </dd>
-                <dd class="code-paste" >
+                <dd class="code-paste">
                     <pre class="brush:html"></pre>
-                </dd> -->
+                </dd>
             </dl>
         </div>
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt class="code-box-title">Listbox</dt>
+                <dd class="code-nocopy"></dd>
+                <dd class="code-copy listbox-temp">
+                    <div class="listbox">
+                        <button aria-haspopup="listbox" aria-controls="selectDept" aria-expanded="false"
+                            class="listbox__btn">Select Option 1</button>
+                        <ul id="selectDept" role="listbox" aria-labelledby="selectDept" class="listbox__items" hidden="false">
+                            <li id="li_sort01" role="option" aria-selected="false" tabindex="0">Select Option 1</li>
+                            <li id="li_sort02" role="option" aria-selected="false" tabindex="0">Select Option 2</li>
+                            <li id="li_sort03" role="option" aria-selected="false" tabindex="0">Select Option 3</li>
+                            <li id="li_sort04" role="option" aria-selected="true" tabindex="0">Select Option 4</li>
+                            <li id="li_sort05" role="option" aria-selected="false" tabindex="0">Select Option 5</li>
+                            <li id="li_sort06" role="option" aria-selected="false" tabindex="0">Select Option 6</li>
+                            <li id="li_sort07" role="option" aria-selected="false" tabindex="0">Select Option 7</li>
+                            <li id="li_sort08" role="option" aria-selected="false" tabindex="0">Select Option 8</li>
+                        </ul>
+                    </div>
+
+                    <div class="listbox">
+                        <button aria-haspopup="listbox" aria-controls="selectColor" aria-expanded="false"
+                            class="listbox__btn">Select Option 2</button>
+                        <ul id="selectColor" role="listbox" aria-labelledby="selectColor" class="listbox__items" hidden="false">
+                            <li id="li_sort01" role="option" aria-selected="false" tabindex="0">Select Option 1</li>
+                            <li id="li_sort02" role="option" aria-selected="true" tabindex="0">Select Option 2</li>
+                            <li id="li_sort03" role="option" aria-selected="false" tabindex="0">Select Option 3</li>
+                            <li id="li_sort04" role="option" aria-selected="false" tabindex="0">Select Option 4</li>
+                            <li id="li_sort05" role="option" aria-selected="false" tabindex="0">Select Option 5</li>
+                            <li id="li_sort06" role="option" aria-selected="false" tabindex="0">Select Option 6</li>
+                            <li id="li_sort07" role="option" aria-selected="false" tabindex="0">Select Option 7</li>
+                            <li id="li_sort08" role="option" aria-selected="false" tabindex="0">Select Option 8</li>
+                        </ul>
+                    </div>
+                </dd>
+
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div>
+
+        <div class="code-box">
+            <dl class="code-box-description">
+                <dt  class="code-box-title">Form</dt>
+                <dd>
+                    <ul class="desc-list">
+                        <li>role="alert"가 html내에 삽입되어있을경우 문서로드가 완료되면 보조기기가 경고메시지를 보내므로, JS를 사용하여 오류메시지를 동적으로 생성하여 추가해줍니다. </li>
+                    </ul>
+                </dd>
+                <dd class="code-nocopy"></dd>
+                <dd class="code-copy">
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="firstName">First Name</label>
+                        <div  class="inputbox__input">
+                            <input type="text" id="firstName" name="firstName" placeholder="Label">
+                        </div>
+                    </div>
+                    <p  role="alert" class="msg msg--error">You must select at least 3 options.</p>
+                    
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="firstName">First Name(disalbed)</label>
+                        <div  class="inputbox__input">
+                            <input type="text" id="firstName" name="firstName" placeholder="Label" disabled>
+                        </div>
+                    </div>
+
+                    
+                        <div class="row-line">
+                            <p class="col-tit">disabled</p>
+                            <div class="col-input">
+                                <input type="text" placeholder="input text" disabled>
+                            </div>
+                        </div>
+                        <div class="row-line">
+                            <p class="col-tit">Readonly</p>
+                            <div class="col-input">
+                                <input type="text" placeholder="input text" readonly>
+                            </div>
+                        </div>
+                        <div class="row-line">
+                            <p class="col-tit">filled</p>
+                            <div class="col-input">
+                                <input type="text" placeholder="input text" value="서울시 구로구 디지털로 300">
+                            </div>
+                        </div>
+                        <div class="row-line">
+                            <p class="col-tit">selectbox normal</p>
+                            <div class="col-input">
+                                <select name="" id="">
+                                    <option value="1">선택</option>
+                                    <option value="1">선택</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-line">
+                            <p class="col-tit">selectbox disabled</p>
+                            <div class="col-input">
+                                <select name="" id="" disabled>
+                                    <option value="1">선택</option>
+                                    <option value="1">선택</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-line">
+                            <div class="col-tit"> 휴대폰번호</div>
+                            <div class="col-input col-input--phone">
+                                <select name="" class="sel_phone_agency">
+                                    <option value="select">통신사 선택</option>
+                                    <option value="select">선택</option>
+                                    <option value="select">선택</option>
+                                    <option value="select">선택</option>
+                                    <option value="select">선택</option>
+                                </select>
+    
+    
+                                <select name="" class="sel_phone_num">
+                                    <option value="select">010</option>
+                                    <option value="select">선택</option>
+                                    <option value="select">선택</option>
+                                    <option value="select">선택</option>
+                                    <option value="select">선택</option>
+                                </select>
+    
+                                <div class="input-phonenum">
+                                    <input type="text" title="" pattern="[0-9]*" inputmode="numeric">
+                                    <span class="hyphen">&dash;</span>
+                                    <input type="text" title="" pattern="[0-9]*" inputmode="numeric">
+                                </div>
+    
+                            </div>
+                        </div>
+    
+                        <div class="row-line">
+                            <div class="col-tit">주민등록번호</div>
+                            <div class="col-input col-input--multi ">
+                                <input type="text" title="주민등록번호 앞자리" pattern="[0-9]*" inputmode="numeric">
+                                <span class="hyphen">&dash;</span>
+                                <input type="text" title="주민등록번호 뒷자리" pattern="[0-9]*" inputmode="numeric">
+                            </div>
+                        </div>
+                        <div class="row-line">
+                            <div class="col-tit"> 이메일</div>
+                            <div class="col-input col-input--email" style="margin-top: 0;">
+                                <div class="set-1">
+                                    <input type="text" title="이메일주소">
+                                    <span class="at">@</span>
+                                    <input type="text" title="이메일도메인">
+                                </div>
+                                <select name="" id="">
+                                    <option value="select">선택</option>
+                                    <option value="select">선택</option>
+                                    <option value="select">선택</option>
+                                    <option value="select">선택</option>
+                                    <option value="select">선택</option>
+                                </select>
+                                <p class="t-help--mark mt-0">고객님께서 작성 완료하신 전자계약서가 선택하신 이메일 주소로 전송됩니다.</p>
+                            </div>
+                        </div>
+    
+                        <div class="row-line">
+                            <div class="col-tit">카드번호</div>
+                            <div class="col-input col-input-full">
+                                <div class="int_bx wrap">
+                                    <div class="cnum">
+                                        <div class="cnum_box">
+                                            <input type="number" pattern="[0-9]*" inputmode="numeric">
+                                            <span class="hy">-</span>
+                                            <input type="number" pattern="[0-9]*" inputmode="numeric">
+                                            <span class="hy">-</span>
+                                            <input type="number" pattern="[0-9]*" inputmode="numeric">
+                                            <span class="hy">-</span>
+                                            <input type="number" pattern="[0-9]*" inputmode="numeric">
+                                        </div>
+                                    </div>
+                                    <ul class="info_txt">
+                                        <li>Additional info</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-line">
+                            <div class="col-tit">input (100%)</div>
+                            <div class="col-input col-input-full">
+                                <input type="text" placeholder="100%">
+                                <p class="msg--error mt-10">다시 입력해주세요. </p>
+                            </div>
+    
+                        </div>
+    
+                        <div class="row-line">
+                            <div class="col-tit">Textarea</div>
+                            <div class="col-input col-input-full">
+                                <textarea name="" id="" cols="30" rows="10">텍스트텍스트텍스트텍스트텍스트텍스트</textarea>
+                                <p class="max-len-text">최대 300자</p>
+                            </div>
+                        </div>
+    
+                        <div class="row-line">
+                            <p class="col-tit">Select Button</p>
+                            <div class="col-input">
+    
+                                <div class="list_form">
+                                    <ul class="short_btn2 sb_active">
+                                        <li class="on"><a href="#">SKT</a></li>
+                                        <li><a href="#">KT</a></li>
+                                    </ul>
+                                    <ul class="short_btn2 sb_active">
+                                        <li><a href="#">LG U+</a></li>
+                                        <li>
+                                            <select name="" id="">
+                                                <option value="">선택</option>
+                                                <option value="">선택</option>
+                                                <option value="">선택</option>
+                                            </select>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+    
+    
+                        <div class="row-line">
+                            <p class="col-tit">Select Button</p>
+                            <div class="col-input">
+    
+                                <div class="list_form">
+                                    <ul class="short_btn2 short_btn2_2type sb_active">
+                                        <li class="on"><a href="#">short_btn2_2type</a></li>
+                                        <li><a href="#">short_btn2_2type</a></li>
+                                    </ul>
+                                </div>
+    
+                                <div class="list_form mt-10">
+                                    <ul class="short_btn2 short_btn2_2type sb_active">
+                                        <li class="on"><a href="#">short_btn2_2type</a></li>
+                                        <li>
+                                            <select name="" id="">
+                                                <option value="">select</option>
+                                                <option value="">select</option>
+                                                <option value="">select</option>
+                                            </select>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-line">
+                            <p class="col-tit">Select Button (disable)</p>
+                            <div class="col-input">
+                                <div class="list_form">
+                                    <ul class="short_btn2 sb_active">
+                                        <li><a class="disable" href="#">Select1</a></li>
+                                        <li><a class="disable" href="#">Select2</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-line">
+                            <div class="col-tit">Select Button (single)</div>
+                            <div class="col-input">
+                                <div class="list_form">
+                                    <ul class="short_btn2 sb_active  short_btn_single">
+                                        <li><a href="#">GO</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+          
+                        <!-- multiSelect-sidebtn -->
+                        <div class="row-line">
+                            <div class="col-tit">Select</div>
+                            <div class="col-input col-input--multiSelect multiSelect-sidebtn ">
+                                <select name="select_account" id="select_account">
+                                    <option value="account">1234 5464 5465 3356</option>
+                                </select>
+                                <button type="button" href="#" class="btn">Search</button>
+                            </div>
+                        </div>
+    
+                        <div class="row-line">
+                            <div class="col-tit">Select Account</div>
+                            <div class="col-input col-select-aria">
+                                <button aria-haspopup="listbox" aria-controls="selectBankAccount" aria-expanded="false"
+                                    class="btn-select-aria">Select Option 1</button>
+                                <ul id="selectBankAccount" role="listbox" aria-labelledby="계좌(은행)목록" style="display:none">
+                                    <li id="" role="option" aria-selected="true" tabindex="0">Option 1</li>
+                                    <li id="" role="option" aria-selected="false" tabindex="0">Option 2 </li>
+                                    <li id="" role="option" aria-selected="false" tabindex="0">Option 3 </li>
+                                    <li id="" role="option" aria-selected="false" tabindex="0">Option 4 </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </dd>
+
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
+            </dl>
+        </div> 
 
         <p style="height: 1000px;"></p>
 
@@ -466,21 +763,17 @@
         -->
 
     </section>
-
-
-
-    <link rel="stylesheet" href="static/css/vendor/swiper-bundle.css">
-    <link rel="stylesheet" href="static/css/guide/shCoreDefault.css">
     <script src="static/js/vendor/jquery/jquery-1.12.1.min.js"></script>
     <script src="static/js/vendor/jquery/jquery-migrate-1.4.1.min.js"></script>
     <script src="static/js/vendor/swiper/swiper-bundle.min.js"></script>
 
-    <!-- code -->
-    <script type="text/javascript" src="static/js/guide/shCore.js"></script>
-    <script type="text/javascript" src="static/js/guide/shBrushXml.js"></script>
-    <script type="text/javascript" src="static/js/guide/shBrushJScript.js"></script>
-    <script type="text/javascript" src="static/js/guide/shBrushCss.js"></script>
+    <!-- code highlighter -->
+    <script type="text/javascript" src="static/js/vendor/highlighter/shCore.js"></script>
+    <script type="text/javascript" src="static/js/vendor/highlighter/shBrushXml.js"></script>
+    <script type="text/javascript" src="static/js/vendor/highlighter/shBrushJScript.js"></script>
+    <script type="text/javascript" src="static/js/vendor/highlighter/shBrushCss.js"></script>
 
+    <!--UI js-->
     <script src="static/js//ui/ui.front.js"></script>
 
     <script>

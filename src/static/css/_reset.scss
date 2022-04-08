@@ -107,19 +107,3 @@ img {border-style: none; max-width: 100%;}
 .align-center{ text-align: center;}
 .align-right{ text-align: right;}
 .align-left{ text-align: left;}
-
-.pc-only {display: block;}
-.m-only {display: none;}
-
-$color-welcome-red : #e22f26; 
-$color-ci-red : #ea002c; 
-$color-ci-orange : #ff7a00; 
-
-.color-welcomered{ color:$color-welcome-red;}
-.color-ci-red{ color:$color-ci-red}
-.color-ci-orange{ color:$color-ci-orange}
-
-$color-txt-lightmode : #333; 
-$color-txt-darkmode : #fff;
-
-

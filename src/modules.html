@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="static/images/icon/favicon.png" />
 
+    <link rel="stylesheet" href="static/css/vendor/swiper-bundle.css">
+    <link rel="stylesheet" href="static/css/vendor/shCoreDefault.css">
     <link rel="stylesheet" href="static/css/style.css">
     <title>Design Styleguide</title>
 </head>
@@ -226,10 +228,12 @@
                             </li>
                         </ul>
                     </div>
+                </dd> <dd class="code-paste">
+                    <pre class="brush:html"></pre>
                 </dd>
             </dl>
         </div>
-       
+
 
         <div class="code-box">
             <dl class="code-box-description">
@@ -262,7 +266,7 @@
                             hidden="false"> 웰컴 홍보동영상 콘텐츠영역입니다.</div>
                     </div>
                 </dd>
-                <dd class="code-paste none">
+                <dd class="code-paste">
                     <pre class="brush:html"></pre>
                 </dd>
             </dl>
@@ -278,10 +282,13 @@
                         <input type="text" id="datepickerSample1" class="datepicker-ui" placeholder="YYYY-MM-DD">
                     </div>
                 </dd>
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
+                </dd>
             </dl>
         </div>
 
-    
+
 
         <div class="code-box">
             <dl class="code-box-description">
@@ -297,6 +304,7 @@
                     </ul>
                 </dd>
                 <dd class="code-copy">
+                    <!--Swiper1-->
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">Slide 1</div>
@@ -304,51 +312,45 @@
                             <div class="swiper-slide">Slide 3</div>
                         </div>
                         <div class="swiper-autoplay-control">
-                            <button aria-pressed="false" aria-label="자동재생 멈춤" data-swiperCotrol="mySwiper">자동재생 멈춤</button>
+                            <button aria-pressed="false" aria-label="자동재생 멈춤" data-swiperCotrol="mySwiper">자동재생
+                                멈춤</button>
                         </div>
                         <div class="swiper-button-next"></div>
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-pagination"></div>
                     </div>
-
-                    <div class="swiper mySwiper2">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">Slide 1</div>
-                            <div class="swiper-slide">Slide 2</div>
-                            <div class="swiper-slide">Slide 3</div>
-                        </div>
-                        <div class="swiper-autoplay-control">
-                            <button aria-pressed="false" aria-label="자동재생 멈춤" data-swiperCotrol="mySwiper2">자동재생 멈춤</button>
-                        </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-pagination"></div>
-                    </div>
+                </dd>
+                <dd class="code-paste">
+                    <pre class="brush:html"></pre>
                 </dd>
             </dl>
         </div>
 
         <div class="code-box">
             <dl class="code-box-description">
-                <dt class="code-box-title">title</dt>
+                <dt class="code-box-title">Modal</dt>
                 <dd class="code-copy">
-                    <button type="button" class="open-modal common-btnType-2" aria-controls="modal01">열기</button>
-                    <div id="modal01" class="modal-layer" role="dialog" aria-modal="true" aria-labelledby="팝업에 대한"
+                    <button type="button" class="open-modal" aria-controls="modal01">열기</button>
+                    <div id="modal01" class="modal" role="dialog" aria-modal="true" aria-labelledby="Popup description"
                         aria-describedby="dialog4_desc" aria-hidden="true">
-                        <div class="modal-layer-inner">
-                            <h3 class="modal-title">title</h3>
-                            <div class="modal-content">
-                                <p>Modal Contents</p>
-                                <p><b class="col-red">INFO </b> ESC버튼을 누르면 팝업이 닫힙니다. </p>
+                        <div class="modal__inner" tabindex="0">
+                            <h3 class="modal__title">Content modal</h3>
+                            <div class="modal__content">
+                                <p class="txt01">Make a statement for a content modal</p>
+                                <p class="txt02">Use a content modal for dismissible content. A content modal provides a
+                                    way for the user to access additional information without leaving the current page
+                                    or view, and maintain context.</p>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" role="button" tabindex="0" style="border: 1px solid #333;">동의합니다 (FOCUS)</button>
+                            <div class="modal__footer">
+                                <button type="button" role="button" tabindex="0" class="modal-close btn-agree">I
+                                    Agree</button>
                             </div>
-                            <button type="button" role="button" class="modal-close common-btnType-2" tabindex="0" aria-label="모달팝업닫기1">닫기</button>
+                            <button type="button" role="button" class="modal-close btn-modal-close" tabindex="0"
+                                aria-label="모달팝업닫기XX"><span class="blind">닫기last</span></button>
                         </div>
                     </div>
                 </dd>
-                <dd class="code-paste" style="display: none;">
+                <dd class="code-paste">
                     <pre class="brush:html"></pre>
                 </dd>
             </dl>
@@ -370,26 +372,21 @@
             </dl>
         </div> -->
 
+        <p style="height: 500px;"></p>
     </section>
 
 
-
-    <!-- Library / Plugins -->
-    <link rel="stylesheet" href="static/css/vendor/swiper-bundle.css">
-    <link rel="stylesheet" href="static/css/guide/shCoreDefault.css">
     <script src="static/js/vendor/jquery/jquery-1.12.1.min.js"></script>
     <script src="static/js/vendor/jquery/jquery-migrate-1.4.1.min.js"></script>
     <script src="static/js/vendor/swiper/swiper-bundle.min.js"></script>
 
-    <!--jQuery UI -->
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <!-- code highlighter -->
+    <script type="text/javascript" src="static/js/vendor/highlighter/shCore.js"></script>
+    <script type="text/javascript" src="static/js/vendor/highlighter/shBrushXml.js"></script>
+    <script type="text/javascript" src="static/js/vendor/highlighter/shBrushJScript.js"></script>
+    <script type="text/javascript" src="static/js/vendor/highlighter/shBrushCss.js"></script>
 
-    <!-- Code SyntaxHighlighter -->
-    <script type="text/javascript" src="static/js/guide/shCore.js"></script>
-    <script type="text/javascript" src="static/js/guide/shBrushXml.js"></script>
-    <script type="text/javascript" src="static/js/guide/shBrushJScript.js"></script>
-    <script type="text/javascript" src="static/js/guide/shBrushCss.js"></script>
-
+    <!--UI js-->
     <script src="static/js//ui/ui.front.js"></script>
 
     <script>
