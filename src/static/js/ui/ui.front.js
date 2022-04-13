@@ -7,32 +7,38 @@ documentReady(function () {
     fulldownNavigation.initialize(); //상단 네비게이션 (전체메뉴)
     showTooltip.initialize(); //툴팁 
     tabUI.initialize(); //탭메뉴 
-    //jQueryDatepickerUI.initialize(); //jQuery Datepicker 
+    
     sideNavigation.initialize(); //Siden avigation
     swiperSlides.initialize(); //Siden avigation 
     ariaModal.initialize(); //Modal 팝업 
     selectListbox.initialize(); //selectListbox 셀렉트박스 UI
-
+    jsBtnPressed.initialize();
     //Checkbox event
     //Input Validation
     //Accordion
     //HeaderSticky
     //goTop
     //Treeview
+    
+    document.querySelectorAll('.datepicker-ui').length >  0 ?  jQueryDatepickerUI.initialize()  : null; 
 });
 
 // document ready 
 function documentReady(fn) {
     if (document.readyState === "complete" || document.readyState === "interactive") {
         setTimeout(fn, 1);
+        
     } else {
         document.addEventListener("DOMContentLoaded", fn);
     }
 }
 
 function isInPage(node) {
+    console.log(node);
     return document.querySelectorAll(node).length > 0;
 }
+
+
 
 //BrowserCheck
 function browserCheck() {
@@ -513,12 +519,17 @@ function browserCheck() {
         _focus() {
             const me = this.selectors.datepickerEl;
             const unavailableDay = this.data.unavailableDay;
-            const datepickerID = `#${$(me).attr('id')}`
-            $(datepickerID).datepicker({
-                // showOtherMonths: true,
-                // selectOtherMonths: true
+            const datepickerID = `#${$(me).attr('id')}`;
+
+
+
+            const options = {
+                showOtherMonths: true,
+                selectOtherMonths: true,
+                buttonImageOnly: false,
                 dateFormat: "yy-mm-dd",
                 monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+                //dayNamesMin			: ['일','월','화','수','목','금','토'],
                 nextText: "다음달",
                 prevText: "이전달",
 
@@ -530,9 +541,10 @@ function browserCheck() {
                     } else {
                         return [true];
                     }
-                }
-            });
-        }
+                },
+            }
+            $(datepickerID).datepicker(options);
+        },
     };
     window.jQueryDatepickerUI = jQueryDatepickerUI;
 })();
@@ -652,9 +664,9 @@ function browserCheck() {
                     //기본옵션적용
                     slide = new Swiper(slide, {
                         centeredSlides: true,
-                        // autoplay: {
-                        //     delay: 1500,
-                        // },
+                        autoplay: {
+                            delay: 1500,
+                        },
                         ...this.data.swiperOption
                     })
                 }
@@ -833,20 +845,33 @@ function browserCheck() {
             this._focusout(); //Modal Click
             this._listKeydown(); //Modal Click
         },
-        _expand(){
-
-        }, 
+        _expandedEvent(boxBtn) {
+            boxBtn.addEventListener('click', (e) => {
+                const controlEl = document.getElementById(`${boxBtn.getAttribute('aria-controls')}`) ; 
+                if(controlEl.getAttribute('aria-expanded') === 'true') {
+                    //controlEl.style.display="none"
+                    controlEl.setAttribute('aria-expanded', false)
+                    controlEl.setAttribute('data-show', false)
+                }else{
+                    controlEl.setAttribute('aria-expanded', true);
+                    controlEl.setAttribute('data-show', true)
+                    //controlEl.style.display="block"
+                }
+            })
+        },
         _click() {
             const boxBtns = this.selectors.listboxBtns;
             boxBtns.forEach(boxBtn => {
+                this._expandedEvent(boxBtn); 
+
                 const listBox = document.querySelector(`#${boxBtn.getAttribute('aria-controls')}`);
                 const listOptions = listBox.querySelectorAll('[role="option"]');
-                
+
                 //click
                 boxBtn.addEventListener('click', e => {
                     const listSelected = listBox.querySelector('[role="option"][aria-selected="true"]');
                     boxBtn.setAttribute('aria-expanded', true);
-                    listBox.removeAttribute('hidden')
+                    //listBox.setAttribute('show', true)
 
 
                     if (listSelected) {
@@ -858,37 +883,18 @@ function browserCheck() {
                     }
                 });
 
-
-                //keydown 
-                // boxBtn.addEventListener("keydown", e => {
-                // 	if(e.keyCode === 38) { // up
-                // 		boxBtn.click();
-                // 		const listSelected = listBox.querySelector('[role="option"][aria-selected="true"]');
-                // 		if(listSelected){
-                // 			listSelected.focus();
-                // 		}else{
-                // 			listOptions[listOptions.length-1].focus();
-                // 		}
-                // 		e.preventDefault();
-                // 	}
-                // 	if(e.keyCode === 40) { // down
-                // 		boxBtn.click();
-                // 		e.preventDefault();
-                // 	}
-                // });
-                
-
-
                 for (let i = 0; i < listOptions.length; i++) {
+                    listOptions[i].tabIndex = -1;
                     listOptions[i].addEventListener('click', e => {
-                        if (listOptions[i].getAttribute('aria-selected') == false) {
-                            listOptions[i].setAttribute('aria-selected', true)
-                            listOptions[i].focus();
-                        } else {}
-                        this._listSelectEvent(boxBtn, listBox, listOptions[i])
+                        //선택한 옵션 이벤트 
+                        this._listSelectEvent(listBox, boxBtn, listOptions[i]);
+
+                        boxBtn.click();
+                        boxBtn.focus();
+                        e.preventDefault();
                     })
                 }
-            }); 
+            });
         },
 
         _listKeydown() {
@@ -896,24 +902,24 @@ function browserCheck() {
             boxBtns.forEach(boxBtn => {
                 const listBox = document.querySelector(`#${boxBtn.getAttribute('aria-controls')}`);
                 const listOptions = listBox.querySelectorAll('[role="option"]');
-                
+
                 listBox.addEventListener('keydown', e => {
-                    
-                    if(e.keyCode === 38) {
+
+                    if (e.keyCode === 38) {
                         //UP
-                        console.log('UP'); 
+                        console.log('UP');
                     }
-                    if(e.keyCode === 40) {
+                    if (e.keyCode === 40) {
                         //DOWN
                         console.log('DOWN')
                     }
-                    if(e.keyCode === 27) {
+                    if (e.keyCode === 27) {
                         //ESC 
                         console.log('ESC')
                     }
-                }); 
+                });
             });
-        }, 
+        },
         _focusout() {
             const boxBtns = this.selectors.listboxBtns;
             // boxBtns.forEach(boxBtn => { 
@@ -928,15 +934,32 @@ function browserCheck() {
             // });
         },
         //list select event
-        _listSelectEvent(boxBtn, listBox, selectedOption) {
-            const selectItemText = selectedOption.innerText;
-            boxBtn.innerHTML = selectItemText;
-            // selectedOption.focus();
-            console.log(listBox);
+        _listSelectEvent(listBox, boxBtn, selectedOption) {
+            //console.log('listbox', listBox, 'boxbtn', boxBtn, 'selected', selectedOption);
+            const selected = listBox.querySelector('[role="option"][aria-selected="true"]'); 
+            const oldSelectedValue = boxBtn.innerHTML ; 
+            const newSelectedValue = selectedOption.innerHTML ; 
 
-            selectedOption.setAttribute('aria-selected', true)
-            boxBtn.setAttribute('aria-expanded', false)
-            listBox.setAttribute('hidden', false)
+            //console.log(selected);
+            const temp_result = document.querySelector(`[data-for="${listBox.getAttribute('id')}"] span` );
+            const temp_resultValue = selectedOption.getAttribute('id');
+            
+            if(!selected) { 
+                selectedOption.setAttribute('aria-selected', true);
+                boxBtn.innerHTML = boxBtn.innerHTML.replace(oldSelectedValue, newSelectedValue); 
+                if(temp_result) {
+                    temp_result.innerHTML = temp_resultValue; 
+                }
+                
+            }
+            if(selected != selectedOption && selected != null) { 
+                selected.setAttribute('aria-selected', false); 
+                selectedOption.setAttribute('aria-selected', true); 
+                boxBtn.innerHTML = boxBtn.innerHTML.replace(oldSelectedValue, newSelectedValue)
+                if(temp_result) {
+                    temp_result.innerHTML = temp_resultValue; 
+                }
+            }
         }
     };
     window.selectListbox = selectListbox;
@@ -944,99 +967,39 @@ function browserCheck() {
 
 
 
-//wai-aria listbox
-var waiAriaListBox = function () {
-    const boxBtns = document.querySelectorAll('[aria-haspopup="listbox"]');
-    boxBtns.forEach(boxBtn => {
-        expandedEvent(boxBtn);
-        const listBox = document.querySelector(`#${boxBtn.getAttribute("aria-controls")}`);
-        const listOptions = listBox.querySelectorAll('[role="option"]');
+// autocompleteUI
+(function () {
+    "use strict";
+    /**
+     * @description     autocompleteUI
+     * @modify          2022.04.07
+     */
+    const jsBtnPressed = {
+        /** 플러그인명 */
+        bindjQuery: 'jsBtnPressed',
+        /** 기본 옵션값 선언부 */
+        selectors: {
+            btns : document.querySelectorAll('.js-btn-press')
+        },
+        initialize() {
+            this._click(); //Modal Click
+        },
+        _click() {
+            const btns = this.selectors.btns; 
 
-        boxBtn.addEventListener("click", e => {
-            const listSelected = listBox.querySelector('[role="option"][aria-selected="true"]');
-            if (listSelected) {
-                listSelected.focus();
-            } else {
-                listOptions[0].focus();
-            }
-        });
-
-        boxBtn.addEventListener("keydown", e => {
-            if (e.keyCode === 38) { // up
-                boxBtn.click();
-                const listSelected = listBox.querySelector('[role="option"][aria-selected="true"]');
-                if (listSelected) {
-                    listSelected.focus();
-                } else {
-                    listOptions[listOptions.length - 1].focus();
-                }
-                e.preventDefault();
-            }
-            if (e.keyCode === 40) { // down
-                boxBtn.click();
-                e.preventDefault();
-            }
-        });
-
-        for (let i = 0; i < listOptions.length; i++) {
-            listOptions[i].tabIndex = -1;
-            listOptions[i].addEventListener("click", e => {
-                listSelectEvent(listBox, boxBtn, listOptions[i]);
-                boxBtn.click();
-                boxBtn.focus();
-                e.preventDefault();
-            });
-
-            listOptions[i].addEventListener("keydown", e => {
-                if (e.keyCode === 13) { // enter
-                    listOptions[i].click();
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-                if (e.keyCode === 38) { // up
-                    if (i == 0) {
-                        listOptions[listOptions.length - 1].focus();
-                        listSelectEvent(listBox, boxBtn, listOptions[listOptions.length - 1]);
-                    } else {
-                        listOptions[i - 1].focus();
-                        listSelectEvent(listBox, boxBtn, listOptions[i - 1]);
+            btns.forEach(btn => {
+                btn.addEventListener('click', e => {
+                    if(btn.classList.contains('is-pressed') === true) {
+                        btn.classList.remove('is-pressed')
+                    }else{
+                        btn.classList.add('is-pressed')
                     }
-                    e.preventDefault();
-                }
-                if (e.keyCode === 40) { // down
-                    if (i == listOptions.length - 1) {
-                        listOptions[0].focus();
-                        listSelectEvent(listBox, boxBtn, listOptions[0]);
-                    } else {
-                        listOptions[i + 1].focus();
-                        listSelectEvent(listBox, boxBtn, listOptions[i + 1]);
-                    }
-                    e.preventDefault();
-                }
-                if (e.keyCode === 9 || e.keyCode === 27) { // tab, esc
-                    boxBtn.click();
-                    boxBtn.focus();
-                    e.preventDefault();
-                }
-            });
+                })
+            })
         }
-    });
-
-    function listSelectEvent(listBox, boxBtn, listOption) {
-        const selected = listBox.querySelector('[role="option"][aria-selected="true"]');
-        const currentTxt = boxBtn.innerText;
-        const newTxt = listOption.innerText;
-        if (!selected) {
-            listOption.setAttribute("aria-selected", true);
-            boxBtn.innerHTML = boxBtn.innerHTML.replace(currentTxt, newTxt);
-        }
-        if (selected !== listOption) {
-            selected.setAttribute("aria-selected", false);
-            listOption.setAttribute("aria-selected", true);
-            boxBtn.innerHTML = boxBtn.innerHTML.replace(currentTxt, newTxt);
-        }
-    }
-}
+    };
+    window.jsBtnPressed = jsBtnPressed;
+})();
 
 
 

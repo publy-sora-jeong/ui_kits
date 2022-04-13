@@ -145,6 +145,7 @@
                             <div class="user-info">
                                 <dl>
                                     <dt>Dave Smith, Foreman</dt>
+                                    <dd></dd>
                                     <!-- <dd>Pinnacle Reforestation</dd> -->
                                 </dl>
                             </div>
@@ -203,7 +204,7 @@
                         </table>
                     </div>
                 </dd>
-                <div class="code-copy" style="display: none;">
+                <dd class="code-copy" style="display: none;">
                     <div class="tb-type01 tb--default">
                         <table>
                             <thead>
@@ -220,7 +221,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </dd>
                 <dd class="code-paste">
                     <pre class="brush:html"></pre>
                 </dd>
@@ -255,7 +256,7 @@
                         </table>
                     </div>
                 </dd>
-                <div class="code-copy" style="display: none;">
+                <dd class="code-copy" style="display: none;">
                     <div class="tb-type01 tb--compact">
                         <table>
                             <thead>
@@ -272,7 +273,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </dd>
                 <dd class="code-paste">
                     <pre class="brush:html"></pre>
                 </dd>
@@ -313,7 +314,7 @@
                         </table>
                     </div>
                 </dd>
-                <div class="code-copy" style="display: none;">
+                <dd class="code-copy" style="display: none;">
                     <div class="tb-type01 tb--default">
                         <table>
                             <tbody>
@@ -324,7 +325,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </dd>
                 <dd class="code-paste">
                     <pre class="brush:html"></pre>
                 </dd>
@@ -360,13 +361,13 @@
                 <dt class="code-box-title">attach files</dt>
                 <dd class="code-copy">
                     <div class="attach-files">
-                        <input type="file" name="file1" id="file1" value="file" tabindex="-1" aria-hidden="true" />
+                        <input type="file" name="file1" id="file1" tabindex="-1" aria-hidden="true" />
                         <input type="text" class="input" title="attached file" />
                         <button type="button" class="btn btn-attachfile"><span>files..</span></button>
                     </div>
 
                     <div class="attach-files">
-                        <input type="file" name="file1" id="file1" value="file" tabindex="-1" aria-hidden="true" />
+                        <input type="file" name="file2" id="file2" tabindex="-1" aria-hidden="true" />
                         <input type="text" class="input" title="attached file" />
                         <button type="button" class="btn btn-attachfile"><span>files..</span></button>
                     </div>
@@ -441,38 +442,17 @@
             <dl class="code-box-description">
                 <dt class="code-box-title">Listbox</dt>
                 <dd class="code-nocopy"></dd>
-                <dd class="code-copy listbox-temp">
+                <dd class="code-copy">
                     <div class="listbox">
                         <button aria-haspopup="listbox" aria-controls="selectDept" aria-expanded="false"
                             class="listbox__btn">Select Option 1</button>
-                        <ul id="selectDept" role="listbox" aria-labelledby="selectDept" class="listbox__items" hidden="false">
+                        <ul id="selectDept" role="listbox" aria-labelledby="selectDept" class="listbox__items" data-show="false">
                             <li id="li_sort01" role="option" aria-selected="false" tabindex="0">Select Option 1</li>
                             <li id="li_sort02" role="option" aria-selected="false" tabindex="0">Select Option 2</li>
                             <li id="li_sort03" role="option" aria-selected="false" tabindex="0">Select Option 3</li>
-                            <li id="li_sort04" role="option" aria-selected="true" tabindex="0">Select Option 4</li>
-                            <li id="li_sort05" role="option" aria-selected="false" tabindex="0">Select Option 5</li>
-                            <li id="li_sort06" role="option" aria-selected="false" tabindex="0">Select Option 6</li>
-                            <li id="li_sort07" role="option" aria-selected="false" tabindex="0">Select Option 7</li>
-                            <li id="li_sort08" role="option" aria-selected="false" tabindex="0">Select Option 8</li>
-                        </ul>
-                    </div>
-
-                    <div class="listbox">
-                        <button aria-haspopup="listbox" aria-controls="selectColor" aria-expanded="false"
-                            class="listbox__btn">Select Option 2</button>
-                        <ul id="selectColor" role="listbox" aria-labelledby="selectColor" class="listbox__items" hidden="false">
-                            <li id="li_sort01" role="option" aria-selected="false" tabindex="0">Select Option 1</li>
-                            <li id="li_sort02" role="option" aria-selected="true" tabindex="0">Select Option 2</li>
-                            <li id="li_sort03" role="option" aria-selected="false" tabindex="0">Select Option 3</li>
-                            <li id="li_sort04" role="option" aria-selected="false" tabindex="0">Select Option 4</li>
-                            <li id="li_sort05" role="option" aria-selected="false" tabindex="0">Select Option 5</li>
-                            <li id="li_sort06" role="option" aria-selected="false" tabindex="0">Select Option 6</li>
-                            <li id="li_sort07" role="option" aria-selected="false" tabindex="0">Select Option 7</li>
-                            <li id="li_sort08" role="option" aria-selected="false" tabindex="0">Select Option 8</li>
                         </ul>
                     </div>
                 </dd>
-
                 <dd class="code-paste">
                     <pre class="brush:html"></pre>
                 </dd>
@@ -481,266 +461,253 @@
 
         <div class="code-box">
             <dl class="code-box-description">
-                <dt  class="code-box-title">Form</dt>
+                <dt class="code-box-title">Form</dt>
                 <dd>
                     <ul class="desc-list">
-                        <li>role="alert"가 html내에 삽입되어있을경우 문서로드가 완료되면 보조기기가 경고메시지를 보내므로, JS를 사용하여 오류메시지를 동적으로 생성하여 추가해줍니다. </li>
+                        <li>role="alert"가 html내에 삽입되어있을경우 문서로드가 완료되면 보조기기가 경고메시지를 보내므로, JS를 사용하여 오류메시지를 동적으로 생성하여
+                            추가해줍니다. </li>
+                        <li>
+                            <p class="color-blue">inputmode (for mobile): input type에 따라 카상키보드가 활성되지만 inputmode속성을 추가하여
+                                키보드형식을 지정할 수 있습니다 </p>
+                            inputmode="none" 가상키보드제공하지않음. 직접구현시 사용<br>
+                            inputmode="text" default , type속성에 따라 키보드 표시 <br>
+                            inputmode="decimal" 소숫점(점)을 제공하는 숫자형키보드 <br>
+                            inputmode="numeric" 숫자형키보드 <br>
+                            inputmode="tel" 전화번호 형식 <br>
+                            inputmode="search" 검색아이콘이 표시되는 가상키보드 <br>
+                            inputmode="email" @을포함한 이메일형식을 제공 <br>
+                            inputmode="url" /, .com 주소입력에 적합한 키보드 제공
+                        </li>
                     </ul>
                 </dd>
                 <dd class="code-nocopy"></dd>
                 <dd class="code-copy">
+                    <!--input-->
                     <div class="inputbox inputbox--labeltop">
                         <label class="inputbox__label" for="firstName">First Name</label>
-                        <div  class="inputbox__input">
+                        <div class="inputbox__input">
                             <input type="text" id="firstName" name="firstName" placeholder="Label">
                         </div>
                     </div>
-                    <p  role="alert" class="msg msg--error">You must select at least 3 options.</p>
-                    
+                    <p role="alert" class="msg msg--error">You must select at least 3 options.</p>
+
+                    <!--input disabled-->
                     <div class="inputbox inputbox--labeltop">
-                        <label class="inputbox__label" for="firstName">First Name(disalbed)</label>
-                        <div  class="inputbox__input">
-                            <input type="text" id="firstName" name="firstName" placeholder="Label" disabled>
+                        <label class="inputbox__label" for="inputDisabled">Input disalbed</label>
+                        <div class="inputbox__input">
+                            <input type="text" id="inputDisabled" name="inputDisabled" placeholder="input disabled"
+                                disabled>
                         </div>
                     </div>
 
-                    
-                        <div class="row-line">
-                            <p class="col-tit">disabled</p>
-                            <div class="col-input">
-                                <input type="text" placeholder="input text" disabled>
-                            </div>
+                    <!--input readonly-->
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="inputReadonly">Input Readonly</label>
+                        <div class="inputbox__input">
+                            <input type="text" id="inputReadonly" name="inputReadonly" placeholder="input readonly"
+                                readonly>
                         </div>
-                        <div class="row-line">
-                            <p class="col-tit">Readonly</p>
-                            <div class="col-input">
-                                <input type="text" placeholder="input text" readonly>
-                            </div>
+                    </div>
+
+                    <!--input filled-->
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="inputFilled">Input filled</label>
+                        <div class="inputbox__input">
+                            <input type="text" id="inputFilled" name="inputFilled" placeholder="inputFilled"
+                                value="서울시">
                         </div>
-                        <div class="row-line">
-                            <p class="col-tit">filled</p>
-                            <div class="col-input">
-                                <input type="text" placeholder="input text" value="서울시 구로구 디지털로 300">
-                            </div>
-                        </div>
-                        <div class="row-line">
-                            <p class="col-tit">selectbox normal</p>
-                            <div class="col-input">
-                                <select name="" id="">
+                    </div>
+
+                    <!--selectbox normal -->
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="selectNormal">selectbox normal</label>
+                        <div class="inputbox__input">
+                            <div class="inputbox__select">
+                                <select name="selectNormal" id="selectNormal">
                                     <option value="1">선택</option>
+                                    <option value="2">선택</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--selectbox disalbed-->
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="selectDisabled">selectbox disbled</label>
+                        <div class="inputbox__input">
+                            <div class="inputbox__select">
+                                <select name="selectDisabled" id="selectDisabled" disabled>
                                     <option value="1">선택</option>
+                                    <option value="2">선택</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="row-line">
-                            <p class="col-tit">selectbox disabled</p>
-                            <div class="col-input">
-                                <select name="" id="" disabled>
-                                    <option value="1">선택</option>
-                                    <option value="1">선택</option>
+                    </div>
+
+                    <!--form : phone -->
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="selectPhoneAgency">Phone</label>
+                        <div class="inputbox__input inputbox__input--multi inputbox__input--multi3">
+                            <div class="inputbox__select inputbox__item">
+                                <select name="selectPhoneAgency" id="selectPhoneAgency">
+                                    <option value="1">010</option>
+                                    <option value="2">070</option>
+                                </select>
+                            </div>
+                            <span class="split">&dash;</span>
+                            <div class="inputbox__item">
+                                <input type="number" id="inputMulti2" name="inputMulti2"
+                                    placeholder="1234" inputmode="numeric">
+                            </div>
+                            <span class="split">&dash;</span>
+                            <div class="inputbox__item">
+                                <input type="number" id="inputMulti3" name="inputMulti3"
+                                    placeholder="5678" inputmode="numeric">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--form : regist number -->
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="registNumber">registNumber</label>
+                        <div class="inputbox__input inputbox__input--multi inputbox__input--multi2">
+                            <div class="inputbox__item">
+                                <input type="number" id="registNumber" name="registNumber"
+                                    placeholder="920425" inputmode="numeric">
+                            </div>
+                            <span class="split">&dash;</span>
+                            <div class="inputbox__item">
+                                <input type="number" id="registNumber2" name="registNumber2" placeholder="*******"
+                                    inputmode="numeric">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--form : email-->
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="email">Email</label>
+                        <div class="inputbox__input inputbox__input--multi inputbox__input--multi2">
+                            <div class="inputbox__item">
+                                <input type="text" inputmode="email" title="email" id="email" name="email"
+                                    placeholder="hong-gil-dong">
+                            </div>
+                            <span class="split split--long">&commat;</span>
+                            <div class="inputbox__select inputbox__item">
+                                <select name="selectEmailDomain" id="selectEmailDomain">
+                                    <option value="1">naver.com</option>
+                                    <option value="2">google.com</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="row-line">
-                            <div class="col-tit"> 휴대폰번호</div>
-                            <div class="col-input col-input--phone">
-                                <select name="" class="sel_phone_agency">
-                                    <option value="select">통신사 선택</option>
-                                    <option value="select">선택</option>
-                                    <option value="select">선택</option>
-                                    <option value="select">선택</option>
-                                    <option value="select">선택</option>
-                                </select>
-    
-    
-                                <select name="" class="sel_phone_num">
-                                    <option value="select">010</option>
-                                    <option value="select">선택</option>
-                                    <option value="select">선택</option>
-                                    <option value="select">선택</option>
-                                    <option value="select">선택</option>
-                                </select>
-    
-                                <div class="input-phonenum">
-                                    <input type="text" title="" pattern="[0-9]*" inputmode="numeric">
-                                    <span class="hyphen">&dash;</span>
-                                    <input type="text" title="" pattern="[0-9]*" inputmode="numeric">
-                                </div>
-    
+                    </div>
+
+                    <!--form : card info-->
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="cardInfo">Card Info</label>
+                        <div class="inputbox__input inputbox__input--multi inputbox__input--multi4">
+                            <div class="inputbox__item">
+                                <input type="number" id="cardInfo" name="cardInfo" placeholder="0000"
+                                    inputmode="numeric">
+                            </div>
+                            <span class="split">&dash;</span>
+                            <div class="inputbox__item">
+                                <input type="number" id="cardInfo2" name="cardInfo2" placeholder="0000"
+                                    inputmode="numeric">
+                            </div>
+                            <span class="split">&dash;</span>
+                            <div class="inputbox__item">
+                                <input type="number" id="cardInfo3" name="cardInfo3" placeholder="0000"
+                                    inputmode="numeric">
+                            </div>
+                            <span class="split">&dash;</span>
+                            <div class="inputbox__item">
+                                <input type="number" id="cardInfo4" name="cardInfo4" placeholder="0000"
+                                    inputmode="numeric">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--form : button with input  -->
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="updateEmail"><strong>Update your email</strong> Change
+                            the email address you want associated with your account. </label>
+                        <div class="inputbox__input inputbox__input--multibtn">
+                                <input type="text" id="updateEmail" name="updateEmail"
+                                    placeholder="you@example.com" inputmode="email">
+                                <button type="button">Save</button>
+                        </div>
+                    </div>
+
+                        <!--form : search   -->
+                        <div class="inputbox inputbox--labeltop">
+                            <div class="inputbox__input inputbox__input--search">
+                                    <input type="text" id="searchText" name="searchText"
+                                        placeholder="search.." inputmode="search">
+                                    <button type="button"><i class="blind">Search</i></button>
                             </div>
                         </div>
     
-                        <div class="row-line">
-                            <div class="col-tit">주민등록번호</div>
-                            <div class="col-input col-input--multi ">
-                                <input type="text" title="주민등록번호 앞자리" pattern="[0-9]*" inputmode="numeric">
-                                <span class="hyphen">&dash;</span>
-                                <input type="text" title="주민등록번호 뒷자리" pattern="[0-9]*" inputmode="numeric">
-                            </div>
+
+                    <!-- Textarea -->
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="textareaSample">Textarea</label>
+                        <div class="inputbox__input">
+                            <textarea name="textareaSample" id="textareaSample" cols="30" rows="10">안녕하세요.</textarea>
                         </div>
-                        <div class="row-line">
-                            <div class="col-tit"> 이메일</div>
-                            <div class="col-input col-input--email" style="margin-top: 0;">
-                                <div class="set-1">
-                                    <input type="text" title="이메일주소">
-                                    <span class="at">@</span>
-                                    <input type="text" title="이메일도메인">
-                                </div>
-                                <select name="" id="">
-                                    <option value="select">선택</option>
-                                    <option value="select">선택</option>
-                                    <option value="select">선택</option>
-                                    <option value="select">선택</option>
-                                    <option value="select">선택</option>
-                                </select>
-                                <p class="t-help--mark mt-0">고객님께서 작성 완료하신 전자계약서가 선택하신 이메일 주소로 전송됩니다.</p>
+                    </div>
+
+                    <!--button select -->
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label" for="textareaSample">Buttons</label>
+                        <div class="inputbox__input inputbox__input--multibox inputbox__input--multibox-type4">
+                            <div class="inputbox__input">
+                                <button type="button" class="js-btn-press">Button 1</button>
                             </div>
-                        </div>
-    
-                        <div class="row-line">
-                            <div class="col-tit">카드번호</div>
-                            <div class="col-input col-input-full">
-                                <div class="int_bx wrap">
-                                    <div class="cnum">
-                                        <div class="cnum_box">
-                                            <input type="number" pattern="[0-9]*" inputmode="numeric">
-                                            <span class="hy">-</span>
-                                            <input type="number" pattern="[0-9]*" inputmode="numeric">
-                                            <span class="hy">-</span>
-                                            <input type="number" pattern="[0-9]*" inputmode="numeric">
-                                            <span class="hy">-</span>
-                                            <input type="number" pattern="[0-9]*" inputmode="numeric">
-                                        </div>
-                                    </div>
-                                    <ul class="info_txt">
-                                        <li>Additional info</li>
-                                    </ul>
-                                </div>
+                            <div class="inputbox__input">
+                                <button type="button" class="js-btn-press">Button 2</button>
                             </div>
-                        </div>
-                        <div class="row-line">
-                            <div class="col-tit">input (100%)</div>
-                            <div class="col-input col-input-full">
-                                <input type="text" placeholder="100%">
-                                <p class="msg--error mt-10">다시 입력해주세요. </p>
+                            <div class="inputbox__input">
+                                <button type="button" class="js-btn-press is-pressed">Button 3</button>
                             </div>
-    
-                        </div>
-    
-                        <div class="row-line">
-                            <div class="col-tit">Textarea</div>
-                            <div class="col-input col-input-full">
-                                <textarea name="" id="" cols="30" rows="10">텍스트텍스트텍스트텍스트텍스트텍스트</textarea>
-                                <p class="max-len-text">최대 300자</p>
-                            </div>
-                        </div>
-    
-                        <div class="row-line">
-                            <p class="col-tit">Select Button</p>
-                            <div class="col-input">
-    
-                                <div class="list_form">
-                                    <ul class="short_btn2 sb_active">
-                                        <li class="on"><a href="#">SKT</a></li>
-                                        <li><a href="#">KT</a></li>
-                                    </ul>
-                                    <ul class="short_btn2 sb_active">
-                                        <li><a href="#">LG U+</a></li>
-                                        <li>
-                                            <select name="" id="">
-                                                <option value="">선택</option>
-                                                <option value="">선택</option>
-                                                <option value="">선택</option>
-                                            </select>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-    
-    
-                        <div class="row-line">
-                            <p class="col-tit">Select Button</p>
-                            <div class="col-input">
-    
-                                <div class="list_form">
-                                    <ul class="short_btn2 short_btn2_2type sb_active">
-                                        <li class="on"><a href="#">short_btn2_2type</a></li>
-                                        <li><a href="#">short_btn2_2type</a></li>
-                                    </ul>
-                                </div>
-    
-                                <div class="list_form mt-10">
-                                    <ul class="short_btn2 short_btn2_2type sb_active">
-                                        <li class="on"><a href="#">short_btn2_2type</a></li>
-                                        <li>
-                                            <select name="" id="">
-                                                <option value="">select</option>
-                                                <option value="">select</option>
-                                                <option value="">select</option>
-                                            </select>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row-line">
-                            <p class="col-tit">Select Button (disable)</p>
-                            <div class="col-input">
-                                <div class="list_form">
-                                    <ul class="short_btn2 sb_active">
-                                        <li><a class="disable" href="#">Select1</a></li>
-                                        <li><a class="disable" href="#">Select2</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row-line">
-                            <div class="col-tit">Select Button (single)</div>
-                            <div class="col-input">
-                                <div class="list_form">
-                                    <ul class="short_btn2 sb_active  short_btn_single">
-                                        <li><a href="#">GO</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-          
-                        <!-- multiSelect-sidebtn -->
-                        <div class="row-line">
-                            <div class="col-tit">Select</div>
-                            <div class="col-input col-input--multiSelect multiSelect-sidebtn ">
-                                <select name="select_account" id="select_account">
-                                    <option value="account">1234 5464 5465 3356</option>
-                                </select>
-                                <button type="button" href="#" class="btn">Search</button>
-                            </div>
-                        </div>
-    
-                        <div class="row-line">
-                            <div class="col-tit">Select Account</div>
-                            <div class="col-input col-select-aria">
-                                <button aria-haspopup="listbox" aria-controls="selectBankAccount" aria-expanded="false"
-                                    class="btn-select-aria">Select Option 1</button>
-                                <ul id="selectBankAccount" role="listbox" aria-labelledby="계좌(은행)목록" style="display:none">
-                                    <li id="" role="option" aria-selected="true" tabindex="0">Option 1</li>
-                                    <li id="" role="option" aria-selected="false" tabindex="0">Option 2 </li>
-                                    <li id="" role="option" aria-selected="false" tabindex="0">Option 3 </li>
-                                    <li id="" role="option" aria-selected="false" tabindex="0">Option 4 </li>
+                            <div class="inputbox__input inputbox__input--bg-white listbox">
+                                <button aria-haspopup="listbox" aria-controls="buttons_select" aria-expanded="false"
+                                    class="listbox__btn">Select</button>
+                                <ul id="buttons_select" role="listbox" aria-labelledby="buttons_select"
+                                    class="listbox__items" data-show="false">
+                                    <li id="select_option_1" role="option" aria-selected="false" tabindex="0">Select Option 1
+                                    </li>
+                                    <li id="select_option_2" role="option" aria-selected="false" tabindex="0">Select Option 2
+                                    </li>
+                                    <li id="select_option_3" role="option" aria-selected="false" tabindex="0">Select Option 3
+                                    </li>
+                                    <li id="select_option_4" role="option" aria-selected="false" tabindex="0">Select Option 4
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    <p data-for="buttons_select" class="temp-result-value">selected : <span></span></p>
 
+                    <!--button select 2ea -->
+                    <div class="inputbox inputbox--labeltop">
+                        <label class="inputbox__label">Buttons</label>
+                        <div class="inputbox__input inputbox__input--multibox">
+                            <div class="inputbox__input">
+                                <button type="button" class="js-btn-press is-pressed">Button</button>
+                            </div>
+                            <div class="inputbox__input">
+                                <button type="button" class="js-btn-press">Button</button>
+                            </div>
+                        </div>
+                    </div>
                 </dd>
-
-                <dd class="code-paste">
+                <dd class="code-paste none">
                     <pre class="brush:html"></pre>
                 </dd>
             </dl>
-        </div> 
+        </div>
 
-        <p style="height: 1000px;"></p>
+        <!-- <p style="height: 1000px;"></p> -->
 
 
         <!-- 

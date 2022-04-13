@@ -67,7 +67,7 @@ input[type=radio] {border-radius: 100%;}
 input::-webkit-outer-spin-button, 
 input::-webkit-inner-spin-button {-webkit-appearance: none;margin: 0;color: #222;} // Spinner
 input[type=number] {-moz-appearance: textfield;color: #222;}
-button { appearance: button; border: none; }
+button { appearance: button; border: none; cursor: pointer;}
 input, select, button, textarea { 
     background-color:transparent;
     border: none; padding: 0; 
@@ -76,7 +76,8 @@ input, select, button, textarea {
     // &:focus-visible{ outline: none; }
 }
 select{position: relative;appearance: none;overflow: visible;}
-[hidden] {display: none;}
+[data-show="false"] {display: none;}
+[data-show="true"] {display: block;}
 
 //placeholder 
 ::-webkit-input-placeholder {font-family: inherit; font-size: inherit; }
