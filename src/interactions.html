@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="static/css/vendor/swiper-bundle.css">
     <link rel="stylesheet" href="static/css/vendor/shCoreDefault.css">
     <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/interaction.css">
     <title>Design Styleguide</title>
 </head>
 
@@ -27,146 +28,302 @@
         </div>
     </div>
 
-    <section class="guide-wrapper">
-        <div class="code-box">
-            <dl class="code-box-description">
-                <dt  class="code-box-title">parallax</dt>
-                <dd class="code-copy">
-
-                </dd>
-                <!-- <dd class="code-paste">
-                    <pre class="brush:html"></pre>
-                </dd> -->
-            </dl>
-        </div>
-
-
-        <div class="code-box">
-            <dl class="code-box-description">
-                <dt  class="code-box-title">svg animation</dt>
-                <dd class="code-copy">
-                    <ul class="desc-list">
-                        <li>svgElement.getTotalLength();</li>
-                        <li>
-                            $(".merit-svg svg *").css({
-                            'stroke-dasharray': 400,
-                            'stroke-dashoffset': 400
-                            });
-                        </li>
-
-                        <li>
-                            
-                            <figure class="svg">
-                                <svg version="1.1" id="merit_i1" xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="46px"
-                                height="42.255px" viewBox="0 0 46 42.255" enable-background="new 0 0 46 42.255"
-                                xml:space="preserve">
-                                <polygon fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10"
-                                    points="45.284,41.53 0.659,41.53 8.189,19.024 37.754,19.024 		"></polygon>
-                                <line fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10" x1="6.314" y1="24.625" x2="39.629" y2="24.625"></line>
-                                <line fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10" x1="3.897" y1="31.85" x2="42.046" y2="31.85"></line>
-                                <line fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10" x1="11.815" y1="41.53" x2="15.582" y2="19.024"></line>
-                                <line fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10" x1="22.972" y1="41.53" x2="22.972" y2="19.024"></line>
-                                <line fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10" x1="34.129" y1="41.53" x2="30.364" y2="19.024"></line>
-                                <path fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10"
-                                    d="M15.115,14.731 c0-4.338,3.519-7.857,7.856-7.857c4.34,0,7.856,3.52,7.856,7.857">
-                                </path>
-                                <line fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10" x1="23.132" y1="0" x2="23.132" y2="3.802"></line>
-                                <line fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10" x1="12.892" y1="3.978" x2="15.581" y2="6.668"></line>
-                                <line fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10" x1="8.241" y1="14.731" x2="12.043" y2="14.731"></line>
-                                <path fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10" d="M14.907,22.123"></path>
-                                <line fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10" x1="33.054" y1="3.978" x2="30.364" y2="6.668"></line>
-                                <line fill="none" stroke="#333" stroke-width="1.4" stroke-linejoin="round"
-                                    stroke-miterlimit="10" x1="37.704" y1="14.731" x2="33.903" y2="14.731"></line>
-                            </svg>
-                            </figure>
-
-                            <script>
-
-                            </script>
-                        </li>
-                    </ul>
-                </dd>
-                <!-- <dd class="code-paste">
-                    <pre class="brush:html"></pre>
-                </dd> -->
-            </dl>
-        </div>
-
-
-        
-        <div class="code-box">
-            <dl class="code-box-description">
-                <dt  class="code-box-title">Swiper.js</dt>
-                <dd class="code-copy">
-
-                </dd>
-            </dl>
-        </div>
-
-        <div class="code-box">
-            <dl class="code-box-description">
-                <dt  class="code-box-title">-</dt>
-                <dd class="code-copy">
-
-                </dd>
-                <!-- <dd class="code-paste">
-                    <pre class="brush:html"></pre>
-                </dd> -->
-            </dl>
-        </div>
-    </section>
-
+   
     
-    <script src="static/js/vendor/jquery/jquery-1.12.1.min.js"></script>
-    <script src="static/js/vendor/jquery/jquery-migrate-1.4.1.min.js"></script>
+    <div class="scroll-interaction">
+        <section class="hero">
+            <div class="hero__typo">
+                <h2 id="element"></h2>
+                <p>EMBRACE THE POWER OF HABIT</p>
+                
+            </div>
+            <a href="#" class="link-explore"><span>EXPLORE NOW</span></a>
+        </section>
+        <div class="marquee-wrap">
+            <div class="marquee marquee--first">
+                <span>AVAILABLE NOW AT WALMART</span>
+                <i class="icon">🥕</i>
+                <span>#DOITDAILY</span>
+                <i class="icon">🥕</i>
+                <span>AVAILABLE NOW AT WALMART</span>
+                <i class="icon">🥕</i>
+                <span>#DOITDAILY</span>
+                <i class="icon">🥕</i>
+                <span>AVAILABLE NOW AT WALMART</span>
+                <i class="icon">🥕</i>
+                <span>#DOITDAILY</span>
+                <i class="icon">🥕</i>
+                <span>AVAILABLE NOW AT WALMART</span>
+            </div>
+            <div class="marquee marquee--second">
+                <span>AVAILABLE NOW AT WALMART</span>
+                <i class="icon">🥕</i>
+                <span>#DOITDAILY</span>
+                <i class="icon">🥕</i>
+                <span>AVAILABLE NOW AT WALMART</span>
+                <i class="icon">🥕</i>
+                <span>#DOITDAILY</span>
+                <i class="icon">🥕</i>
+                <span>AVAILABLE NOW AT WALMART</span>
+                <i class="icon">🥕</i>
+                <span>#DOITDAILY</span>
+                <i class="icon">🥕</i>
+                <span>AVAILABLE NOW AT WALMART</span>
+                <i class="icon">🥕</i>
+                <span>#DOITDAILY</span>
+            </div>
+        </div>
+
+        <section class="section-info">
+            <div class="section-title">
+                <i class="ani-icon ani-icon--lighting"></i>
+                <h3>We make vitamins that are affordable, fun to take, easy <br />
+                    to remember to take — and most importantly, that work —<br />
+                    so you can get on with doing the more exciting things in life.</h3>
+            </div>
+            <div class="info-item">
+                <div class="info-item__first">
+                    <figure class="img1 info-item__img">
+                        <img src="static/images/interaction/scroll/img3.png" alt="img">
+                    </figure>
+                    <div class="info-item__text">
+                        <p class="num">01</p>
+                        <p class="title">KEEP IT SIMPLE</p>
+                        <p class="text">We believe looking after your health should be as simple and straightforward as
+                            possible, so this means making products that fit easily into your life.</p>
+                    </div>
+                </div>
+                <div class="info-item__second">
+
+                    <div class="info-item__text">
+                        <p class="num">02</p>
+                        <p class="title">THE WHOLE PICTURE</p>
+                        <p class="text">When you attend to all aspects of yourself — your body, mind, spirit and soul —
+                            you create the foundation for your best possible health. </p>
+                    </div>
+                    <figure class="img2 info-item__img">
+                        <img src="static/images/interaction/scroll/img3.png" alt="img">
+                    </figure>
+                </div>
+                <div class="info-item__third">
+                    <div class="slide-container">
+                        <div class="slide-item slide-item--active">
+                            <img src="static/images/interaction/scroll/img3.png" alt="img">
+                        </div>
+                        <div class="slide-item bg2">
+                            <img src="static/images/interaction/scroll/img3.png" alt="img">
+                        </div>
+                        <div class="slide-item">
+                            <img src="static/images/interaction/scroll/img3.png" alt="img">
+                        </div>
+                        <div class="slide-item bg3">
+                            <img src="static/images/interaction/scroll/img3.png" alt="img">
+                        </div>
+                    </div>
+                </div>
+                <div class="info-item__fourth mt-50">
+                    <figure class="img3 info-item__img img-overlay">
+                        <div class="img-overlay__cover"></div>
+                        <img src="static/images/interaction/scroll/img3.png" alt="img">
+                    </figure>
+                    <div class="info-item__text">
+                        <p class="num">03</p>
+                        <p class="title">WELLNESS <br />FOR ALL</p>
+                        <p class="text">For too long, ‘wellness’ (and the myriad of products that go along with it) has
+                            been largely overcomplicated, expensive and inaccessible. We think feeling good is for
+                            everyone, and so we take an approach that’s as inclusive as possible-by making products that
+                            are affordable and widely available.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="main-habit">
+            <h3>consequuntur <span>(noun)</span></h3>
+            <p>A regular tendency or repeated practice, especially one <br />
+                that is hard to give up. Helps create continuity and order.</p>
+        </section>
+        <section class="main-range ">
+            <div class="parallax-elem">
+                <h3 class="parallax-text">MEET THE RANGE</h3>
+                <div class="parallax-img"></div>
+            </div>
+        </section>
+
+        <section class="main-elem">
+            <h1 class="">Parallax</h1>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos consequuntur officia, reprehenderit
+            dicta accusantium, distinctio nobis, adipisci illo optio temporibus itaque at. Mollitia illo velit assumenda
+            accusantium neque! Repellendus, voluptates.
+            Dignissimos eveniet veniam incidunt ullam, enim quis corporis obcaecati est nisi, maxime impedit voluptatum
+            qui, dolore iste porro vel voluptate odio molestiae. Voluptate mollitia hic dicta aut, nobis vel cumque.
+            Impedit minus aspernatur iure corporis dignissimos soluta mollitia, velit laudantiunt? Laboriosam, hic
+            veritatis sapiente, obcaecati corporis rerum eum repellendus incidunt itaque, doloremque nobis perferendis.
+            Sed corrupti libero esse voluptatum.
+            Labore quasi, atque a fugiat voluptatem obcaecati in numquam perferendis aperiam quos vel provident omnis
+            aliquam voluptates nobis eos eveniet soluta rem itaque deserunt nisi cum. Ipsam natus eaque dolore.
+            Eius facere consequuntur accusamus cupiditate velit unde dolorum alias inve laboriosam? Distinctio excepturi
+            error nam, ullam nesciunt harum, cumque incidunt porro saepe quas, ratione provident voluptate magni autem.
+            Praesentium!
+            Unde nostrum nihil ipsa, debitis saepe, minus labore perferendis placeat corrupti suscipit veritatis, quia
+            mollitia vero sit delectus nam sequi fuga hic et earum. Similique repudiandae omnis expedita qui at?
+            Eum vitae, eligendi fugit laboriosam cumque veniam, voluptate nostrum in molestias tenetur culpa
+            exercitationem fugiat blanditiis totam non animi praesentium, quod voluptatibus nobis commodi. Illo
+            blanditiis nihil tenetur commodi aliquam?
+            Unde nostrum nihil ipsa, debitis saepe, minus labore perferendis placeat corrupti suscipit veritatis, quia
+            mollitia vero sit delectus nam sequi fuga hic et earum. Similique repudiandae omnis expedita qui at?
+            Eum vitae, eligendi fugit laboriosam cumque veniam, voluptate nostrum in molestias tenetur culpa
+            exercitationem fugiat blanditiis totam non animi praesentium, quod voluptatibus nobis commodi. Illo
+            blanditiis nihil tenetur commodi aliquam?
+            Unde nostrum nihil ipsa, debitis saepe, minus labore perferendis placeat corrupti suscipit veritatis, quia
+            mollitia vero sit delectus nam sequi fuga hic et earum. Similique repudiandae omnis expedita qui at?
+            Eum vitae, eligendi fugit laboriosam cumque veniam, voluptate nostrum in molestias tenetur culpa
+            exercitationem fugiat blanditiis totam non animi praesentium, quod voluptatibus nobis commodi. Illo
+            blanditiis nihil tenetur commodi aliquam?
+
+
+            Unde nostrum nihil ipsa, debitis saepe, minus labore perferendis placeat corrupti suscipit veritatis, quia
+            mollitia vero sit delectus nam sequi fuga hic et earum. Similique repudiandae omnis expedita qui at?
+            Eum vitae, eligendi fugit laboriosam cumque veniam, voluptate nostrum in molestias tenetur culpa
+            exercitationem fugiat blanditiis totam non animi praesentium, quod voluptatibus nobis commodi. Illo
+            blanditiis nihil tenetur commodi aliquam?
+        </section>
+        <section>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos consequuntur officia, reprehenderit
+            dicta accusantium, distinctio nobis, adipisci illo optio temporibus itaque at. Mollitia illo velit assumenda
+            accusantium neque! Repellendus, voluptates.
+            Dignissimos eveniet veniam incidunt ullam, enim quis corporis obcaecati est nisi, maxime impedit voluptatum
+            qui, dolore iste porro vel voluptate odio molestiae. Voluptate mollitia hic dicta aut, nobis vel cumque.
+            Impedit minus aspernatur iure corporis dignissimos soluta mollitia, velit laudantium porro beatae vel
+            repudiandae, officiis ab at quae molestiae voluptate quis error. Amet corrupti odio recusandae a laborum
+            illo nemo!
+            Eum libero amet atque. Adipisci, fuga labore! Reiciendis id cupiditate mollitia quidem ex maiores, vitae aut
+            inventore quas quia laboriosam non eaque quae! Delectus recusandae atque quam ipsa veritatis doloremque.
+            Sequi temporibus vitae harum repellendus qui quasi voluptatem dolor vel maxime, nihil placeat optio nisi
+            nemo in ab quibusdam aliquid. Fuga, quisquam vel autem modi unde eius nemo animi ex!
+            emo natus libero cumque dolorum. Vitae illum quibusdam corporis, recusandae ea, minima veritatis sapiente
+            dolorum commodi, placeat earum doloremque?
+            Ea doloremque corporis nihil accusamus non repellendus aliquid. Ab nesciunt e molestias assumenda sint
+            facere distinctio impedit totam dolorem et! Minus voluptate praesentium ipsam ut saepe nobis at eaque sed
+            expedita fugiat.
+            Voluptatibus explicabo rerum, perspiciatis libero velit reiciendis quos odio asperiores. Cupiditate dolores
+            nam esse aperiam quia officia, ullam aliquid officiis doloremque pariatur! Quas voluptatum, perferendis
+            voluptate ex voluptatibus optio placeat!
+            Exercitationem praesentium assumenda possimus libero molestiae? Quibusdam nobis recusandae, fuga ipsum autem
+            possimus? Ut temporibus facere pariatur quidem, deleniti perferendis nemo sequi dicta, voluptate beatae
+            accusamus est modi officia nam!
+            Commodi ea enim eaque esse corporis modi dolorem aspernatur placeat totam laboriosam? Distinctio excepturi
+            error nam, ullam nesciunt harum, cumque incidunt porro saepe quas, ratione provident voluptate magni autem.
+            Praesentium!
+            Unde nostrum nihil ipsa, debitis saepe, minus labore perferendis placeat corrupti suscipit veritatis, quia
+            mollitia vero sit delectus nam sequi fuga hic et earum. Similique repudiandae omnis expedita qui at?
+            Eum vitae, eligendi fugit laboriosam cumque veniam, voluptate nostrum in molestias tenetur culpa
+            exercitationem fugiat blanditiis totam non animi praesentium, quod voluptatibus nobis commodi. Illo
+            blanditiis nihil tenetur commodi aliquam?
+        </section>
+        <section>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos consequuntur officia, reprehenderit
+            dicta accusantium, distinctio nobis, adipisci illo optio temporibus itaque at. Mollitia illo velit assumenda
+            accusantium neque! Repellendus, voluptates.
+            Dignissimos eveniet veniam incidunt ullam, enim quis corporis obcaecati est nisi, maxime impedit voluptatum
+            qui, dolore iste porro vel voluptate odio molestiae. Voluptate mollitia hic dicta aut, nobis vel cumque.
+            Impedit minus aspernatur iure corporis dignissimos soluta mollitia, velit laudantium porro beatae vel
+            repudiandae, officiis ab at quae molestiae voluptate quis error. Amet corrupti odio recusandae a laborum
+            illo nemo!
+            Eum libero amet atque. Adipisci, fuga labore! Reiciendis id cupiditate mollitia quidem ex maiores, vitae aut
+            inventore quas quia laboriosam non eaque quae! Delectus recusandae atque quam ipsa veritatis doloremque.
+            Sequi temporibus vitae harum repellendus qui quasi voluptatem dolor vel maxime, nihil placeat optio nisi
+            nemo in ab quibusdam aliquid. Fuga, quisquam vel autem modi unde eius nemo animi ex!
+            emo natus libero cumque dolorum. Vitae illum quibusdam corporis, recusandae ea, minima veritatis sapiente
+            dolorum commodi, placeat earum doloremque?
+            Ea doloremque corporis nihil accusamus non repellendus aliquid. Ab nesciunt molscipit quae autem eligendi
+            blanditiis maxime dicta, ratione delectus aut provident perspiciatis minima quis optio corrupti accusamus
+            nobis deleniti.
+            Sapiente quas dolores distinctio laboriosam minus suscipit quo qui sed architecto, inventore accusamus
+            incidunt ad nisi rem iusto! Repudiandae provident tempore dolor doloremque, esse nulla soluta veritatis
+            mollitia nesciunt repellat.
+            Exercitationem, deleniti officia officiis numquam neque, quas vitae labore molestias assumenda sint facere
+            distinctio impedit totam dolorem et! Minus voluptate praesentium ipsam ut saepe nobis at eaque sed expedita
+            fugiat.
+            Voluptatibus explicabo rerum, perspiciatis libero velit reiciendis quos odio asperiores. Cupiditate dolores
+            nam esse aperiam quia officia, ullam aliquid officiis doloremque pariatur! Quas voluptatum, perferendis
+            voluptate ex voluptatibus optio placeat!
+            Exercitationem praesentium assumenda possimus libero molestiae? Quibusdam nobis recusandae, fuga ipsum autem
+            possimus? Ut temporibus facere pariatur quidem, deleniti perferendis nemo sequi dicta, voluptate beatae
+            accusamus est modi officia nam!
+            Commodi ea enim eaque esse corporis modi dolorem aspernatur placeat totam laboriosam? Distinctio excepturi
+            error nam, ullam nesciunt harum, cumque incidunt porro saepe quas, ratione provident voluptate magni autem.
+            Praesentium!
+            Unde nostrum nihil ipsa, debitis saepe, minus labore perferendis placeat corrupti suscipit veritatis, quia
+            mollitia vero sit delectus nam sequi fuga hic et earum. Similique repudiandae omnis expedita qui at?
+            Eum vitae, eligendi fugit laboriosam cumque veniam, voluptate nostrum in molestias tenetur culpa
+            exercitationem fugiat blanditiis totam non animi praesentium, quod voluptatibus nobis commodi. Illo
+            blanditiis nihil tenetur commodi aliquam?
+        </section>
+        <section>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos consequuntur officia, reprehenderit
+            dicta accusantium, distinctio nobis, adipisci illo optio temporibus itaque at. Mollitia illo velit assumenda
+            accusantium neque! Repellendus, voluptates.
+            Dignissimos eveniet veniam incidunt ullam, enim quis corporis obcaecati est nisi, maxime impedit voluptatum
+            qui, dolore iste porro vel voluptate odio molestiae. Voluptate mollitia hic dicta aut, nobis vel cumque.
+            Impedit minus aspernatur iure corporis dignissimos soluta mollitia, velit laudantium porro beatae vel
+            repudiandae, officiis ab at quae molestiae voluptate quis error. Amet corrupti odio recusandae a laborum
+            illo nemo!
+            Eum libero amet atque. Adipisci, fuga labore! Reiciendis id cupiditate mollitia quidem ex maiores, vitae aut
+            inventore quas quia laboriosam non eaque quae! Delectus recusandae atque quam ipsa veritatis doloremque.
+            Sequi temporibus vitae harum repellendus qui quasi voluptatem dolor vel maxime, nihil placeat optio nisi
+            nemo in ab quibusdam aliquid. Fuga, quisquam vel autem modi unde eius nemo animi ex!
+            emo natus libero cumque dolorum. Vitae illum quibusdam cobero molestiae? Quibusdam nobis recusandae, fuga
+            ipsum autem possimus? Ut temporibus facere pariatur quidem, deleniti perferendis nemo sequi dicta, voluptate
+            beatae accusamus est modi officia nam!
+            Commodi ea enim eaque esse corporis modi dolorem aspernatur placeat totam laboriosam? Distinctio excepturi
+            error nam, ullam nesciunt harum, cumque incidunt porro saepe quas, ratione provident voluptate magni autem.
+            Praesentium!
+            Unde nostrum nihil ipsa, debitis saepe, minus labore perferendis placeat corrupti suscipit veritatis, quia
+            mollitia vero sit delectus nam sequi fuga hic et earum. Similique repudiandae omnis expedita qui at?
+            Eum vitae, eligendi fugit laboriosam cumque veniam, voluptate nostrum in molestias tenetur culpa
+            exercitationem fugiat blanditiis totam non animi praesentium, quod voluptatibus nobis commodi. Illo
+            blanditiis nihil tenetur commodi aliquam?
+        </section>
+        <section>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos consequuntur officia, reprehenderit
+            dicta accusantium, distinctio nobis, adipisci illo optio temporibus itaque at. Mollitia illo velit assumenda
+            accusantium neque! Repellendus, voluptates.
+            Dignissimos eveniet veniam incidunt ullam, enim quis corporis obcaecati est nisi, maxime impedit voluptatum
+            qui, dolore iste porro vel voluptate odio molestiae. Voluptate mollitia hic dicta aut, nobis vel cumque.
+            Impedit minus aspernatur iure corporis dignissimos soluta mollitia, velit laudantium porro beatae vel
+            repudiandae, officiis ab at quae molestiae voluptate quis error. Amet corrupti odio recusandae a laborum
+            illo nemo!
+            Eum libero amet atque. Adipisci, fuga labore! Reiciendis id cupiditate mollitia quidem ex maiores, vitae aut
+            inventore quas quia laboriosam non eaque quae! Delectus recusandae atque quam ipsa veritatis doloremque.
+            Sequi temporibus vitae harum repellendus qui quasi voluptatem dolor vel maxime, nihil placeat optio nisi
+            nemo in ab quibusdam aliquid. Fuga, quisquam vel autem modi unde eius nemo animi ex!
+            emo natus libero cumqostrum nihil ipsa, debitis saepe, minus labore perferendis placeat corrupti suscipit
+            veritatis, quia mollitia vero sit delectus nam sequi fuga hic et earum. Similique repudiandae omnis expedita
+            qui at?
+            Eum vitae, eligendi fugit laboriosam cumque veniam, voluptate nostrum in molestias tenetur culpa
+            exercitationem fugiat blanditiis totam non animi praesentium, quod voluptatibus nobis commodi. Illo
+            blanditiis nihil tenetur commodi aliquam?
+        </section>
+    </div>
+
+
+    <!-- <script src="static/js/vendor/jquery/jquery-1.12.1.min.js"></script>
+    <script src="static/js/vendor/jquery/jquery-migrate-1.4.1.min.js"></script> -->
     <script src="static/js/vendor/swiper/swiper-bundle.min.js"></script>
 
+    <script src="static/js/vendor/typeit/index.umd.js"></script>
+
     <!-- code highlighter -->
-    <script type="text/javascript" src="static/js/vendor/highlighter/shCore.js"></script>
-    <script type="text/javascript" src="static/js/vendor/highlighter/shBrushXml.js"></script>
-    <script type="text/javascript" src="static/js/vendor/highlighter/shBrushJScript.js"></script>
-    <script type="text/javascript" src="static/js/vendor/highlighter/shBrushCss.js"></script>
+    <script src="static/js/vendor/highlighter/shCore.js"></script>
+    <script src="static/js/vendor/highlighter/shBrushXml.js"></script>
+    <script src="static/js/vendor/highlighter/shBrushJScript.js"></script>
+    <script src="static/js/vendor/highlighter/shBrushCss.js"></script>
+    
 
     <!--UI js-->
-    <script src="static/js//ui/ui.front.js"></script>
+    <!-- <script src="static/js//ui/ui.front.js"></script> -->
+    <script src="static/js//ui/ui.scroll.js"></script>
 
-    <script>
-        // 코드 복사
-        $('.code-copy').each(function () {
-            htmlCopy($(this));
-        });
-        SyntaxHighlighter.all();
-        SyntaxHighlighter.defaults['toolbar'] = false;
-
-        function htmlCopy(sel) {
-            function htmlEscape(s) {
-                return s
-                    .replace(/&/g, '&amp;')
-                    .replace(/</g, '&lt;')
-                    .replace(/>/g, '&gt;');
-            }
-            var quineHtml = htmlEscape(
-                sel.html()
-            );
-            quineHtml = quineHtml.replace(
-                /&lt;script src[\s\S]*?&gt;&lt;\/script&gt;|&lt;!--\?[\s\S]*?--&gt;|&lt;pre\b[\s\S]*?&lt;\/pre&gt;/g,
-                '<span class="operative">$&<\/span>');
-            sel.parent().find('.code-paste > pre').html(quineHtml);
-        }
-    </script>
 
 </body>
 

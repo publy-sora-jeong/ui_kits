@@ -7,27 +7,28 @@ documentReady(function () {
     fulldownNavigation.initialize(); //상단 네비게이션 (전체메뉴)
     showTooltip.initialize(); //툴팁 
     tabUI.initialize(); //탭메뉴 
-    
+    jsBtnToggle.initialize();
+
     sideNavigation.initialize(); //Siden avigation
     swiperSlides.initialize(); //Siden avigation 
     ariaModal.initialize(); //Modal 팝업 
     selectListbox.initialize(); //selectListbox 셀렉트박스 UI
-    jsBtnPressed.initialize();
+
     //Checkbox event
     //Input Validation
     //Accordion
     //HeaderSticky
     //goTop
     //Treeview
-    
-    document.querySelectorAll('.datepicker-ui').length >  0 ?  jQueryDatepickerUI.initialize()  : null; 
+
+    document.querySelectorAll('.datepicker-ui').length > 0 ? jQueryDatepickerUI.initialize() : null;
 });
 
 // document ready 
 function documentReady(fn) {
     if (document.readyState === "complete" || document.readyState === "interactive") {
         setTimeout(fn, 1);
-        
+
     } else {
         document.addEventListener("DOMContentLoaded", fn);
     }
@@ -841,18 +842,17 @@ function browserCheck() {
             listboxBtns: document.querySelectorAll('[aria-haspopup="listbox"]'),
         },
         initialize() {
-            this._click(); //Modal Click
-            this._focusout(); //Modal Click
-            this._listKeydown(); //Modal Click
+            this._click(); //Click Event
+            this._listKeydown(); //Keydown Event
         },
         _expandedEvent(boxBtn) {
             boxBtn.addEventListener('click', (e) => {
-                const controlEl = document.getElementById(`${boxBtn.getAttribute('aria-controls')}`) ; 
-                if(controlEl.getAttribute('aria-expanded') === 'true') {
+                const controlEl = document.getElementById(`${boxBtn.getAttribute('aria-controls')}`);
+                if (controlEl.getAttribute('aria-expanded') === 'true') {
                     //controlEl.style.display="none"
                     controlEl.setAttribute('aria-expanded', false)
                     controlEl.setAttribute('data-show', false)
-                }else{
+                } else {
                     controlEl.setAttribute('aria-expanded', true);
                     controlEl.setAttribute('data-show', true)
                     //controlEl.style.display="block"
@@ -862,7 +862,7 @@ function browserCheck() {
         _click() {
             const boxBtns = this.selectors.listboxBtns;
             boxBtns.forEach(boxBtn => {
-                this._expandedEvent(boxBtn); 
+                this._expandedEvent(boxBtn);
 
                 const listBox = document.querySelector(`#${boxBtn.getAttribute('aria-controls')}`);
                 const listOptions = listBox.querySelectorAll('[role="option"]');
@@ -872,8 +872,6 @@ function browserCheck() {
                     const listSelected = listBox.querySelector('[role="option"][aria-selected="true"]');
                     boxBtn.setAttribute('aria-expanded', true);
                     //listBox.setAttribute('show', true)
-
-
                     if (listSelected) {
                         //선택된게 있으면 
                         listSelected.focus();
@@ -903,61 +901,97 @@ function browserCheck() {
                 const listBox = document.querySelector(`#${boxBtn.getAttribute('aria-controls')}`);
                 const listOptions = listBox.querySelectorAll('[role="option"]');
 
-                listBox.addEventListener('keydown', e => {
+                for (let i = 0; i < listOptions.length; i++) {
+                    listOptions[i].tabIndex = -1;
+                    this._listSelectEvent(listBox, boxBtn, listOptions[i]);
 
-                    if (e.keyCode === 38) {
-                        //UP
-                        console.log('UP');
-                    }
-                    if (e.keyCode === 40) {
-                        //DOWN
-                        console.log('DOWN')
-                    }
-                    if (e.keyCode === 27) {
-                        //ESC 
-                        console.log('ESC')
-                    }
-                });
+                    listOptions[i].addEventListener('keydown', e => {
+                        //console.log(e.keyCode);
+                        if (e.keyCode === 38 || e.keyCode === 9) {
+                            //UP
+                            if (i == 0) {
+                                listOptions[listOptions.length - 1].focus();
+                                this._listSelectEvent(listBox, boxBtn, listOptions[listOptions.length - 1]);
+                            } else {
+                                listOptions[i - 1].focus();
+                                this._listSelectEvent(listBox, boxBtn, listOptions[i - 1]);
+                            }
+                            e.preventDefault();
+                        }
+                        if (e.keyCode === 40 || e.keyCode === 9) {
+                            //Down
+                            if (i == listOptions.length - 1) {
+                                //첫번째로
+                                listOptions[0].focus();
+                                this._listSelectEvent(listBox, boxBtn, listOptions[0]);
+                            } else {
+                                listOptions[i + 1].focus();
+                                this._listSelectEvent(listBox, boxBtn, listOptions[i + 1]);
+                            }
+                            e.preventDefault();
+                        }
+                        if (e.keyCode === 27 || e.keyCode === 13) {
+                            //console.log('ESC')
+                            this._listSelectEvent(listBox, boxBtn, listOptions[i]);
+                            boxBtn.focus();
+                            boxBtn.click();
+                            e.preventDefault();
+                        }
+                    });
+
+                }
+
             });
         },
         _focusout() {
             const boxBtns = this.selectors.listboxBtns;
-            // boxBtns.forEach(boxBtn => { 
-            //     const listBox = document.querySelector(`#${boxBtn.getAttribute('aria-controls')}`); 
-
-            //     listBox.forEach( listbox => {
-            //          listbox.addEventListener('mouseleave', function() {
-            //             console.log(this);
-            //          });
-            //     })
-
-            // });
+            boxBtns.forEach(boxBtn => {
+                const listBoxes = document.querySelectorAll(`#${boxBtn.getAttribute('aria-controls')}`);
+                console.log(boxBtn, listBoxes);
+                listBoxes.forEach(listbox => {
+                    listbox.addEventListener('mouseleave', function () {
+                        console.log();
+                        boxBtn.click();
+                        boxBtn.focus();
+                    });
+                    // listbox.addEventListener('focusout', function () {
+                    //     //console.log(boxBtn, listbox, listbox.getAttribute('aria-expanded'));
+                    //     if(listbox.getAttribute('aria-expanded') == 'true'){
+                    //         this.setAttribute('aria-expanded', false)
+                    //         this.setAttribute('data-show', false)
+                    //     }else{
+                    //         this.setAttribute('aria-expanded', true)
+                    //         this.setAttribute('data-show', true)
+                    //     }
+                    // });
+                })
+            });
         },
         //list select event
         _listSelectEvent(listBox, boxBtn, selectedOption) {
             //console.log('listbox', listBox, 'boxbtn', boxBtn, 'selected', selectedOption);
-            const selected = listBox.querySelector('[role="option"][aria-selected="true"]'); 
-            const oldSelectedValue = boxBtn.innerHTML ; 
-            const newSelectedValue = selectedOption.innerHTML ; 
+            const selected = listBox.querySelector('[role="option"][aria-selected="true"]');
+            const oldSelectedValue = boxBtn.innerHTML;
+            const newSelectedValue = selectedOption.innerHTML;
 
             //console.log(selected);
-            const temp_result = document.querySelector(`[data-for="${listBox.getAttribute('id')}"] span` );
+            const temp_result = document.querySelector(`[data-for="${listBox.getAttribute('id')}"] span`);
             const temp_resultValue = selectedOption.getAttribute('id');
-            
-            if(!selected) { 
+
+            if (!selected) {
                 selectedOption.setAttribute('aria-selected', true);
-                boxBtn.innerHTML = boxBtn.innerHTML.replace(oldSelectedValue, newSelectedValue); 
-                if(temp_result) {
-                    temp_result.innerHTML = temp_resultValue; 
+                boxBtn.innerHTML = boxBtn.innerHTML.replace(oldSelectedValue, newSelectedValue);
+                if (temp_result) {
+                    temp_result.innerHTML = temp_resultValue;
                 }
-                
+
             }
-            if(selected != selectedOption && selected != null) { 
-                selected.setAttribute('aria-selected', false); 
-                selectedOption.setAttribute('aria-selected', true); 
+            if (selected != selectedOption && selected != null) {
+                selected.setAttribute('aria-selected', false);
+                selectedOption.setAttribute('aria-selected', true);
                 boxBtn.innerHTML = boxBtn.innerHTML.replace(oldSelectedValue, newSelectedValue)
-                if(temp_result) {
-                    temp_result.innerHTML = temp_resultValue; 
+                if (temp_result) {
+                    temp_result.innerHTML = temp_resultValue;
                 }
             }
         }
@@ -967,16 +1001,16 @@ function browserCheck() {
 
 
 
-// autocompleteUI
+// Button toggle 
 (function () {
     "use strict";
     /**
      * @description     autocompleteUI
      * @modify          2022.04.07
      */
-    const jsBtnPressed = {
+    const jsBtnToggle = {
         /** 플러그인명 */
-        bindjQuery: 'jsBtnPressed',
+        bindjQuery: 'jsBtnToggle',
         /** 기본 옵션값 선언부 */
         selectors: {
             btns : document.querySelectorAll('.js-btn-press')
@@ -998,14 +1032,24 @@ function browserCheck() {
             })
         }
     };
-    window.jsBtnPressed = jsBtnPressed;
+    window.jsBtnToggle = jsBtnToggle;
 })();
 
 
 
+$('.inputbox .js-btn-press').on('click', function(e){
+    console.log('dd', $(this).parent().parent().find('.js-btn-press'));
+    $(this).parent().parent().find('.js-btn-press').removeClass('is-pressed'); 
+})
+ 
+$('.listbox').on('click', function() {
+    console.log('list');
+    $(this).parent().find('.js-btn-press').removeClass('is-pressed'); 
+})
+
+
 
 //🥨
-// // autocompleteUI
 // (function () {
 //     "use strict";
 //     /**
