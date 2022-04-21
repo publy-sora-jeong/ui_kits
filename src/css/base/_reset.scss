@@ -1,22 +1,12 @@
 /*
     @ Filename       : reset.css
-    @ Author         
-    @ Dependency     : 
+    @ Author         : sora jeong
+    @ Dependency     : vars.scss, mixins.scss
     @ Description    : CSS RESET
     @ Date           : 2021.12.09
 */
 
-//Variables 
-$color-primary-red : #d60f0f;
-$color-secondary-orange : #020201;
-$color-diabled :#B2B9BF;
-$color-blue :#0080ff;
-$color-text-base : #414547;
-$color-border : #A2A8AE;
-$color-gray-b : #B2B9BF;
-$color-gray-f : #F4F4F7;
-$color-gray-e : #E3E6E8;
-
+ 
 
 
 .color-blue { color: $color-blue; }
@@ -35,9 +25,10 @@ body { overflow-x: hidden; background-color: transparent; min-width: 320px;
     font-family: 'Rubik', 'Noto Sans KR',  arial, 'Malgun Gothic', sans-serif; font-weight: 300; letter-spacing: 0; 
     font-size: 1.6rem; 
     @include push--auto;
-    // &.other{ } &.chromium{}
     height: 100%;
     height: calc(100 * var(--vh));
+
+    // &.other{ } &.chromium{}
 }
 
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,time,pre,figure,section,article,nav,header,footer,hgroup,video,audio,aside,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; vertical-align: baseline; box-sizing: border-box; }

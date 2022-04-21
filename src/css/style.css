@@ -1,44 +1,24 @@
 @charset "UTF-8";
 /*
-    @ Filename       : style.scss
+    @ Filename       : _mixins.scss
+    @ Author         : sora jeong
+    @ Dependency     : -
+    @ Description    : SCSS mixins 
+    @ Date           : 2021.12.09
+*/
+/*
+    @ Filename       : _font.scss
     @ Author         
-    @ Dependency     : 
-    @ Description    : CSS RESET
+    @ Dependency     : mixins.scss
+    @ Description    : font style
     @ Date           : 2021.12.09
 */
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-#main {
-  content: "Non-null content";
-}
-
-.puma-icon {
-  background-image: url("/images/puma.png");
-}
-
-.sea-slug-icon {
-  background-image: url("/images/sea-slug.png");
-}
-
-.egret-icon {
-  background-image: url("/images/egret.png");
-}
-
-.salamander-icon {
-  background-image: url("/images/salamander.png");
-}
-
-/*
-    @ Filename       : _font.scss
-    @ Author         
-    @ Dependency     : 
-    @ Description    : font style
-    @ Date           : 2021.12.09
-*/
 /*
     @ Filename       : reset.css
-    @ Author         
-    @ Dependency     : 
+    @ Author         : sora jeong
+    @ Dependency     : vars.scss, mixins.scss
     @ Description    : CSS RESET
     @ Date           : 2021.12.09
 */
@@ -300,10 +280,6 @@ img {
   text-align: left;
 }
 
-/* 
-  STYLE NAME  2022.date 
-  JS();
-*/
 /* 
   Single Dropdown GNB 2022.04.05
   singleNavigation.initilize(); 
@@ -1640,10 +1616,12 @@ img {
   font-size: 13px;
 }
 
-.guide-hader {
+.guide-header {
   background: #333;
   color: #fff;
   position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
   padding: 2rem;
   z-index: 55;
@@ -1658,13 +1636,13 @@ img {
           justify-content: space-between;
 }
 
-.guide-hader > h2 {
+.guide-header > h2 {
   font-weight: 500;
   font-size: 1.3rem;
   letter-spacing: 1px;
 }
 
-.guide-hader .guide-hader-links a {
+.guide-header .guide-header-links a {
   color: #fff;
   display: inline-block;
   font-size: 12px;
@@ -1674,7 +1652,7 @@ img {
   background: #d60f0f;
 }
 
-.guide-hader .guide-hader-links a.is-current {
+.guide-header .guide-header-links a.is-current {
   background-color: darkorange;
   border-color: darkorange;
 }

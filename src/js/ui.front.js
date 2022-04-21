@@ -7,19 +7,15 @@ documentReady(function () {
     fulldownNavigation.initialize(); //상단 네비게이션 (전체메뉴)
     showTooltip.initialize(); //툴팁 
     tabUI.initialize(); //탭메뉴 
-    jsBtnToggle.initialize();
 
     sideNavigation.initialize(); //Siden avigation
     swiperSlides.initialize(); //Siden avigation 
     ariaModal.initialize(); //Modal 팝업 
     selectListbox.initialize(); //selectListbox 셀렉트박스 UI
+    goTop.initialize(); 
+    headerSticky.initialize(); 
 
-    //Checkbox event
-    //Input Validation
-    //Accordion
-    //HeaderSticky
-    //goTop
-    //Treeview
+    isMobile(); //모바일체크
 
     document.querySelectorAll('.datepicker-ui').length > 0 ? jQueryDatepickerUI.initialize() : null;
 });
@@ -38,8 +34,6 @@ function isInPage(node) {
     console.log(node);
     return document.querySelectorAll(node).length > 0;
 }
-
-
 
 //BrowserCheck
 function browserCheck() {
@@ -71,6 +65,11 @@ function browserCheck() {
     else el.classList.add('other');
 }
 
+//Mobile check
+function isMobile() {
+    const isMobile = navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ? true : false;
+    isMobile ? document.querySelector('body').classList.add('isMobile') : null; 
+}
 //setViewHeight
 (function () {
     "use strict";
@@ -294,21 +293,15 @@ function browserCheck() {
             fulldownBg: document.querySelector('.fulldown-bg')
         },
         initialize() {
-            this._focusout();
-            this._focusin();
-            this._mouseLeave();
-            this._mouseenter();
+            this._focusEvent();
+            this._mouseEvent();
         },
-        _focusin() {
+        _focusEvent() {
             this._inFn('focusin');
+            this._inFn('focusout');
         },
-        _mouseenter() {
+        _mouseEvent() {
             this._inFn('mouseenter');
-        },
-        _focusout() {
-            this._outFn('focusout');
-        },
-        _mouseLeave() {
             this._outFn('mouseleave');
         },
         _inFn(event) {
@@ -336,7 +329,6 @@ function browserCheck() {
         },
         _outFn(event) {
             const bg = this.selectors.fulldownBg;
-            const depth2Wrap = this.selectors.depth2Wrap;
             $('.node1-item ').on(event, function (e) {
                 e.preventDefault();
                 $('.node1-item').removeClass('is-active is-entered');
@@ -446,9 +438,7 @@ function browserCheck() {
 
                     tab.setAttribute("aria-selected", true);
                     tab.tabIndex = 0;
-
                     panelWrap.querySelectorAll(':scope > [role="tabpanel"]').forEach(p => p.style.display = "none");
-
                     panelWrap.querySelector(`#${tab.getAttribute("aria-controls")}`).style.display = "revert"
 
                     e.preventDefault();
@@ -521,8 +511,6 @@ function browserCheck() {
             const me = this.selectors.datepickerEl;
             const unavailableDay = this.data.unavailableDay;
             const datepickerID = `#${$(me).attr('id')}`;
-
-
 
             const options = {
                 showOtherMonths: true,
@@ -604,8 +592,6 @@ function browserCheck() {
     window.sideNavigation = sideNavigation;
 })();
 
-
-
 // Swiper Slider 
 (function () {
     "use strict";
@@ -625,7 +611,8 @@ function browserCheck() {
             swiperOption: {
                 loop: true,
                 pauseOnMouseEnter: true,
-                disableOnInteraction: false,
+                //disableOnInteraction: false,
+                observer: true,
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
@@ -641,18 +628,17 @@ function browserCheck() {
                     paginationBulletMessage: '{{index}} 번째 슬라이드로 이동합니다. ',
                     slideLabelMessage: '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.',
                 },
-                //웹접근성 자동재생일 경우 정지버튼 
             },
         },
 
         initialize() {
+            //슬라이드 진입시 자동재생 정지 버튼으로 초점이동 
             this._autoplayStop();
 
             const el = this.selectors.swiperEl;
 
             el.forEach(slide => {
                 //특정슬라이드 옵션 적용 
-
                 if (slide == document.querySelector('.mySwiper2')) {
                     slide = new Swiper(slide, {
                         centeredSlides: true,
@@ -663,6 +649,22 @@ function browserCheck() {
                     });
                 } else {
                     //기본옵션적용
+                    //console.log();
+                    if (slide.classList.contains('horz-wheel')) {
+                        slide = new Swiper(slide, {
+                            centeredSlides: false,
+                            slidesPerView: 2,
+                            observer: true,
+                            spaceBetween: 10,
+                            autoHeight: true,
+                            direction: 'horizontal',
+                            autoplay: false,
+                            //loopedSlides :6, 
+                            mousewheel: true,
+                            ...this.data.swiperOption
+                        })
+                    }
+
                     slide = new Swiper(slide, {
                         centeredSlides: true,
                         autoplay: {
@@ -670,10 +672,10 @@ function browserCheck() {
                         },
                         ...this.data.swiperOption
                     })
+
                 }
             });
         },
-
         _autoplayStop() {
             const stopBtn = this.selectors.swiperStopEl;
             const el = this.selectors.swiperEl;
@@ -694,7 +696,6 @@ function browserCheck() {
     };
     window.swiperSlides = swiperSlides;
 })();
-
 
 // ariaModal
 (function () {
@@ -724,7 +725,7 @@ function browserCheck() {
                     let tabAble = modalIDChar.querySelectorAll('button:not([tabindex="-1"], input:not([tabindex="-1"], textarea:not([tabindex="-1"]');
                     let tabAbleFirst = tabAble && tabAble[0];
                     let tabAbleLast = tabAble && tabAble[tabAble.length - 1];
-                    let tabDisable;
+                    //let tabDisable;
                     let modalWidth = 0;
                     let modalHeight = 0;
                     let modalInner = modalIDChar.querySelector('.modal__inner');
@@ -820,12 +821,6 @@ function browserCheck() {
     };
     window.ariaModal = ariaModal;
 })();
-
-
-
-
-
-
 
 // selectListbox
 (function () {
@@ -1001,51 +996,70 @@ function browserCheck() {
 
 
 
-// Button toggle 
+
+//GO TO TOP 
 (function () {
     "use strict";
     /**
-     * @description     autocompleteUI
-     * @modify          2022.04.07
+     * @description     goTop
+     * @modify          2022.04.21
      */
-    const jsBtnToggle = {
+    const goTop = {
         /** 플러그인명 */
-        bindjQuery: 'jsBtnToggle',
+        bindjQuery: 'goTop',
         /** 기본 옵션값 선언부 */
         selectors: {
-            btns : document.querySelectorAll('.js-btn-press')
+            btn : document.querySelectorAll('.btn-top')
         },
         initialize() {
             this._click(); //Modal Click
         },
         _click() {
-            const btns = this.selectors.btns; 
-
-            btns.forEach(btn => {
-                btn.addEventListener('click', e => {
-                    if(btn.classList.contains('is-pressed') === true) {
-                        btn.classList.remove('is-pressed')
-                    }else{
-                        btn.classList.add('is-pressed')
-                    }
+            const btns = this.selectors.btn; 
+            btns.forEach(btn => { 
+                btn.addEventListener('click', function(e) { 
+                    
+                    e.preventDefault(); 
+                    setTimeout(() => {
+                        window.scrollTo(0, 1);
+                    }, 0);
                 })
             })
         }
     };
-    window.jsBtnToggle = jsBtnToggle;
+    window.goTop = goTop;
 })();
 
 
+(function () {
+    "use strict";
+    /**
+     * @description     headerSticky
+     * @modify          2022.04.21
+     */
+    const headerSticky = {
+        /** 플러그인명 */
+        bindjQuery: 'headerSticky',
+        /** 기본 옵션값 선언부 */
+        selectors: {
+            header : document.querySelector('header')
+        },
+        initialize() {
+            this._scroll(); 
+        },
+        _scroll() {
+            const header = this.selectors.header;
 
-$('.inputbox .js-btn-press').on('click', function(e){
-    console.log('dd', $(this).parent().parent().find('.js-btn-press'));
-    $(this).parent().parent().find('.js-btn-press').removeClass('is-pressed'); 
-})
- 
-$('.listbox').on('click', function() {
-    console.log('list');
-    $(this).parent().find('.js-btn-press').removeClass('is-pressed'); 
-})
+            window.addEventListener('scroll', ()=> { 
+                const yOffset = window.pageYOffset;
+                if(yOffset > 0)   header.classList.add('header__sticky'); 
+                else header.classList.remove('header__sticky'); 
+            })
+        }
+    };
+    window.headerSticky = headerSticky;
+})();
+
 
 
 

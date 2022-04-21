@@ -1,0 +1,23 @@
+{
+  "name": "ui_kits",
+  "version": "1.0.0",
+  "description": "- 프로젝트 HTML컨벤션, UI 스타일가이드,  자주 쓰이는 Tab, SwiperSlide, Modal, Form, \r - 웹접근성과 관련된 Aria속성, 초점이동 등을 추가하여 정리한 가이드파일입니다. \r - 작업중...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/publy-sora-jeong/ui_kits.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/publy-sora-jeong/ui_kits/issues"
+  },
+  "homepage": "https://github.com/publy-sora-jeong/ui_kits#readme",
+  "dependencies": {
+  
+  }  
+}

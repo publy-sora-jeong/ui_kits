@@ -1,7 +1,8 @@
-.guide-hader {
+.guide-header {
     background: #333;
     color: #fff;
     position: fixed;
+    left: 0;top: 0;
     width: 100%;
     padding: 2rem;
     z-index: 55;
@@ -15,7 +16,7 @@
         letter-spacing: 1px;
     }
 
-    .guide-hader-links a {
+    .guide-header-links a {
         color: #fff;
         display: inline-block;
         font-size: 12px;

@@ -2,12 +2,6 @@
 @media screen and (prefers-color-scheme: dark) {}
 
 /* 
-  STYLE NAME  2022.date 
-  JS();
-*/
-
-
-/* 
   Single Dropdown GNB 2022.04.05
   singleNavigation.initilize(); 
 */
@@ -210,7 +204,6 @@
   툴팁 Tooltip  2022.04.05
   tooltip.initialize();
 */
-
 .tooltip-sample {
     position: relative;
     display: inline-block;
@@ -300,7 +293,6 @@
 
 
 
-
 /* 
   Breadcrumb Aria  2022.04.05
 */
@@ -345,10 +337,6 @@
     }
 }
 
-
-
-
-
 /* TAB UI  */
 .tab-ui {
     &__tab {
@@ -376,7 +364,6 @@
         font-size: 13px;
     }
 }
-
 
 /* jQuery UI Datepicker */
 .datepicker-ui {
@@ -818,7 +805,6 @@
         }
     }
 }
-
 
 /* Pagination 2022.04.06 */
 .pagination {
@@ -1303,6 +1289,8 @@
     }
 }
 
+
+//임시
 .temp-result-value {
     margin-top: 10px;
     padding-bottom: 2rem;

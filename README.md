@@ -1,9 +1,8 @@
 # ui_kits
 
 ### Project HTML MARKUP Convention & UI Style guide 
-- 프로젝트 HTML컨벤션, UI 스타일가이드,  자주 쓰이는 Tab, SwiperSlide, Modal, Form, 
-- 웹접근성과 관련된 Aria속성, 초점이동 등을 추가하여 정리한 가이드파일입니다. 
-- 작업중...
+- 프로젝트 HTML컨벤션, UI 스타일가이드,  자주 쓰이는 Tab, SwiperSlide, Modal, Form 스크립트 등등..등등.. 🥨
+
 
 ### Convention
 - 프로젝트 기본정보
@@ -63,16 +62,30 @@
 --  jQueryDatepickerUI.initialize(); 
     jQuery Datepicker UI CSS custom
 
---  SideMenu
-    사이드메뉴 
+--  sideNavigation.initialize(); 
+    사이드네비게이션
+
+--  ariaModal.initialize();
+    MODAL POPUP 
+    
+--  selectListbox.initialize();
+    셀렉트박스
+
+--  goTop.initialize();
+    상단이동
+
+--  HeaderSticky.initilize(); 
+    스크롤시 헤더 고정클래스 추가 header__sticky
 
 
+<!-- 
 
 - Checkbox event    
 - Input Validation
-- Modal
 - Accordion
-- Dropdown Selectbox
-- HeaderSticky
-- goTop
-- Treeview
+- 
+- 
+- Treeview 
+
+
+-->
